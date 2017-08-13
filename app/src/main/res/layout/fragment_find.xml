@@ -1,0 +1,360 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              tools:context="androidlab.edu.cn.nucyixue.ui.findPack.FindFragment">
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_find"
+            android:layout_width="match_parent"
+            android:layout_height="38dp">
+
+            <ImageView
+                android:id="@+id/find_search_by_erwerma"
+                android:src="@drawable/erwerma"
+                android:layout_width="35dp"
+                android:layout_height="35dp"/>
+            <LinearLayout
+                android:id="@+id/find_search_by_text"
+                android:paddingRight="155dp"
+                android:orientation="horizontal"
+                android:background="@drawable/shape_back"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp">
+                <ImageView
+                    android:layout_gravity="center"
+                    android:paddingLeft="10dp"
+                    android:src="@drawable/search"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
+                <TextView
+                    android:gravity="center"
+                    android:text="搜索感兴趣的内容"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            </LinearLayout>
+            <ImageView
+                android:id="@+id/find_select_by_tiaojian"
+                android:src="@drawable/shaixuan"
+                android:layout_width="35dp"
+                android:layout_height="35dp"/>
+
+
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <cn.bingoogolapple.bgabanner.BGABanner
+                android:id="@+id/banner_guide_content"
+                style="@style/MatchMatch"
+                android:layout_width="match_parent"
+                android:layout_height="166dp"
+                app:banner_pageChangeDuration="1000"
+                app:banner_pointAutoPlayAble="true"
+                app:banner_pointAutoPlayInterval="6000"
+                app:banner_pointContainerBackground="@android:color/transparent"
+                app:banner_pointDrawable="@drawable/bga_banner_selector_point_hollow"
+                app:banner_pointTopBottomMargin="15dp"
+                app:banner_transitionEffect="alpha"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="70dp">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:weightSum="1">
+
+                    <ImageView
+                        android:id="@+id/find_computer_image"
+                        android:src="@drawable/hold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.69"/>
+                    <TextView
+                        android:gravity="center"
+                        android:textColor="#494949"
+                        android:text="计算机"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:weightSum="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:id="@+id/find_jingguan_iamge"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.69"
+                        android:src="@drawable/hold"/>
+
+                    <TextView
+                        android:gravity="center"
+                        android:textColor="#494949"
+                        android:text="经济管理"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:weightSum="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:id="@+id/find_language_image"
+                        android:src="@drawable/hold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.69"/>
+                    <TextView
+                        android:gravity="center"
+                        android:textColor="#494949"
+                        android:text="外语"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:weightSum="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:id="@+id/find_falv_iamge"
+                        android:src="@drawable/hold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.69"/>
+                    <TextView
+                        android:gravity="center"
+                        android:textColor="#494949"
+                        android:text="法学"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:weightSum="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:id="@+id/find_yixue_image"
+                        android:src="@drawable/hold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.69"/>
+                    <TextView
+                        android:gravity="center"
+                        android:textColor="#494949"
+                        android:text="医学"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="70dp">
+
+                <LinearLayout
+                    android:weightSum="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:id="@+id/find_gongxue_image"
+                        android:src="@drawable/hold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.69"/>
+                    <TextView
+                        android:gravity="center"
+                        android:textColor="#494949"
+                        android:text="工学"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:weightSum="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:id="@+id/find_lixue_image"
+                        android:src="@drawable/hold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.69"/>
+                    <TextView
+                        android:gravity="center"
+                        android:textColor="#494949"
+                        android:text="理学"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:weightSum="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:id="@+id/find_wenxuelishi_image"
+                        android:src="@drawable/hold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.69"/>
+                    <TextView
+                        android:gravity="center"
+                        android:textColor="#494949"
+                        android:text="文学历史"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:weightSum="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:id="@+id/find_yishuwenhua_image"
+                        android:src="@drawable/hold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.69"/>
+                    <TextView
+                        android:gravity="center"
+                        android:textColor="#494949"
+                        android:text="艺术文化"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:weightSum="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:id="@+id/find_more_image"
+                        android:src="@drawable/hold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.69"/>
+                    <TextView
+                        android:gravity="center"
+                        android:textColor="#494949"
+                        android:text="更多"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:background="#d9d8d8"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="30dp">
+
+                <ImageView
+                    android:id="@+id/image_left1"
+                    android:padding="5dp"
+                    android:src="@drawable/find_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:gravity="center"
+                    android:layout_toRightOf="@+id/image_left1"
+                    android:padding="1dp"
+                    android:text="热门专题"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"/>
+            </RelativeLayout>
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/flexsubject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:flexWrap="wrap"/>
+            <RelativeLayout
+                android:padding="2dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="30dp">
+
+                <ImageView
+                    android:id="@+id/image_left2"
+                    android:padding="5dp"
+                    android:src="@drawable/find_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:gravity="center"
+                    android:layout_toRightOf="@+id/image_left2"
+                    android:text="热门LIVE"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"/>
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:orientation="vertical"
+                android:id="@+id/find_live_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>

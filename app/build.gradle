@@ -1,0 +1,55 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.0"
+    useLibrary 'org.apache.http.legacy'
+    defaultConfig {
+        applicationId "androidlab.edu.cn.nucyixue"
+        minSdkVersion 21
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile files('src/main/jniLibs/avoscloud-sdk-v4.4.4.jar')
+    compile files('src/main/jniLibs/fastjson-1.2.30.jar')
+    compile files('src/main/jniLibs/okhttp-3.8.0.jar')
+    compile files('src/main/jniLibs/okio-1.13.0.jar')
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:design:26.0.0-alpha1'
+    compile 'com.jakewharton:butterknife:8.7.0'
+    compile 'com.android.support:support-v4:26.+'
+    compile 'cn.bingoogolapple:bga-banner:2.1.7@aar'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'io.reactivex.rxjava2:rxjava:2.0.1'
+    compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
+    compile 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
+    compile 'com.jakewharton.rxbinding2:rxbinding-appcompat-v7:2.0.0'
+    compile 'com.jakewharton.rxbinding2:rxbinding-design:2.0.0'
+    compile 'com.jakewharton.rxbinding2:rxbinding-recyclerview-v7:2.0.0'
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    compile 'com.google.android:flexbox:0.3.0'
+    compile 'jp.wasabeef:glide-transformations:2.0.2'
+    testCompile 'junit:junit:4.12'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
+    compile 'cn.bmob.android:bmob-sms:1.0.1'
+    compile 'com.zhihu.android:matisse:0.4.3'
+
+    //如果你想应用能够兼容Android6.0，请添加此依赖(org.apache.http.legacy.jar)
+    compile 'cn.bmob.android:http-legacy:1.0'
+}
