@@ -9,5 +9,4 @@ public class LiveBean {
     private String Teacher; //主讲人
     private String Image; //
 
-
 }

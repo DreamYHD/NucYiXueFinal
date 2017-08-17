@@ -8,18 +8,21 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidlab.edu.cn.nucyixue.R;
+import androidlab.edu.cn.nucyixue.base.BaseActivity;
 import androidlab.edu.cn.nucyixue.base.BaseFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SubjectNearFragment extends BaseFragment {
+public class SubjectXuanshangFragment extends BaseFragment {
 
 
-    public static SubjectNearFragment getInstance() {
+    public static SubjectXuanshangFragment getInstance() {
         // Required empty public constructor
-        return new SubjectNearFragment();
+        return new SubjectXuanshangFragment();
     }
+
+
 
     @Override
     protected void init() {

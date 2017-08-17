@@ -1,6 +1,7 @@
 package androidlab.edu.cn.nucyixue.ui.findPack;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -24,6 +26,7 @@ import androidlab.edu.cn.nucyixue.data.bean.Subject;
 import androidlab.edu.cn.nucyixue.utils.FlexTextUtil;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import cn.bingoogolapple.bgabanner.BGABanner;
 
@@ -40,6 +43,9 @@ public class FindFragment extends BaseFragment {
     FlexboxLayout mFlexsubject;
     @BindView(R.id.find_live_recycler)
     RecyclerView mFindLiveRecycler;
+    @BindView(R.id.find_search_by_text)
+    LinearLayout mFindSearchByText;
+    Unbinder unbinder;
 
 
     public static FindFragment getInstance() {
@@ -64,6 +70,11 @@ public class FindFragment extends BaseFragment {
 
 
     }
+    @OnClick(R.id.find_search_by_text)
+    public void search(){
+        Intent mIntent = new Intent(getContext(),FindSearchActivity.class);
+        startActivity(mIntent);
+    }
 
     @Override
     protected int getResourcesLayout() {
@@ -72,7 +83,7 @@ public class FindFragment extends BaseFragment {
 
     @Override
     protected void logic() {
-        String[] tags = {"婚姻育儿", "散文", "设计", "影视天堂", "大学生活", "美人说", "生活家"};
+        String[] tags = {"Java程序设计", "计算机网络", "英语", "高等数学", "线性代数", "离散数学", "大学计算机基础"};
         for (int i = 0; i < tags.length; i++) {
             Subject model = new Subject();
             model.setId(i);

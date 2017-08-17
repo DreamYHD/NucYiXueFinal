@@ -13,12 +13,12 @@ import androidlab.edu.cn.nucyixue.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TeachZhiboFragment extends Fragment {
-    private static final String TAG = "TeachZhiboFragment";
+public class TeachSourceFragment extends Fragment {
+    private static final String TAG = "TeachSourceFragment";
 
-    public static TeachZhiboFragment getInstance() {
+    public static TeachSourceFragment getInstance() {
         // Required empty public constructor
-        return new TeachZhiboFragment();
+        return new TeachSourceFragment();
     }
 
 

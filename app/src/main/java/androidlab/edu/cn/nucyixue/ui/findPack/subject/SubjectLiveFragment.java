@@ -8,23 +8,34 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidlab.edu.cn.nucyixue.R;
+import androidlab.edu.cn.nucyixue.base.BaseFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SubjectLiveFragment extends Fragment {
+public class SubjectLiveFragment extends BaseFragment {
 
+    private static final String TAG = "SubjectLiveFragment";
 
-    public SubjectLiveFragment() {
+    public  static SubjectLiveFragment getInstance() {
         // Required empty public constructor
+        return new SubjectLiveFragment();
     }
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_subject_live, container, false);
+    protected void init() {
+
+    }
+
+    @Override
+    protected int getResourcesLayout() {
+        return 0;
+    }
+
+    @Override
+    protected void logic() {
+
     }
 
 }

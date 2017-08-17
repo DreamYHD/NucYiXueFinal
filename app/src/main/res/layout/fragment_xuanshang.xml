@@ -3,7 +3,7 @@
              android:layout_width="match_parent"
              android:layout_height="match_parent"
               android:orientation="vertical"
-             tools:context="androidlab.edu.cn.nucyixue.ui.XuanshangFragment">
+             tools:context="androidlab.edu.cn.nucyixue.ui.xuanshangPack.XuanshangFragment">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

@@ -36,14 +36,10 @@ public class RegistActivity extends BaseActivity {
     Button mRegistBtn;
     @BindView(R.id.back_regist_image)
     ImageView mBackRegistImage;
-
     @Override
     protected void logicActivity(Bundle mSavedInstanceState) {
-
         BmobSMS.initialize(this,"6ac3eb1e1846f7b8c6a6c1eb83439666");
-
     }
-
     @Override
     protected int getLayoutId() {
         return R.layout.activity_regist;

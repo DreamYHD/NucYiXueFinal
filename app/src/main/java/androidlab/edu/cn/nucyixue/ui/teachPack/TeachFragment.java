@@ -1,21 +1,16 @@
 package androidlab.edu.cn.nucyixue.ui.teachPack;
 
 
-import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
 import androidlab.edu.cn.nucyixue.R;
 import androidlab.edu.cn.nucyixue.base.BaseFragment;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
@@ -36,7 +31,7 @@ public class TeachFragment extends BaseFragment {
     private ArrayList<Fragment> mFragmentList = new ArrayList<>();
     private TeachFragmentPagerAdapter mTeachFragmentPagerAdapter;
     private TeachLiveFragment mLive;
-    private TeachZhiboFragment mZhibo;
+    private TeachSourceFragment mZhibo;
     private TeachNearmapFragment mNear;
 
     public static TeachFragment getInstance() {
@@ -47,7 +42,7 @@ public class TeachFragment extends BaseFragment {
     protected void init() {
         mLive = TeachLiveFragment.getInstance();
         mNear = TeachNearmapFragment.getInstance();
-        mZhibo = TeachZhiboFragment.getInstance();
+        mZhibo = TeachSourceFragment.getInstance();
         mFragmentList.add(mLive);
         mFragmentList.add(mZhibo);
         mFragmentList.add(mNear);

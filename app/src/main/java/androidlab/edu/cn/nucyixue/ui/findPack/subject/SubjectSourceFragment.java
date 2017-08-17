@@ -1,4 +1,4 @@
-package androidlab.edu.cn.nucyixue.ui;
+package androidlab.edu.cn.nucyixue.ui.findPack.subject;
 
 
 import android.os.Bundle;
@@ -13,12 +13,14 @@ import androidlab.edu.cn.nucyixue.base.BaseFragment;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class XuanshangFragment extends BaseFragment {
+public class SubjectSourceFragment extends BaseFragment {
 
 
-    public static XuanshangFragment getInstance(){
-        return new XuanshangFragment();
+    public static SubjectSourceFragment getInstance() {
+        // Required empty public constructor
+        return new SubjectSourceFragment();
     }
+
 
 
     @Override
@@ -28,11 +30,12 @@ public class XuanshangFragment extends BaseFragment {
 
     @Override
     protected int getResourcesLayout() {
-        return R.layout.fragment_xuanshang;
+        return R.layout.fragment_subject_zhibo;
     }
 
     @Override
     protected void logic() {
 
     }
+
 }
