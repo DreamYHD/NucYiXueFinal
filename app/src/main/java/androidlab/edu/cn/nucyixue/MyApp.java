@@ -12,7 +12,7 @@ public class MyApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        AVOSCloud.initialize(this,"KElRaSz2NTiDTiMPpaHKKI4y-gzGzoHsz","EcQnyT6mczTqjcBtSXIKys3m");
+        AVOSCloud.initialize(this,"O5aEuqARNjtbvT2tGTW23bB5-gzGzoHsz","XMaxhc0a9L5cDOIAXrBeqoS8");
         // 放在 SDK 初始化语句 AVOSCloud.initialize() 后面，只需要调用一次即可
         AVOSCloud.setDebugLogEnabled(true);
     }

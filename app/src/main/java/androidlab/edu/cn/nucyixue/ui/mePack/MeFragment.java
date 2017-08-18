@@ -38,6 +38,7 @@ import static android.app.Activity.RESULT_OK;
  */
 public class MeFragment extends BaseFragment {
 
+    private static final String TAG = "MeFragment";
 
     @BindView(R.id.toolbar_me)
     Toolbar mToolbarMe;
@@ -73,13 +74,9 @@ public class MeFragment extends BaseFragment {
 
     public static MeFragment getInstance() {
         return new MeFragment();
-        // Required empty public constructor
     }
-
-
     @Override
     protected void init() {
-
     }
     @OnClick(R.id.me_iamge_touxiang)
     public void selectImage(){
@@ -87,7 +84,7 @@ public class MeFragment extends BaseFragment {
                 .choose(MimeType.allOf())
                 .theme(R.style.Matisse_Dracula)
                 .countable(false)
-                .maxSelectable(9)
+                .maxSelectable(1)
                 .imageEngine(new GlideEngine())
                 .forResult(0);
     }
@@ -109,6 +106,7 @@ public class MeFragment extends BaseFragment {
 
     @Override
     protected void logic() {
+        //进入注册界面
         RxView.clicks(mMeMore)
                 .throttleFirst(2, TimeUnit.SECONDS)
                 .subscribe(new Consumer<Object>() {
@@ -118,6 +116,12 @@ public class MeFragment extends BaseFragment {
                         startActivity(mIntent);
                     }
                 });
+        if ( mAVUserFinal != null ){
+            mMeName.setText(mAVUserFinal.getUsername());
+            mMeMajor.setText(mAVUserFinal.get("school").toString() + " "+mAVUserFinal.get("major"));
+        }
+
+
     }
 
 

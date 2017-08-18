@@ -26,12 +26,11 @@ public class TeachFragment extends BaseFragment {
     ViewPager mTeachMainViewpager;
     @BindView(R.id.toolbar_teach)
     Toolbar mToolbarTeach;
-    Unbinder unbinder;
-    private String[] mString = {"Live", "直播", "附近"};
+    private String[] mString = {"Live", "资源", "附近"};
     private ArrayList<Fragment> mFragmentList = new ArrayList<>();
     private TeachFragmentPagerAdapter mTeachFragmentPagerAdapter;
     private TeachLiveFragment mLive;
-    private TeachSourceFragment mZhibo;
+    private TeachSourceFragment mSource;
     private TeachNearmapFragment mNear;
 
     public static TeachFragment getInstance() {
@@ -42,9 +41,9 @@ public class TeachFragment extends BaseFragment {
     protected void init() {
         mLive = TeachLiveFragment.getInstance();
         mNear = TeachNearmapFragment.getInstance();
-        mZhibo = TeachSourceFragment.getInstance();
+        mSource = TeachSourceFragment.getInstance();
         mFragmentList.add(mLive);
-        mFragmentList.add(mZhibo);
+        mFragmentList.add(mSource);
         mFragmentList.add(mNear);
         mTeachFragmentPagerAdapter = new TeachFragmentPagerAdapter(getChildFragmentManager(), mString, mFragmentList);
         mTeachMainViewpager.setAdapter(mTeachFragmentPagerAdapter);

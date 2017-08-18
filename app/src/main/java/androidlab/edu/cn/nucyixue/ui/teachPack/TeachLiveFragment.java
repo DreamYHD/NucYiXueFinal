@@ -9,11 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidlab.edu.cn.nucyixue.R;
+import androidlab.edu.cn.nucyixue.base.BaseFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TeachLiveFragment extends Fragment {
+public class TeachLiveFragment extends BaseFragment {
 
     private static final String TAG = "TeachLiveFragment";
 
@@ -24,12 +25,17 @@ public class TeachLiveFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        Log.i(TAG, "onCreateView: "+TAG);
-        return inflater.inflate(R.layout.fragment_teach_live, container, false);
+    protected void init() {
+
     }
 
+    @Override
+    protected int getResourcesLayout() {
+        return R.layout.fragment_teach_live;
+    }
 
+    @Override
+    protected void logic() {
+
+    }
 }

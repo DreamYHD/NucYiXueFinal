@@ -23,6 +23,7 @@ import java.util.Arrays;
 import androidlab.edu.cn.nucyixue.R;
 import androidlab.edu.cn.nucyixue.base.BaseFragment;
 import androidlab.edu.cn.nucyixue.data.bean.Subject;
+import androidlab.edu.cn.nucyixue.ui.findPack.subject.SubjectContentActivity;
 import androidlab.edu.cn.nucyixue.utils.FlexTextUtil;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,8 +36,6 @@ import cn.bingoogolapple.bgabanner.BGABanner;
  */
 public class FindFragment extends BaseFragment {
     private static final String TAG = "FindFragment";
-
-
     @BindView(R.id.banner_guide_content)
     BGABanner mBannerGuideContent;
     @BindView(R.id.flexsubject)
@@ -45,9 +44,6 @@ public class FindFragment extends BaseFragment {
     RecyclerView mFindLiveRecycler;
     @BindView(R.id.find_search_by_text)
     LinearLayout mFindSearchByText;
-    Unbinder unbinder;
-
-
     public static FindFragment getInstance() {
         // Required empty public constructor
         return new FindFragment();
@@ -113,6 +109,12 @@ public class FindFragment extends BaseFragment {
             @Override
             public void onClick(View view) {
                 Log.e(TAG, book.getName());
+                Bundle mBundle = new Bundle();
+                mBundle.putString("subjectName",book.getName());
+                mBundle.putInt("subjectId",book.getId());
+                Intent mIntent = new Intent(getContext(), SubjectContentActivity.class);
+                mIntent.putExtras(mBundle);
+                startActivity(mIntent);
             }
         });
         int padding = FlexTextUtil.dpToPixel(getContext(), 3);
@@ -127,8 +129,6 @@ public class FindFragment extends BaseFragment {
         textView.setLayoutParams(layoutParams);
         return textView;
     }
-
-
 }
 
 

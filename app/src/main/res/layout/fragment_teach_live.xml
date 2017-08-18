@@ -1,13 +1,18 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              tools:context="androidlab.edu.cn.nucyixue.ui.teachPack.TeachLiveFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Live"/>
+        android:layout_height="wrap_content"/>
+    <android.support.design.widget.FloatingActionButton
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/add"
+        android:layout_gravity="bottom|right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
-</FrameLayout>
+</android.support.design.widget.CoordinatorLayout>

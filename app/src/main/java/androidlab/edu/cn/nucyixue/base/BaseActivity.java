@@ -1,5 +1,6 @@
 package androidlab.edu.cn.nucyixue.base;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -9,6 +10,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.avos.avoscloud.AVUser;
+
 import butterknife.ButterKnife;
 
 /**
@@ -17,13 +20,16 @@ import butterknife.ButterKnife;
 
 public abstract class BaseActivity extends AppCompatActivity {
     protected FragmentManager mFragmentManager;
+    protected Activity mActivity;
+    protected AVUser mAVUserFinal;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
-
         ButterKnife.bind(this);
-        mFragmentManager=getSupportFragmentManager();
+        mFragmentManager = getSupportFragmentManager();
+        mActivity = this;
+        mAVUserFinal = AVUser.getCurrentUser();
         logicActivity(savedInstanceState);
     }
     protected abstract void logicActivity(Bundle mSavedInstanceState);
@@ -31,12 +37,12 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected abstract int getLayoutId();
     public void toast(String toast,int time){
         if (time == 0){
-            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
         }
-        Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
     }
     public void snackBar(View v,String snackBar, int time){
-        if (time==0){
+        if (time == 0){
             Snackbar.make(v,snackBar,Snackbar.LENGTH_SHORT)
                     .show();
         }else {

@@ -9,11 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidlab.edu.cn.nucyixue.R;
+import androidlab.edu.cn.nucyixue.base.BaseFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TeachSourceFragment extends Fragment {
+public class TeachSourceFragment extends BaseFragment {
     private static final String TAG = "TeachSourceFragment";
 
     public static TeachSourceFragment getInstance() {
@@ -22,12 +23,20 @@ public class TeachSourceFragment extends Fragment {
     }
 
 
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        Log.i(TAG, "onCreateView: "+TAG);
-        return inflater.inflate(R.layout.fragment_teach_zhibo, container, false);
+    protected void init() {
+
+    }
+
+    @Override
+    protected int getResourcesLayout() {
+        return R.layout.fragment_teach_zhibo;
+    }
+
+    @Override
+    protected void logic() {
+
     }
 
 }

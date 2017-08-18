@@ -35,7 +35,7 @@ dependencies {
     })
     compile files('src/main/jniLibs/avoscloud-sdk-v4.4.4.jar')
     compile files('src/main/jniLibs/fastjson-1.2.30.jar')
-    compile files('src/main/jniLibs/okhttp-3.8.0.jar')
+
     compile files('src/main/jniLibs/okio-1.13.0.jar')
 
     //如果你想应用能够兼容Android6.0，请添加此依赖(org.apache.http.legacy.jar)
@@ -62,4 +62,5 @@ dependencies {
     compile 'cn.leancloud.android:avoscloud-sdk:v4.4.3'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
+    compile ('cn.leancloud.android:avoscloud-search:v4.4.4@aar')
 }

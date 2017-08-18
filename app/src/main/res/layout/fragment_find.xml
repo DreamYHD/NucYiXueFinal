@@ -11,7 +11,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar_find"
             android:layout_width="match_parent"
-            android:layout_height="38dp">
+            android:layout_height="42dp">
 
             <ImageView
                 android:id="@+id/find_search_by_erwerma"
@@ -83,10 +83,10 @@
 
                     <ImageView
                         android:id="@+id/find_computer_image"
-                        android:src="@drawable/hold"
+                        android:src="@drawable/cs_icon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.69"/>
+                        android:layout_weight="1.5"/>
                     <TextView
                         android:gravity="center"
                         android:textColor="#494949"
@@ -107,8 +107,8 @@
                         android:id="@+id/find_jingguan_iamge"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.69"
-                        android:src="@drawable/hold"/>
+                        android:layout_weight="1.5"
+                        android:src="@drawable/jingguan_icon"/>
 
                     <TextView
                         android:gravity="center"
@@ -127,10 +127,10 @@
 
                     <ImageView
                         android:id="@+id/find_language_image"
-                        android:src="@drawable/hold"
+                        android:src="@drawable/waiyu_icon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.69"/>
+                        android:layout_weight="1.5"/>
                     <TextView
                         android:gravity="center"
                         android:textColor="#494949"
@@ -149,10 +149,10 @@
 
                     <ImageView
                         android:id="@+id/find_falv_iamge"
-                        android:src="@drawable/hold"
+                        android:src="@drawable/faxue_icon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.69"/>
+                        android:layout_weight="1.5"/>
                     <TextView
                         android:gravity="center"
                         android:textColor="#494949"
@@ -171,10 +171,10 @@
 
                     <ImageView
                         android:id="@+id/find_yixue_image"
-                        android:src="@drawable/hold"
+                        android:src="@drawable/shengming_icon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.69"/>
+                        android:layout_weight="1.5"/>
                     <TextView
                         android:gravity="center"
                         android:textColor="#494949"
@@ -200,10 +200,10 @@
 
                     <ImageView
                         android:id="@+id/find_gongxue_image"
-                        android:src="@drawable/hold"
+                        android:src="@drawable/gongxue_icon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.69"/>
+                        android:layout_weight="1.5"/>
                     <TextView
                         android:gravity="center"
                         android:textColor="#494949"
@@ -221,10 +221,10 @@
 
                     <ImageView
                         android:id="@+id/find_lixue_image"
-                        android:src="@drawable/hold"
+                        android:src="@drawable/math_icon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.69"/>
+                        android:layout_weight="1.5"/>
                     <TextView
                         android:gravity="center"
                         android:textColor="#494949"
@@ -243,10 +243,10 @@
 
                     <ImageView
                         android:id="@+id/find_wenxuelishi_image"
-                        android:src="@drawable/hold"
+                        android:src="@drawable/wenxue_icon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.69"/>
+                        android:layout_weight="1.5"/>
                     <TextView
                         android:gravity="center"
                         android:textColor="#494949"
@@ -264,10 +264,10 @@
 
                     <ImageView
                         android:id="@+id/find_yishuwenhua_image"
-                        android:src="@drawable/hold"
+                        android:src="@drawable/yishu_icon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.69"/>
+                        android:layout_weight="1.5"/>
                     <TextView
                         android:gravity="center"
                         android:textColor="#494949"
@@ -285,10 +285,10 @@
 
                     <ImageView
                         android:id="@+id/find_more_image"
-                        android:src="@drawable/hold"
+                        android:src="@drawable/more_icon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.69"/>
+                        android:layout_weight="1.5"/>
                     <TextView
                         android:gravity="center"
                         android:textColor="#494949"

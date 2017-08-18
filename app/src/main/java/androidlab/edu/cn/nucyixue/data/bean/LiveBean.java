@@ -8,5 +8,4 @@ public class LiveBean {
     private String Title; //标题
     private String Teacher; //主讲人
     private String Image; //
-
 }

@@ -28,7 +28,7 @@ public class SubjectNearFragment extends BaseFragment {
 
     @Override
     protected int getResourcesLayout() {
-        return 0;
+        return R.layout.fragment_subject_near;
     }
 
     @Override
