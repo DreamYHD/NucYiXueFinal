@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVFile;
+import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.ProgressCallback;
 import com.avos.avoscloud.SaveCallback;
 import com.leon.lfilepickerlibrary.LFilePicker;
@@ -27,7 +28,7 @@ import androidlab.edu.cn.nucyixue.utils.InternetUtils;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class TeacherSourceFileUpdataActivity extends BaseActivity {
+public class TeachSourceFileUpdataActivity extends BaseActivity {
     private static final String TAG = "TeacherSourceFileActivi";
     @BindView(R.id.source_file_name)
     EditText mSourceFileName;
@@ -78,24 +79,31 @@ public class TeacherSourceFileUpdataActivity extends BaseActivity {
                     snackBar(findViewById(R.id.update_file), "请检查网络设置", 0);
                 }else {
                     snackBar(findViewById(R.id.update_file), "开始上传", 0);
-                    String type = null;
                     if (mStringList != null && mStringList.size() > 0) {
                         for (String s : mStringList) {
                             try {
                                 final AVFile file = AVFile.withAbsoluteLocalPath(FileUtils.getFileName(s), s);
-                                String t[] = FileUtils.getFileName(s).split("\\.");
-                                file.addMetaData("downnum", 0);
-                                file.addMetaData("type", t[1]);
-                                file.addMetaData("userfor", "sourcedown");
-                                file.addMetaData("size", file.getSize());
-                                file.addMetaData("title", mSourceFileName.getText().toString());
-                                file.addMetaData("content", mSourceFileDescription.getText().toString());
                                 file.saveInBackground(new SaveCallback() {
                                     @Override
                                     public void done(AVException mE) {
                                         if (mE == null) {
-                                            Log.i(TAG, "done: " + file.getMetaData("size"));
-                                            snackBar(findViewById(R.id.update_file), "上传成功", 1);
+                                            snackBar(findViewById(R.id.update_file), "文件上传成功", 1);
+                                            AVObject mObject = new AVObject("FileInfo");
+                                            mObject.put("file",AVObject.createWithoutData("_File",file.getObjectId()));
+                                            mObject.put("size",file.getSize());
+                                            mObject.put("title",mSourceFileName.getText().toString());
+                                            mObject.put("user",mAVUserFinal.getObjectId());
+
+                                            mObject.put("downnum",0);
+                                            mObject.put("description",mSourceFileDescription.getText().toString());
+                                            mObject.saveInBackground(new SaveCallback() {
+                                                @Override
+                                                public void done(AVException mE) {
+                                                    if ( mE == null){
+                                                        Log.i(TAG, "done: 文件上传成功");
+                                                    }
+                                                }
+                                            });
                                         }
                                     }
                                 }, new ProgressCallback() {
@@ -104,6 +112,7 @@ public class TeacherSourceFileUpdataActivity extends BaseActivity {
                                         mProgressBar.setProgress(mInteger);
                                     }
                                 });
+
 
                             } catch (FileNotFoundException mE) {
                                 mE.printStackTrace();
@@ -114,7 +123,6 @@ public class TeacherSourceFileUpdataActivity extends BaseActivity {
                 break;
         }
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {

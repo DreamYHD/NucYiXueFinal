@@ -27,9 +27,6 @@ public class InternetUtils {
             break;
             default:
                 break;
-
-
-
         }
         return is;
     }

@@ -58,7 +58,7 @@
         </activity>
         <activity android:name=".ui.findPack.FindMajorActivity">
         </activity>
-        <activity android:name=".ui.teachPack.source.TeacherSourceFileUpdataActivity">
+        <activity android:name=".ui.teachPack.source.TeachSourceFileUpdataActivity">
         </activity>
     </application>
 

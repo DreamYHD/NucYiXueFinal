@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <cn.bingoogolapple.bgabanner.BGABanner
+               <cn.bingoogolapple.bgabanner.BGABanner
                 android:id="@+id/banner_guide_content"
                 style="@style/MatchMatch"
                 android:layout_width="match_parent"

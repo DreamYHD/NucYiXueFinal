@@ -63,7 +63,7 @@ public class TeachSourceFragment extends BaseFragment {
 
     @OnClick(R.id.add_file)
     public void onViewClicked() {
-        Intent mIntent = new Intent(getContext(),TeacherSourceFileUpdataActivity.class);
+        Intent mIntent = new Intent(getContext(),TeachSourceFileUpdataActivity.class);
         startActivity(mIntent);
     }
 }
