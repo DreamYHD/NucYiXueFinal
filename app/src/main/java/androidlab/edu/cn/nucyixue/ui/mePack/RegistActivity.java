@@ -64,7 +64,7 @@ public class RegistActivity extends BaseActivity {
         String phone = mPhoneRegist.getText().toString();
         String school = mSchoolnameRegist.getText().toString();
         String yanzhengma = mYanzhengmaRegist.getText().toString();
-        AVUser mAVUser = new AVUser();
+        final AVUser mAVUser = new AVUser();
         mAVUser.setUsername(userName);
         mAVUser.setPassword(passWorld);
         mAVUser.setMobilePhoneNumber(phone);

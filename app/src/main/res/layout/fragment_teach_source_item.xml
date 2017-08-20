@@ -1,7 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:layout_marginBottom="3dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="2dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardCornerRadius="10dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/source_item_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingLeft="7dp"
+                android:paddingTop="7dp"
+                android:text="2008高等数学考试题"
+                android:textColor="#4e4e4e"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/source_item_school"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="中北大学"
+                android:textSize="12sp"/>
+
+            <LinearLayout
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_weight="0.1"
+
+                    android:id="@+id/source_item_type"
+                    android:textColor="#5fc6a8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="7dp"
+                    android:text="pdf"
+                    android:textSize="10sp"/>
+                <TextView
+                    android:layout_weight="5"
+                    android:textSize="10sp"
+                    android:layout_marginLeft="10dp"
+
+                    android:text="0.55M"
+                    android:id="@+id/source_item_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_weight="0.2"
+                    android:textSize="10sp"
+                    android:text="下载"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_weight="0.8"
+                    android:id="@+id/source_item_downnum"
+                    android:textSize="10sp"
+                    android:text="100"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_weight="0.2"
+                    android:textSize="10sp"
+                    android:text="时间"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_marginRight="10dp"
+                    android:textSize="10sp"
+                    android:text="2017/06/01"
+                    android:id="@+id/source_item_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
 
 </LinearLayout>

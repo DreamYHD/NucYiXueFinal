@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="androidlab.edu.cn.nucyixue.ui.teachPack.source.TeacherSourceFileUpdataActivity">
+
+   <android.support.design.widget.AppBarLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+       <android.support.v7.widget.Toolbar
+           android:id="@+id/file_updata_bar"
+           android:layout_width="match_parent"
+           android:layout_height="50dp">
+           <TextView
+               android:text="上传资料"
+               android:paddingRight="60dp"
+               android:textSize="20sp"
+               android:textColor="#ffff"
+               android:gravity="center"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"/>
+       </android.support.v7.widget.Toolbar>
+   </android.support.design.widget.AppBarLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:textColor="#797878"
+            android:paddingLeft="10dp"
+
+            android:layout_marginTop="20dp"
+            android:id="@+id/source_file_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="文件名称"
+            android:inputType="textEmailAddress"/>
+
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:textColor="#797878"
+            android:paddingLeft="15dp"
+            android:id="@+id/source_file_descript"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="文件描述"
+            android:inputType="textEmailAddress"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <ImageView
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:id="@+id/select_source"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/add_big"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:id="@+id/source_type"
+            android:paddingLeft="15dp"
+            android:src="@drawable/txt_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_gravity="center"
+            android:paddingLeft="10dp"
+            android:textColor="#797878"
+            android:layout_marginTop="10dp"
+            android:id="@+id/file_lujing"
+            android:singleLine="false"
+            android:text=""
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <ProgressBar
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:maxHeight="48dp"
+        android:minHeight="48dp"
+        android:progress="0"
+        android:visibility="visible" />
+    <Button
+        android:id="@+id/update_file"
+        android:textSize="20sp"
+        android:textColor="#ffff"
+        android:text="上传"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="#4fb7ab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

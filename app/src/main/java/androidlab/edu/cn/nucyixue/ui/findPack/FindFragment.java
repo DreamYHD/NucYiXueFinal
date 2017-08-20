@@ -51,9 +51,9 @@ public class FindFragment extends BaseFragment {
 
     @Override
     protected void init() {
-        mBannerGuideContent.setAdapter(new BGABanner.Adapter<ImageView, String>() {
+        mBannerGuideContent.setAdapter(new BGABanner.Adapter<ImageView, Integer>() {
             @Override
-            public void fillBannerItem(BGABanner banner, ImageView itemView, String model, int position) {
+            public void fillBannerItem(BGABanner banner, ImageView itemView, Integer model, int position) {
                 Glide.with(getContext())
                         .load(model)
                         .placeholder(R.drawable.hold)
@@ -62,6 +62,7 @@ public class FindFragment extends BaseFragment {
                         .dontAnimate()
                         .into(itemView);
             }
+
         });
 
 
@@ -86,7 +87,7 @@ public class FindFragment extends BaseFragment {
             model.setName(tags[i]);
             mFlexsubject.addView(createNewFlexItemTextView(model));
         }
-        mBannerGuideContent.setData(Arrays.asList("网络图片路径1", "网络图片路径2", "网络图片路径2", "网络图片路径3"), Arrays.asList("提示文字1", "提示文字2", "提示文字3"));
+        mBannerGuideContent.setData(Arrays.asList(R.drawable.live, R.drawable.xuanshang, R.drawable.xianxia), Arrays.asList("", "", ""));
         mBannerGuideContent.setDelegate(new BGABanner.Delegate() {
             @Override
             public void onBannerItemClick(BGABanner banner, View itemView, Object model, int position) {

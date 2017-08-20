@@ -2,24 +2,19 @@ package androidlab.edu.cn.nucyixue.ui;
 
 import android.Manifest;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import com.tbruyelle.rxpermissions2.Permission;
 import com.tbruyelle.rxpermissions2.RxPermissions;
-
-
 import androidlab.edu.cn.nucyixue.R;
+import androidlab.edu.cn.nucyixue.base.BaseActivity;
 import io.reactivex.functions.Consumer;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends BaseActivity {
 
     private static final String TAG = "SplashActivity";
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
 
+    protected void logicActivity(Bundle mSavedInstanceState) {
         Intent intent = new Intent(SplashActivity.this, MainActivity.class);
         RxPermissions mRxPermissions = new RxPermissions(this);
         startActivity(intent);
@@ -35,7 +30,10 @@ public class SplashActivity extends AppCompatActivity {
                         }
                     }
                 });
-        this.finish();
+        mActivity.finish();
     }
-
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_splash;
+    }
 }

@@ -33,12 +33,11 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile files('src/main/jniLibs/avoscloud-sdk-v4.4.4.jar')
+
     compile files('src/main/jniLibs/fastjson-1.2.30.jar')
-
     compile files('src/main/jniLibs/okio-1.13.0.jar')
-
     //如果你想应用能够兼容Android6.0，请添加此依赖(org.apache.http.legacy.jar)
+
     // LeanCloud 基础包
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
@@ -60,7 +59,9 @@ dependencies {
     compile 'com.zhihu.android:matisse:0.4.3'
     compile 'cn.bmob.android:http-legacy:1.0'
     compile 'cn.leancloud.android:avoscloud-sdk:v4.4.3'
+    compile 'cn.leancloud.android:avoscloud-search:v4.4.4@aar'
+    compile 'com.android.support:cardview-v7:26.0.0-alpha1'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
-    compile ('cn.leancloud.android:avoscloud-search:v4.4.4@aar')
+    compile 'com.leon:lfilepickerlibrary:1.2.0'
 }

@@ -2,11 +2,15 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context="androidlab.edu.cn.nucyixue.ui.teachPack.TeachSourceFragment">
+             android:background="#f1f1f1"
+             tools:context="androidlab.edu.cn.nucyixue.ui.teachPack.source.TeachSourceFragment">
     <android.support.v7.widget.RecyclerView
+
+        android:id="@+id/teach_source_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/add_file"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="10dp"
         android:src="@drawable/add"

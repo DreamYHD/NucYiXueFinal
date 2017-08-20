@@ -42,9 +42,15 @@ public abstract class BaseFragment extends Fragment {
     protected abstract void logic();
 
     @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
         Log.i(TAG, "onDestroy: "+getResourcesLayout());
-        unbinder.unbind();
+
     }
 }
