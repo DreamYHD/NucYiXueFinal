@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="130dp">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+        <ImageView
+            android:id="@+id/live_cover"
+            android:src="@mipmap/ic_launcher_round"
+            android:layout_width="130dp"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/live_name"
+                android:text="冰火简史"
+                android:gravity="center_vertical"
+                android:textColor="@color/primary_text"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/live_speaker"
+                android:text="John Snow"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:textColor="@color/primary_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"></RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/progress_layout"
+                android:visibility="gone"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ProgressBar
+                    android:id="@+id/progress"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="3dp" />
+
+                <TextView
+                    android:id="@+id/duration"
+                    android:text="1'20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:gravity="bottom"
+                android:layout_gravity="center|bottom"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp">
+
+                <ImageView
+                    android:id="@+id/previous"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/ic_skip_previous_black_24dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp" />
+
+                <ImageView
+                    android:id="@+id/change"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/ic_play_circle_outline_black_24dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp" />
+
+                <ImageView
+                    android:id="@+id/next"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/ic_skip_next_black_24dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_margin="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="30dp"
+        android:layout_height="30dp">
+        <ImageView
+            android:id="@+id/close"
+            android:src="@drawable/ic_close_black_24dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+</RelativeLayout>

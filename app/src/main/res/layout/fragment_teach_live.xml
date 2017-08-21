@@ -2,13 +2,15 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context="androidlab.edu.cn.nucyixue.ui.teachPack.TeachLiveFragment">
+             tools:context="androidlab.edu.cn.nucyixue.ui.teachPack.live.TeachLiveFragment">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/fragment_source_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/add_live"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="10dp"
         android:src="@drawable/add"

@@ -126,21 +126,22 @@ public class MeFragment extends BaseFragment {
                                     AVQuery<UserInfo> query = new AVQuery<>(Config.getUI_TABLE());
                                     query.whereEqualTo(Config.getUI_USER_ID(), AVObject.createWithoutData(Config.getUSER_TABLE(), mAVUserFinal.getObjectId()));
                                     query.whereEqualTo(Config.getUI_USER_NAME(), mAVUserFinal.getUsername());
-                                    query.whereEqualTo(Config.getUI_AVATAR(), file.getUrl());
                                     query.findInBackground(new FindCallback<UserInfo>() {
                                         @Override
                                         public void done(List<UserInfo> list, AVException e) {
                                             if (e == null) {
-                                                UserInfo info = list.get(0);
-                                                info.setAvatar(file.getUrl());
-                                                info.saveInBackground(new SaveCallback() {
-                                                    @Override
-                                                    public void done(AVException e) {
-                                                        if (e != null) {
-                                                            Snackbar.make(avatar, "更新头像成功", Snackbar.LENGTH_LONG).show();
+                                                if(!list.isEmpty()){
+                                                    UserInfo info = list.get(0);
+                                                    info.setAvatar(file.getUrl());
+                                                    info.saveInBackground(new SaveCallback() {
+                                                        @Override
+                                                        public void done(AVException e) {
+                                                            if (e != null) {
+                                                                Snackbar.make(avatar, "更新头像成功", Snackbar.LENGTH_LONG).show();
+                                                            }
                                                         }
-                                                    }
-                                                });
+                                                    });
+                                                }
                                             } else {
                                                 Log.i(TAG, "查询 UserInfo 失败");
                                             }

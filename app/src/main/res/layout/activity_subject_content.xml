@@ -49,7 +49,7 @@
             <TextView
                 android:id="@+id/content_live"
                 android:background="#e9e7e7"
-                android:textColor="@color/colorAll"
+                android:textColor="@color/colorPrimary"
                 android:gravity="center"
                 android:text="Live"
                 android:layout_width="match_parent"
@@ -67,7 +67,7 @@
                 android:layout_height="50dp"
                 android:gravity="center"
                 android:text="资源"
-                android:textColor="@color/colorAll"/>
+                android:textColor="@color/colorPrimary"/>
             <ImageView
                 android:background="#9f9f9f"
                 android:layout_width="match_parent"
@@ -76,7 +76,7 @@
             <TextView
                 android:id="@+id/content_near"
                 android:background="#e9e7e7"
-                android:textColor="@color/colorAll"
+                android:textColor="@color/colorPrimary"
                 android:gravity="center"
                 android:text="附近"
                 android:layout_width="match_parent"
@@ -88,7 +88,7 @@
             <TextView
                 android:id="@+id/content_xuanshang"
                 android:background="#e9e7e7"
-                android:textColor="@color/colorAll"
+                android:textColor="@color/colorPrimary"
                 android:gravity="center"
                 android:text="悬赏"
                 android:layout_width="match_parent"
@@ -110,7 +110,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
-                    android:textColor="@color/colorAll"
+                    android:textColor="@color/colorPrimary"
                     android:gravity="center"
                     android:text="热门"
                     android:layout_weight="1"
@@ -123,7 +123,7 @@
                     android:layout_height="match_parent"/>
                 <TextView
                     android:gravity="center"
-                    android:textColor="@color/colorAll"
+                    android:textColor="@color/colorPrimary"
                     android:text="所有"
                     android:layout_weight="1"
                     android:layout_width="0dp"

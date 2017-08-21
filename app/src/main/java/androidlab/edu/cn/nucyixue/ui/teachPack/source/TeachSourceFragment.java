@@ -24,7 +24,6 @@ public class TeachSourceFragment extends BaseFragment {
     RecyclerView mTeachSourceRecycler;
     @BindView(R.id.add_file)
     FloatingActionButton mAddFile;
-    Unbinder unbinder;
     private TeachSourceAdapter mTeacherSourceAdapter;
     private LinearLayoutManager mLinearLayoutManager;
 

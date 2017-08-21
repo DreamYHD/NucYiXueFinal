@@ -14,4 +14,10 @@
     <string name="register_hint">注册</string>
 
     <string name="me_major_hint">学校/专业/年级</string>
+
+    <string name="create_name">Live 主题</string>
+    <string name="create_price">Live 价格</string>
+    <string name="create_time">开始时间</string>
+    <string name="create_summary">Live 简介</string>
+    <string name="create_type">Live 类型</string>
 </resources>

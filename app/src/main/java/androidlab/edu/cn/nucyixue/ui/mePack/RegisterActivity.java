@@ -3,15 +3,11 @@ package androidlab.edu.cn.nucyixue.ui.mePack;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.SaveCallback;
 import com.avos.avoscloud.SignUpCallback;
-
 import androidlab.edu.cn.nucyixue.R;
 import androidlab.edu.cn.nucyixue.base.BaseActivity;
 import androidlab.edu.cn.nucyixue.data.bean.UserInfo;
@@ -22,9 +18,12 @@ import cn.bmob.sms.exception.BmobException;
 import cn.bmob.sms.listener.RequestSMSCodeListener;
 import cn.bmob.sms.listener.VerifySMSCodeListener;
 
+/**
+ * Register Activity
+ */
 public class RegisterActivity extends BaseActivity {
-
     private static final String TAG = "RegisterActivity";
+
     @BindView(R.id.username_register)
     EditText mUsernameRegister;
     @BindView(R.id.code_register)
@@ -37,12 +36,6 @@ public class RegisterActivity extends BaseActivity {
     EditText mSchoolNameRegister;
     @BindView(R.id.phone_register)
     EditText mPhoneRegister;
-    @BindView(R.id.get_yzm_btn)
-    Button mGetYzmBtn;
-    @BindView(R.id.register_btn)
-    Button mRegisterBtn;
-    @BindView(R.id.back_register_image)
-    ImageView mBackRegisterImage;
 
     @Override
     protected void logicActivity(Bundle mSavedInstanceState) {

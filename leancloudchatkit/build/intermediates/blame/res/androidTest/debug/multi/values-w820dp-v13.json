@@ -1,0 +1,26 @@
+[
+    {
+        "outputFile": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-w820dp-v13\\values-w820dp-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 57,
+                    "endOffset": 108
+                },
+                "from": {
+                    "file": "C:\\Users\\MurphySL\\.android\\build-cache\\b0e7e9321580fe005dd8ae188471daffa621748d\\output\\res\\values-w820dp-v13\\values-w820dp-v13.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 57,
+                        "endOffset": 108
+                    }
+                }
+            }
+        ]
+    }
+]
