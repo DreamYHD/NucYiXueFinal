@@ -103,7 +103,7 @@ public class FindFragment extends BaseFragment {
         textView.setGravity(Gravity.CENTER);
         textView.setText(book.getName());
         textView.setTextSize(15);
-        textView.setTextColor(getResources().getColor(R.color.colorAll));
+        textView.setTextColor(getResources().getColor(R.color.colorPrimary));
         textView.setBackgroundResource(R.drawable.shape_back);
         textView.setTag(book.getId());
         textView.setOnClickListener(new View.OnClickListener() {

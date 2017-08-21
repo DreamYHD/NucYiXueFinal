@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import androidlab.edu.cn.nucyixue.R;
 import androidlab.edu.cn.nucyixue.base.BaseFragment;
+import androidlab.edu.cn.nucyixue.ui.teachPack.live.TeachLiveFragment;
 import androidlab.edu.cn.nucyixue.ui.teachPack.source.TeachSourceFragment;
 import butterknife.BindView;
 

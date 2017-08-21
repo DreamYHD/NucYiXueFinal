@@ -16,8 +16,8 @@ import androidlab.edu.cn.nucyixue.utils.BottomNavigationViewHelper;
 import butterknife.BindView;
 
 public class MainActivity extends BaseActivity {
-
     private static final String TAG = "MainActivity";
+
     @BindView(R.id.bottom_menu)
     BottomNavigationView mBottomMenu;
 

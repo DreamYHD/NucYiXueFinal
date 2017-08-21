@@ -60,6 +60,10 @@
         </activity>
         <activity android:name=".ui.teachPack.source.TeachSourceFileUpdataActivity">
         </activity>
+        <activity
+            android:name=".ui.teachPack.live.CreateLiveActivity"
+            android:theme="@style/DetailsTheme"/>
+        <activity android:name=".ui.im.ConversationActivity"/>
     </application>
 
 </manifest>

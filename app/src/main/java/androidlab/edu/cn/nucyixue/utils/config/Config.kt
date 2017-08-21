@@ -60,9 +60,7 @@ class Config{
         val UI_AVATAR : String = "avatar" // 用户头像
 
         @JvmStatic
-        val LIVE_SOUNDS_START = "start"
-        @JvmStatic
-        val LIVE_SOUNDS_STOP = "stop"
+        val LIVE_SOUNDS_CHANGE = "change"
         @JvmStatic
         val LIVE_SOUNDS_NEXT = "next"
         @JvmStatic

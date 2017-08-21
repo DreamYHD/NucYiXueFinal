@@ -382,6 +382,11 @@
 
         </RelativeLayout>
 
+        <ImageView
+            android:background="#e4e3e3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
         <RelativeLayout
             android:id="@+id/rl_logout"
             android:background="@color/colorWhite"
