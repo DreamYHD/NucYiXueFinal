@@ -46,7 +46,7 @@
         </activity>
         <activity android:name=".ui.mePack.LoginActivity">
         </activity>
-        <activity android:name=".ui.mePack.RegistActivity">
+        <activity android:name=".ui.mePack.RegisterActivity">
         </activity>
         <activity android:name=".ui.mePack.MeSmallActivity">
         </activity>

@@ -3,4 +3,15 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="username_hint">用户名</string>
+    <string name="password_hint">密码</string>
+    <string name="code_hint">验证码</string>
+    <string name="get_code_hint">获取验证码</string>
+    <string name="phoneNum_hint">手机号码</string>
+    <string name="school_hint">学校</string>
+    <string name="major_hint">专业</string>
+    <string name="register_hint">注册</string>
+
+    <string name="me_major_hint">学校/专业/年级</string>
 </resources>

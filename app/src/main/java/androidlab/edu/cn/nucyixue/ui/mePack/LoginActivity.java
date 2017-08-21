@@ -2,7 +2,7 @@ package androidlab.edu.cn.nucyixue.ui.mePack;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -21,25 +21,27 @@ import butterknife.OnClick;
 import io.reactivex.functions.Consumer;
 
 public class LoginActivity extends BaseActivity {
+    private static final String TAG = "LoginActivity";
 
     @BindView(R.id.login)
     Button mLogin;
     @BindView(R.id.forget_login)
     TextView mForgetLogin;
-    @BindView(R.id.login_btn)
-    TextView mRegistLogin;
-    @BindView(R.id.edit_phone_login)
-    EditText mEditPhoneLogin;
-    @BindView(R.id.edit_passworld_login)
-    EditText mEditPassworldLogin;
+    @BindView(R.id.register_btn)
+    TextView mRegisterLogin;
+    @BindView(R.id.edit_username_login)
+    EditText mEditUsernameLogin;
+    @BindView(R.id.edit_password_login)
+    EditText mEditPasswordLogin;
+
     @Override
     protected void logicActivity(Bundle mSavedInstanceState) {
-        RxView.clicks(mRegistLogin)
+        RxView.clicks(mRegisterLogin)
                 .throttleFirst(2, TimeUnit.SECONDS)
                 .subscribe(new Consumer<Object>() {
                     @Override
                     public void accept(Object mO) throws Exception {
-                        Intent mIntent = new Intent(LoginActivity.this,RegistActivity.class);
+                        Intent mIntent = new Intent(LoginActivity.this,RegisterActivity.class);
                         startActivity(mIntent);
                     }
                 });
@@ -55,18 +57,17 @@ public class LoginActivity extends BaseActivity {
 
     @OnClick(R.id.login)
     public void onViewClicked() {
-        String phone = mEditPhoneLogin.getText().toString();
-        String passworld = mEditPassworldLogin.getText().toString();
-        AVUser.loginByMobilePhoneNumberInBackground(phone, passworld, new LogInCallback<AVUser>() {
+        String username = mEditUsernameLogin.getText().toString();
+        String password = mEditPasswordLogin.getText().toString();
+        AVUser.logInInBackground(username, password, new LogInCallback<AVUser>() {
             @Override
-            public void done(AVUser mAVUser, AVException mE) {
-                if ( mE == null){
+            public void done(AVUser avUser, AVException e) {
+                if(e == null){
                     toast("登录成功",0);
-                    mActivity.finish();
-                }else if ( mE.getCode() == 210){
-                    toast("密码错误",0);
-                }else if ( mE.getCode() == 211){
-                    toast("用户不存在",0);
+                    finish();
+                }else{
+                    toast("登录失败",0);
+                    Log.i(TAG, "登录失败:" + e);
                 }
             }
         });
