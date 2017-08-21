@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/colorAll"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp">
+
+    <ImageView
+        android:id="@+id/back_register_image"
+        android:padding="5dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/username_register"
+        android:layout_marginTop="10dp"
+        app:srcCompat="@drawable/back"/>
+
+
+    <EditText
+        android:id="@+id/username_register"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:hint="@string/username_hint"
+        android:background="@color/colorWhite"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="80dp"
+        android:layout_alignParentTop="true" />
+    <TextView
+        android:id="@+id/hint1"
+        android:background="@color/colorSplitWhite"
+        android:layout_below="@+id/username_register"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <EditText
+        android:id="@+id/password_register"
+        android:inputType="textPassword"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:hint="@string/password_hint"
+        android:background="@color/colorWhite"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/hint1"
+        />
+    <TextView
+        android:id="@+id/hint2"
+        android:background="@color/colorSplitWhite"
+        android:layout_below="@+id/password_register"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+
+
+    <EditText
+        android:id="@+id/phone_register"
+        android:inputType="phone"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"
+        android:hint="@string/phoneNum_hint"
+        android:background="@color/colorWhite"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/hint2" />
+    <TextView
+        android:id="@+id/hint3"
+        android:background="@color/colorSplitWhite"
+        android:layout_below="@+id/phone_register"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+
+    <EditText
+        android:id="@+id/code_register"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:hint="@string/code_hint"
+        android:background="@color/colorWhite"
+        android:layout_marginRight="150dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/hint3"
+        />
+    <Button
+        android:id="@+id/get_yzm_btn"
+        android:textSize="18sp"
+        android:textColor="@color/colorWhite"
+        android:background="@color/colorPrimaryDark"
+        android:text="@string/get_code_hint"
+        android:layout_width="180dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/code_register"
+        android:layout_alignEnd="@+id/phone_register"/>
+    <TextView
+        android:id="@+id/hint4"
+        android:background="@color/colorSplitWhite"
+        android:layout_below="@+id/code_register"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+
+    <EditText
+        android:id="@+id/school_register"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:hint="@string/school_hint"
+        android:background="@color/colorWhite"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/hint4" />
+    <TextView
+        android:id="@+id/hint5"
+        android:background="@color/colorSplitWhite"
+        android:layout_below="@+id/school_register"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+
+    <EditText
+        android:id="@+id/major_register"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:hint="@string/major_hint"
+        android:background="#FFFF"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/hint5" />
+
+    <Button
+        android:textSize="20sp"
+        android:textColor="@color/colorWhite"
+        android:id="@+id/register_btn"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/register_hint"
+        android:layout_marginTop="134dp"
+        android:layout_below="@+id/school_register" />
+
+</RelativeLayout>

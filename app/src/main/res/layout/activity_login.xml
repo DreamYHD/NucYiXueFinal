@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="#3dbcae"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="androidlab.edu.cn.nucyixue.ui.mePack.LoginActivity">
-<ImageView
-    android:src="@drawable/icon"
-    android:layout_width="50dp"
-    android:layout_height="50dp"
-    android:layout_marginTop="49dp"
-    android:id="@+id/imageView"
-    android:layout_alignParentTop="true"
-    android:layout_centerHorizontal="true"/>
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:src="@drawable/icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
 
     <EditText
+        android:paddingRight="15dp"
         android:paddingLeft="15dp"
-        android:hint="手机号"
+        android:hint="@string/username_hint"
         android:background="#FFFF"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
@@ -27,29 +26,29 @@
         android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:id="@+id/edit_phone_login"/>
+        android:id="@+id/edit_username_login"/>
     <TextView
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:background="#dadada"
         android:id="@+id/hint"
-        android:layout_below="@id/edit_phone_login"
+        android:layout_below="@id/edit_username_login"
         android:layout_width="match_parent"
         android:layout_height="1dp"/>
 
     <EditText
-        android:password="true"
+        android:inputType="textPassword"
         android:paddingLeft="15dp"
-        android:hint="密码"
+        android:paddingRight="15dp"
+        android:hint="@string/password_hint"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:background="#ffffff"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-
         android:layout_below="@+id/hint"
         android:layout_alignParentStart="true"
-        android:id="@+id/edit_passworld_login"/>
+        android:id="@+id/edit_password_login"/>
     <Button
         android:id="@+id/login"
         android:textSize="20sp"
@@ -61,7 +60,7 @@
         android:background="#348b81"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_below="@+id/edit_passworld_login"
+        android:layout_below="@+id/edit_password_login"
         android:layout_alignParentStart="true"
         android:layout_marginTop="13dp"/>
 
@@ -71,17 +70,18 @@
         android:text="忘记密码？"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/login_btn"
-        android:layout_alignBottom="@+id/login_btn"
+        android:layout_below="@+id/login"
+        android:layout_marginTop="10dp"
         android:layout_alignStart="@+id/login"
         android:layout_marginStart="13dp"/>
     <TextView
-
         android:textColor="#ffff"
         android:text="注册账号"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/login_btn"
+        android:id="@+id/register_btn"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/login"
         android:layout_centerVertical="true"
         android:layout_alignEnd="@+id/login"/>
 </RelativeLayout>
