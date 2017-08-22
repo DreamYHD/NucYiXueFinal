@@ -62,6 +62,7 @@ class LiveCommentActivity : AppCompatActivity() {
                 override fun done(p0: AVException?) {
                     if(p0 == null){
                         val query = AVQuery<Live>(LCConfig.LIVE_NAME)
+                        query.whereEqualTo(LCConfig.LIVE_ID, live.objectId)
                         query.findInBackground(object : FindCallback<Live>(){
                             override fun done(p0: MutableList<Live>?, p1: AVException?) {
                                 if(p1 == null){
