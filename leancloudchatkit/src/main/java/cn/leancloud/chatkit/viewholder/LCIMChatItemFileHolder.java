@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.avos.avoscloud.im.v2.messages.AVIMTextMessage;
 
 import java.io.File;
+import java.util.Objects;
 
 import cn.leancloud.chatkit.R;
 import cn.leancloud.chatkit.cache.LCIMLocalCacheUtils;
@@ -58,18 +59,18 @@ public class LCIMChatItemFileHolder extends LCIMChatItemHolder {
     public void bindData(Object o) {
         super.bindData(o);
         if (o instanceof AVIMTextMessage) {
-            AVIMTextMessage filemsg = (AVIMTextMessage) o;
-            fileName.setText(filemsg.getText());
+            AVIMTextMessage msg = (AVIMTextMessage) o;
+            fileName.setText(msg.getText());
 
-            Object t = filemsg.getAttrs().get("size");
+            Object t = msg.getAttrs().get("size");
             if(t != null){
-                long len = (long) t;
+                int len = (int) t;
                 String size = FileUtils.byte2MemorySize(len);
                 fileSize.setText(size);
             }
 
 
-            final String url = (String) filemsg.getAttrs().get("file");
+            final String url = (String) msg.getAttrs().get("url");
             final String path = LCIMPathUtils.getAudioCachePath(context, FileUtils.getFileName(url));
             Log.i("File", "url:"+url+" path:"+path);
             if(path != null){
@@ -134,7 +135,7 @@ public class LCIMChatItemFileHolder extends LCIMChatItemHolder {
         }
 
         String end=fName.substring(dotIndex,fName.length()).toLowerCase();  /* 获取文件的后缀名*/
-        if(end=="")return type;
+        if(Objects.equals(end, ""))return type;
         //在MIME和文件类型的匹配表中找到对应的MIME类型。
         for(int i=0;i<MIME_MapTable.length;i++){ //MIME_MapTable??在这里你一定有疑问，这个MIME_MapTable是什么？
             if(end.equals(MIME_MapTable[i][0]))

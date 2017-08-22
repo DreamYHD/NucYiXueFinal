@@ -130,7 +130,7 @@ object TeachLiveFragment : Fragment(){
                                 }
                             })
                         }else{ // 已购买
-                            val lu = LU()
+                            val lu = it[0]
                             if(lu.comment == null && lu.star == 0){ // 未评价
                                 enterComment(live, p0[0])
                             }else{
