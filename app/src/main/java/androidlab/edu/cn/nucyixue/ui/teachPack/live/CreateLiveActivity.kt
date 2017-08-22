@@ -1,6 +1,5 @@
 package androidlab.edu.cn.nucyixue.ui.teachPack.live
 
-import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.net.Uri
@@ -12,9 +11,10 @@ import android.util.Log
 import android.widget.ProgressBar
 import androidlab.edu.cn.nucyixue.R
 import androidlab.edu.cn.nucyixue.data.bean.Live
-import androidlab.edu.cn.nucyixue.ui.im.ConversationActivity
+import androidlab.edu.cn.nucyixue.ui.imPack.ConversationActivity
 import androidlab.edu.cn.nucyixue.utils.FileUtils
-import androidlab.edu.cn.nucyixue.utils.config.Config
+import androidlab.edu.cn.nucyixue.utils.config.LCConfig
+import androidlab.edu.cn.nucyixue.utils.config.LiveType
 import cn.leancloud.chatkit.LCChatKit
 import cn.leancloud.chatkit.LCChatKitUser
 import cn.leancloud.chatkit.utils.LCIMConstants
@@ -41,9 +41,7 @@ import java.util.*
  * 待修改：
  * 2. 多人主讲
  * 3. 流程：开通主讲人身份 -> 实名认证 -> 交纳保证金
- * 4. context
  * 5.创建live完成后流程
- * 6.Live 种类规范
  * 7.官方用户修改
  * 8.官方用户订阅信息更新
  *
@@ -52,13 +50,11 @@ import java.util.*
 class CreateLiveActivity : AppCompatActivity(){
     private val TAG : String = this.javaClass.simpleName
 
-    private val context : Context = this
+    //private val context : Context = this
 
     private var select_time: Calendar = Calendar.getInstance() // Live 开始时间
     private var select_uri: Uri? = null // Live 封面
     private var select_type : String = ""
-
-    private val types = ArrayList<String>() // Live 类型
 
     private val REQUEST_CODE_CHOOSE = 0x110
 
@@ -74,11 +70,11 @@ class CreateLiveActivity : AppCompatActivity(){
         if (requestCode == REQUEST_CODE_CHOOSE && resultCode == RESULT_OK) {
             select_uri = Matisse.obtainResult(data)[0]
             select_uri?.let {
-                Glide.with(context)
+                Glide.with(this)
                         .load(it)
                         .into(live_img)
 
-                val bitmap = BitmapFactory.decodeFile(FileUtils.getFilePahtFromUri(context, it))
+                val bitmap = BitmapFactory.decodeFile(FileUtils.getFilePahtFromUri(this, it))
 
                 Palette.from(bitmap).generate {
                     it.darkVibrantSwatch?.let {
@@ -92,23 +88,6 @@ class CreateLiveActivity : AppCompatActivity(){
             }
 
         }
-    }
-
-    /**
-     * 待修改
-     */
-    private fun initType() {
-        types += "计算机"
-        types += "经济管理"
-        types += "心理学"
-        types += "外语"
-        types += "文学历史"
-        types += "艺术设计"
-        types += "工学"
-        types += "理学"
-        types += "哲学"
-        types += "法学"
-        types += "生命科学"
     }
 
     private fun initView() {
@@ -138,7 +117,7 @@ class CreateLiveActivity : AppCompatActivity(){
         }
 
         card_live_type.setOnClickListener {
-            initType()
+            val types = LiveType.toValueList()
             val pvOptions = OptionsPickerView.Builder(this, OptionsPickerView.OnOptionsSelectListener {
                 options1, _, _, _ ->
                 live_type.text = types[options1]
@@ -177,7 +156,7 @@ class CreateLiveActivity : AppCompatActivity(){
             else -> {
                 mProgress.visibility = ProgressBar.VISIBLE
 
-                val path = FileUtils.getFilePahtFromUri(context, select_uri!!)
+                val path = FileUtils.getFilePahtFromUri(this, select_uri!!)
                 path?.let {
                     Log.i(TAG, "live_name: $live_name \n live_price: $live_price \n live_time: $live_time \n live_summary: $live_summary \n live_type: $live_type \n live_pic: $path")
                     createLiveWithPic(live_name, select_time.time, live_summary, live_price.toInt(), select_type, it)
@@ -219,15 +198,15 @@ class CreateLiveActivity : AppCompatActivity(){
                                 live.type = live_type
                                 live.pic = file.url
 
-                                live.put(Config.LIVE_USER_ID, AVObject.createWithoutData(Config.USER_TABLE, userId))
-                                live.put(Config.LIVE_USER_NAME, username)
-                                live.put(Config.LIVE_CONVERSATION_ID, AVObject.createWithoutData(Config.CONVERSATION_TABLE, it.conversationId))
-                                live.put(Config.LIVE_NAME, live_name)
-                                live.put(Config.LIVE_SUMMARY, live_summary)
-                                live.put(Config.LIVE_START_AT, live_time)
-                                live.put(Config.LIVE_PRICE, live_price)
-                                live.put(Config.LIVE_TYPE, live_type)
-                                live.put(Config.LIVE_PIC, file.url)
+                                live.put(LCConfig.LIVE_USER_ID, AVObject.createWithoutData(LCConfig.USER_TABLE, userId))
+                                live.put(LCConfig.LIVE_USER_NAME, username)
+                                live.put(LCConfig.LIVE_CONVERSATION_ID, AVObject.createWithoutData(LCConfig.CONVERSATION_TABLE, it.conversationId))
+                                live.put(LCConfig.LIVE_NAME, live_name)
+                                live.put(LCConfig.LIVE_SUMMARY, live_summary)
+                                live.put(LCConfig.LIVE_START_AT, live_time)
+                                live.put(LCConfig.LIVE_PRICE, live_price)
+                                live.put(LCConfig.LIVE_TYPE, live_type)
+                                live.put(LCConfig.LIVE_PIC, file.url)
 
                                 live.saveInBackground(object : SaveCallback(){
                                     override fun done(p0: AVException?) {
@@ -238,8 +217,8 @@ class CreateLiveActivity : AppCompatActivity(){
                                         }else{
                                             mProgress.visibility = ProgressBar.GONE
                                             Snackbar.make(img_live_name, "创建Live成功", Snackbar.LENGTH_SHORT).show()
-                                            val intent = Intent(context, ConversationActivity::class.java)
-                                            intent.putExtra(Config.LIVE_TABLE, live);
+                                            val intent = Intent(this@CreateLiveActivity, ConversationActivity::class.java)
+                                            intent.putExtra(LCConfig.LIVE_TABLE, live)
                                             intent.putExtra(LCIMConstants.CONVERSATION_ID, it.conversationId)
                                             startActivity(intent)
                                         }

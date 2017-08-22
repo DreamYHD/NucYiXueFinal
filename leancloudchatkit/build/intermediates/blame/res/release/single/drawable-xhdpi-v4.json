@@ -40,12 +40,12 @@
         "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\drawable-xhdpi-v4\\abc_popup_background_mtrl_mult.9.png"
     },
     {
-        "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\lcim_chat_icon_voice4.png",
-        "source": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\drawable-xhdpi\\lcim_chat_icon_voice4.png"
-    },
-    {
         "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\lcim_bottom_bar_location_button_normal.png",
         "source": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\drawable-xhdpi\\lcim_bottom_bar_location_button_normal.png"
+    },
+    {
+        "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\lcim_chat_icon_voice4.png",
+        "source": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\drawable-xhdpi\\lcim_chat_icon_voice4.png"
     },
     {
         "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\abc_ic_star_half_black_16dp.png",

@@ -32,12 +32,12 @@
         "source": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\drawable\\lcim_bottom_bar_send_button_bg.xml"
     },
     {
-        "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_cab_background_top_material.xml",
-        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\drawable\\abc_cab_background_top_material.xml"
-    },
-    {
         "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\drawable\\lcim_chat_resend_bg.xml",
         "source": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\drawable\\lcim_chat_resend_bg.xml"
+    },
+    {
+        "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_cab_background_top_material.xml",
+        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\drawable\\abc_cab_background_top_material.xml"
     },
     {
         "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\drawable\\lcim_bottom_bar_keyboard_button_bg.xml",

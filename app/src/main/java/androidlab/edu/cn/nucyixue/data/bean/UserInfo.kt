@@ -1,6 +1,6 @@
 package androidlab.edu.cn.nucyixue.data.bean
 
-import androidlab.edu.cn.nucyixue.utils.config.Config
+import androidlab.edu.cn.nucyixue.utils.config.LCConfig
 import com.avos.avoscloud.AVClassName
 import com.avos.avoscloud.AVObject
 import com.avos.avoscloud.AVUser
@@ -17,17 +17,17 @@ class UserInfo : AVObject(){
 
     var userId : String
         get() {
-            return getAVObject<AVUser>(Config.UI_USER_ID).objectId
+            return getAVObject<AVUser>(LCConfig.UI_USER_ID).objectId
         }
-        set(value) = put(Config.UI_USER_ID, AVObject.createWithoutData(Config.USER_TABLE, value))
+        set(value) = put(LCConfig.UI_USER_ID, AVObject.createWithoutData(LCConfig.USER_TABLE, value))
 
     var username : String
-        get() = getString(Config.UI_USER_NAME)
-        set(value) = put(Config.UI_USER_NAME, value)
+        get() = getString(LCConfig.UI_USER_NAME)
+        set(value) = put(LCConfig.UI_USER_NAME, value)
 
     var avatar : String
-        get() = getString(Config.UI_AVATAR)
-        set(value) = put(Config.UI_AVATAR, value)
+        get() = getString(LCConfig.UI_AVATAR)
+        set(value) = put(LCConfig.UI_AVATAR, value)
 
     override fun toString(): String {
         return """
