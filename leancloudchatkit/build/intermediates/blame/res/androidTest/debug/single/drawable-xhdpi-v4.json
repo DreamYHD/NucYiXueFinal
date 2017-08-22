@@ -44,12 +44,12 @@
         "source": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\txt_right_icon.xml"
     },
     {
-        "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\lcim_chat_voice_bg_pressed.9.png",
-        "source": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\lcim_chat_voice_bg_pressed.9.png"
-    },
-    {
         "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\lcim_record_icon_voice5.png",
         "source": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\lcim_record_icon_voice5.png"
+    },
+    {
+        "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\lcim_chat_voice_bg_pressed.9.png",
+        "source": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\lcim_chat_voice_bg_pressed.9.png"
     },
     {
         "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png",

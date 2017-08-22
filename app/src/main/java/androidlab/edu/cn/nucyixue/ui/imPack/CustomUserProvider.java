@@ -1,4 +1,4 @@
-package androidlab.edu.cn.nucyixue.ui.im;
+package androidlab.edu.cn.nucyixue.ui.imPack;
 
 import android.util.Log;
 
@@ -9,7 +9,7 @@ import com.avos.avoscloud.FindCallback;
 import java.util.ArrayList;
 import java.util.List;
 import androidlab.edu.cn.nucyixue.data.bean.UserInfo;
-import androidlab.edu.cn.nucyixue.utils.config.Config;
+import androidlab.edu.cn.nucyixue.utils.config.LCConfig;
 import cn.leancloud.chatkit.LCChatKitUser;
 import cn.leancloud.chatkit.LCChatProfileProvider;
 import cn.leancloud.chatkit.LCChatProfilesCallBack;
@@ -37,7 +37,7 @@ public class CustomUserProvider implements LCChatProfileProvider {
 
     @Override
     public void fetchProfiles(final List<String> userIdList, final LCChatProfilesCallBack profilesCallBack) {
-        AVQuery<UserInfo> query = new AVQuery<>(Config.getUI_TABLE());
+        AVQuery<UserInfo> query = new AVQuery<>(LCConfig.getUI_TABLE());
         query.findInBackground(new FindCallback<UserInfo>() {
             @Override
             public void done(List<UserInfo> list, AVException e) {

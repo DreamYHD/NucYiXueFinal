@@ -32,7 +32,7 @@ import androidlab.edu.cn.nucyixue.R;
 import androidlab.edu.cn.nucyixue.base.BaseFragment;
 import androidlab.edu.cn.nucyixue.data.bean.UserInfo;
 import androidlab.edu.cn.nucyixue.utils.FileUtils;
-import androidlab.edu.cn.nucyixue.utils.config.Config;
+import androidlab.edu.cn.nucyixue.utils.config.LCConfig;
 import butterknife.BindView;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -89,6 +89,7 @@ public class MeFragment extends BaseFragment {
 
     @Override
     protected void init() {
+
     }
 
     @OnClick(R.id.me_image_avatar)
@@ -120,12 +121,12 @@ public class MeFragment extends BaseFragment {
                             @Override
                             public void done(AVException e) {
                                 if (e == null) {
-                                    mAVUserFinal.put(Config.getUSER_AVATAR(), file.getUrl());
+                                    mAVUserFinal.put(LCConfig.getUSER_AVATAR(), file.getUrl());
                                     mAVUserFinal.saveInBackground();
 
-                                    AVQuery<UserInfo> query = new AVQuery<>(Config.getUI_TABLE());
-                                    query.whereEqualTo(Config.getUI_USER_ID(), AVObject.createWithoutData(Config.getUSER_TABLE(), mAVUserFinal.getObjectId()));
-                                    query.whereEqualTo(Config.getUI_USER_NAME(), mAVUserFinal.getUsername());
+                                    AVQuery<UserInfo> query = new AVQuery<>(LCConfig.getUI_TABLE());
+                                    query.whereEqualTo(LCConfig.getUI_USER_ID(), AVObject.createWithoutData(LCConfig.getUSER_TABLE(), mAVUserFinal.getObjectId()));
+                                    query.whereEqualTo(LCConfig.getUI_USER_NAME(), mAVUserFinal.getUsername());
                                     query.findInBackground(new FindCallback<UserInfo>() {
                                         @Override
                                         public void done(List<UserInfo> list, AVException e) {
@@ -172,7 +173,7 @@ public class MeFragment extends BaseFragment {
         if (mAVUserFinal != null) {
             mMeName.setText(mAVUserFinal.getUsername());
             mMeMajor.setText(mAVUserFinal.get("school").toString() + " " + mAVUserFinal.get("major"));
-            String url = (String) mAVUserFinal.get(Config.getUSER_AVATAR());
+            String url = (String) mAVUserFinal.get(LCConfig.getUSER_AVATAR());
             if (url != null) {
                 Glide.with(getActivity())
                         .load(url)

@@ -15,7 +15,7 @@ import androidlab.edu.cn.nucyixue.R
 import androidlab.edu.cn.nucyixue.data.bean.Live
 import androidlab.edu.cn.nucyixue.data.bean.UserInfo
 import androidlab.edu.cn.nucyixue.utils.FileUtils
-import androidlab.edu.cn.nucyixue.utils.config.Config
+import androidlab.edu.cn.nucyixue.utils.config.LCConfig
 import cn.leancloud.chatkit.cache.LCIMLocalCacheUtils
 import cn.leancloud.chatkit.utils.LCIMAudioHelper
 import cn.leancloud.chatkit.utils.LCIMPathUtils
@@ -66,14 +66,14 @@ class LiveAudioService : Service() {
             val action = intent.action
             action?.let {
                 when(it){
-                    Config.LIVE_SOUNDS_CHANGE -> {
+                    LCConfig.LIVE_SOUNDS_CHANGE -> {
                         updateNotificationMsgInfo()
                         changeAudio()
                     }
-                    Config.LIVE_SOUNDS_NEXT -> {
+                    LCConfig.LIVE_SOUNDS_NEXT -> {
                         nextAudio()
                     }
-                    Config.LIVE_SOUNDS_PREVIOUS -> {
+                    LCConfig.LIVE_SOUNDS_PREVIOUS -> {
                         previousAudio()
                     }
                     else -> Unit
@@ -92,17 +92,17 @@ class LiveAudioService : Service() {
         remoteViews = RemoteViews(packageName, R.layout.item_live_sounds)
 
         val intent_change = Intent(this, LiveAudioService::class.java)
-        intent_change.action = Config.LIVE_SOUNDS_CHANGE
+        intent_change.action = LCConfig.LIVE_SOUNDS_CHANGE
         val pending_change : PendingIntent = PendingIntent.getService(this, 1, intent_change, PendingIntent.FLAG_CANCEL_CURRENT)
         remoteViews.setOnClickPendingIntent(R.id.change, pending_change)
 
         val intent_previous = Intent(this, LiveAudioService::class.java)
-        intent_previous.action = Config.LIVE_SOUNDS_PREVIOUS
+        intent_previous.action = LCConfig.LIVE_SOUNDS_PREVIOUS
         val pending_previous : PendingIntent = PendingIntent.getService(this, 1, intent_previous, PendingIntent.FLAG_CANCEL_CURRENT)
         remoteViews.setOnClickPendingIntent(R.id.previous, pending_previous)
 
         val intent_next = Intent(this, LiveAudioService::class.java)
-        intent_next.action = Config.LIVE_SOUNDS_NEXT
+        intent_next.action = LCConfig.LIVE_SOUNDS_NEXT
         val pending_next : PendingIntent = PendingIntent.getService(this, 1, intent_next , PendingIntent.FLAG_CANCEL_CURRENT)
         remoteViews.setOnClickPendingIntent(R.id.next, pending_next)
 
@@ -227,8 +227,8 @@ class LiveAudioService : Service() {
      * 更新 Notification Live 信息
      */
     fun updateNotificationLiveInfo(live : Live){
-        val query = AVQuery<UserInfo>(Config.UI_TABLE)
-        query.whereEqualTo(Config.UI_USER_ID, AVObject.createWithoutData(Config.USER_TABLE, live.userId))
+        val query = AVQuery<UserInfo>(LCConfig.UI_TABLE)
+        query.whereEqualTo(LCConfig.UI_USER_ID, AVObject.createWithoutData(LCConfig.USER_TABLE, live.userId))
         query.findInBackground(object : FindCallback<UserInfo>(){
             override fun done(p0: MutableList<UserInfo>?, p1: AVException?) {
                 if(p1 != null){

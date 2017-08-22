@@ -1,6 +1,6 @@
 package androidlab.edu.cn.nucyixue.data.bean
 
-import androidlab.edu.cn.nucyixue.utils.config.Config
+import androidlab.edu.cn.nucyixue.utils.config.LCConfig
 import com.avos.avoscloud.AVClassName
 import com.avos.avoscloud.AVObject
 import com.avos.avoscloud.AVUser
@@ -19,48 +19,48 @@ class Live : AVObject(){
     }
 
     var name : String
-        get() = getString(Config.LIVE_NAME)
-        set(value) = put(Config.LIVE_NAME, value)
+        get() = getString(LCConfig.LIVE_NAME)
+        set(value) = put(LCConfig.LIVE_NAME, value)
 
     var type : String
-        get() = getString(Config.LIVE_TYPE)
-        set(value) = put(Config.LIVE_TYPE, value)
+        get() = getString(LCConfig.LIVE_TYPE)
+        set(value) = put(LCConfig.LIVE_TYPE, value)
 
     var star : Int
-        get() = getInt(Config.LIVE_STAR)
-        set(value) = put(Config.LIVE_STAR, value)
+        get() = getInt(LCConfig.LIVE_STAR)
+        set(value) = put(LCConfig.LIVE_STAR, value)
 
     var summary : String
-        get() = getString(Config.LIVE_SUMMARY)
-        set(value) = put(Config.LIVE_SUMMARY, value)
+        get() = getString(LCConfig.LIVE_SUMMARY)
+        set(value) = put(LCConfig.LIVE_SUMMARY, value)
 
     var userId : String
         get() {
-            return getAVObject<AVUser>(Config.LIVE_USER_ID).objectId
+            return getAVObject<AVUser>(LCConfig.LIVE_USER_ID).objectId
         }
-        set(value) = put(Config.LIVE_USER_ID, AVObject.createWithoutData(Config.USER_TABLE, value))
+        set(value) = put(LCConfig.LIVE_USER_ID, AVObject.createWithoutData(LCConfig.USER_TABLE, value))
 
     var username : String
-        get() = getString(Config.LIVE_USER_NAME)
-        set(value) = put(Config.LIVE_USER_NAME, value)
+        get() = getString(LCConfig.LIVE_USER_NAME)
+        set(value) = put(LCConfig.LIVE_USER_NAME, value)
 
     var pic : String
-        get() = getString(Config.LIVE_PIC)
-        set(value) = put(Config.LIVE_PIC, value)
+        get() = getString(LCConfig.LIVE_PIC)
+        set(value) = put(LCConfig.LIVE_PIC, value)
 
     var startAt : Date
-        get() = getDate(Config.LIVE_START_AT)
-        set(value) = put(Config.LIVE_START_AT, value)
+        get() = getDate(LCConfig.LIVE_START_AT)
+        set(value) = put(LCConfig.LIVE_START_AT, value)
 
     var price : Int
-        get() = getInt(Config.LIVE_PRICE)
-        set(value) = put(Config.LIVE_PRICE, value)
+        get() = getInt(LCConfig.LIVE_PRICE)
+        set(value) = put(LCConfig.LIVE_PRICE, value)
 
     var conversationId : String
         get() {
-            return getAVObject<AVObject>(Config.LIVE_CONVERSATION_ID).objectId
+            return getAVObject<AVObject>(LCConfig.LIVE_CONVERSATION_ID).objectId
         }
-        set(value) = put(Config.LIVE_CONVERSATION_ID, value)
+        set(value) = put(LCConfig.LIVE_CONVERSATION_ID, value)
 
     override fun toString(): String {
         return """

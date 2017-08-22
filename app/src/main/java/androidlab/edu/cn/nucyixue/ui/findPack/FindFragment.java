@@ -5,30 +5,30 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.google.android.flexbox.FlexboxLayout;
-
+import com.zhy.adapter.recyclerview.CommonAdapter;
+import com.zhy.adapter.recyclerview.base.ViewHolder;
+import java.util.ArrayList;
 import java.util.Arrays;
-
+import java.util.List;
 import androidlab.edu.cn.nucyixue.R;
 import androidlab.edu.cn.nucyixue.base.BaseFragment;
 import androidlab.edu.cn.nucyixue.data.bean.Subject;
 import androidlab.edu.cn.nucyixue.ui.findPack.subject.SubjectContentActivity;
 import androidlab.edu.cn.nucyixue.utils.FlexTextUtil;
+import androidlab.edu.cn.nucyixue.utils.config.LiveType;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 import cn.bingoogolapple.bgabanner.BGABanner;
 
 /**
@@ -36,16 +36,19 @@ import cn.bingoogolapple.bgabanner.BGABanner;
  */
 public class FindFragment extends BaseFragment {
     private static final String TAG = "FindFragment";
+
     @BindView(R.id.banner_guide_content)
     BGABanner mBannerGuideContent;
     @BindView(R.id.flexsubject)
-    FlexboxLayout mFlexsubject;
+    FlexboxLayout mFlexSubject;
     @BindView(R.id.find_live_recycler)
     RecyclerView mFindLiveRecycler;
     @BindView(R.id.find_search_by_text)
     LinearLayout mFindSearchByText;
+    @BindView(R.id.type_recycler)
+    RecyclerView typeRecycler;
+
     public static FindFragment getInstance() {
-        // Required empty public constructor
         return new FindFragment();
     }
 
@@ -65,11 +68,31 @@ public class FindFragment extends BaseFragment {
 
         });
 
+        List<LiveType> types = new ArrayList<>();
+        for(int i = 0 ;i < 10;i ++){
+            types.add(LiveType.toList().get(i));
+        }
 
+        CommonAdapter<LiveType> adapter = new CommonAdapter<LiveType>(getContext(), R.layout.item_type, types) {
+            @Override
+            protected void convert(ViewHolder holder, LiveType liveType, int position) {
+                holder.setImageResource(R.id.type_icon, liveType.getIcon());
+                holder.setText(R.id.type_name, liveType.getValue());
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                });
+            }
+        };
+        typeRecycler.setAdapter(adapter);
+        typeRecycler.setLayoutManager(new GridLayoutManager(getContext(), 5));
     }
+
     @OnClick(R.id.find_search_by_text)
-    public void search(){
-        Intent mIntent = new Intent(getContext(),FindSearchActivity.class);
+    public void search() {
+        Intent mIntent = new Intent(getContext(), FindSearchActivity.class);
         startActivity(mIntent);
     }
 
@@ -85,7 +108,7 @@ public class FindFragment extends BaseFragment {
             Subject model = new Subject();
             model.setId(i);
             model.setName(tags[i]);
-            mFlexsubject.addView(createNewFlexItemTextView(model));
+            mFlexSubject.addView(createNewFlexItemTextView(model));
         }
         mBannerGuideContent.setData(Arrays.asList(R.drawable.live, R.drawable.xuanshang, R.drawable.xianxia), Arrays.asList("", "", ""));
         mBannerGuideContent.setDelegate(new BGABanner.Delegate() {
@@ -111,8 +134,8 @@ public class FindFragment extends BaseFragment {
             public void onClick(View view) {
                 Log.e(TAG, book.getName());
                 Bundle mBundle = new Bundle();
-                mBundle.putString("subjectName",book.getName());
-                mBundle.putInt("subjectId",book.getId());
+                mBundle.putString("subjectName", book.getName());
+                mBundle.putInt("subjectId", book.getId());
                 Intent mIntent = new Intent(getContext(), SubjectContentActivity.class);
                 mIntent.putExtras(mBundle);
                 startActivity(mIntent);
@@ -130,6 +153,7 @@ public class FindFragment extends BaseFragment {
         textView.setLayoutParams(layoutParams);
         return textView;
     }
+
 }
 
 

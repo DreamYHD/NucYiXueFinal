@@ -64,12 +64,12 @@
         "source": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\bundles\\debug\\res\\drawable\\lcim_chat_resend_bg.xml"
     },
     {
-        "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_list_selector_holo_dark.xml",
-        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\drawable\\abc_list_selector_holo_dark.xml"
-    },
-    {
         "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_list_selector_background_transition_holo_dark.xml",
         "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\drawable\\abc_list_selector_background_transition_holo_dark.xml"
+    },
+    {
+        "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_list_selector_holo_dark.xml",
+        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\drawable\\abc_list_selector_holo_dark.xml"
     },
     {
         "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_cab_background_internal_bg.xml",

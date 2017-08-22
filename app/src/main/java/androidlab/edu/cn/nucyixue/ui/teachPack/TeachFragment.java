@@ -18,7 +18,6 @@ import butterknife.BindView;
  * A simple {@link Fragment} subclass.
  */
 public class TeachFragment extends BaseFragment {
-
     private static final String TAG = "TeachFragment";
 
     @BindView(R.id.teach_main_tablayout)
@@ -40,7 +39,7 @@ public class TeachFragment extends BaseFragment {
 
     @Override
     protected void init() {
-        mLive = TeachLiveFragment.getInstance();
+        mLive = TeachLiveFragment.INSTANCE;
         mNear = TeachNearmapFragment.getInstance();
         mSource = TeachSourceFragment.getInstance();
         mFragmentList.add(mLive);

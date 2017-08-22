@@ -63,7 +63,7 @@
         <activity
             android:name=".ui.teachPack.live.CreateLiveActivity"
             android:theme="@style/DetailsTheme"/>
-        <activity android:name=".ui.im.ConversationActivity"/>
+        <activity android:name=".ui.imPack.ConversationActivity"/>
     </application>
 
 </manifest>

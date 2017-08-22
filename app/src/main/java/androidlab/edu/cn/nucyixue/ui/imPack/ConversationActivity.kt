@@ -1,4 +1,4 @@
-package androidlab.edu.cn.nucyixue.ui.im
+package androidlab.edu.cn.nucyixue.ui.imPack
 
 import android.app.Activity
 import android.content.ComponentName
@@ -14,7 +14,7 @@ import android.view.MenuItem
 import androidlab.edu.cn.nucyixue.R
 import androidlab.edu.cn.nucyixue.data.bean.Live
 import androidlab.edu.cn.nucyixue.service.LiveAudioService
-import androidlab.edu.cn.nucyixue.utils.config.Config
+import androidlab.edu.cn.nucyixue.utils.config.LCConfig
 import cn.leancloud.chatkit.LCChatKit
 import cn.leancloud.chatkit.activity.LCIMConversationFragment
 import cn.leancloud.chatkit.cache.LCIMConversationItemCache
@@ -56,7 +56,7 @@ class ConversationActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_conversation)
 
-        live = intent.extras.getParcelable(Config.LIVE_TABLE)
+        live = intent.extras.getParcelable(LCConfig.LIVE_TABLE)
         Log.i(TAG, live?.userId)
         val b = Bundle()
         b.putString("live", live?.userId)

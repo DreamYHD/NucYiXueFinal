@@ -75,6 +75,7 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.contrarywind:Android-PickerView:3.2.5'
+    compile 'com.zhy:base-rvadapter:3.0.3'
 
     compile project(':leancloudchatkit')
 }

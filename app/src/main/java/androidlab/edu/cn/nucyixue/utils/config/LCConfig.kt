@@ -1,9 +1,12 @@
 package androidlab.edu.cn.nucyixue.utils.config
 
 /**
+ * LeanCloud Config
+ *
  * Created by MurphySL on 2017/8/20.
  */
-class Config{
+class LCConfig {
+
     companion object {
         @JvmStatic
         val USER_TABLE : String= "_User" // 用户表

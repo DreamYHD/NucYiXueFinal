@@ -20,4 +20,6 @@
     <string name="create_time">开始时间</string>
     <string name="create_summary">Live 简介</string>
     <string name="create_type">Live 类型</string>
+
+    <string name="join_num_hint">人已参与</string>
 </resources>
