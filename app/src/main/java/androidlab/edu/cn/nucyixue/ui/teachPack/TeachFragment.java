@@ -3,14 +3,18 @@ package androidlab.edu.cn.nucyixue.ui.teachPack;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import androidlab.edu.cn.nucyixue.R;
 import androidlab.edu.cn.nucyixue.base.BaseFragment;
 import androidlab.edu.cn.nucyixue.ui.teachPack.live.TeachLiveFragment;
+import androidlab.edu.cn.nucyixue.ui.teachPack.map.TeachMapFragment;
 import androidlab.edu.cn.nucyixue.ui.teachPack.source.TeachSourceFragment;
 import butterknife.BindView;
 
@@ -28,10 +32,6 @@ public class TeachFragment extends BaseFragment {
     Toolbar mToolbarTeach;
     private String[] mString = {"Live", "资源", "附近"};
     private ArrayList<Fragment> mFragmentList = new ArrayList<>();
-    private TeachFragmentPagerAdapter mTeachFragmentPagerAdapter;
-    private TeachLiveFragment mLive;
-    private TeachSourceFragment mSource;
-    private TeachNearmapFragment mNear;
 
     public static TeachFragment getInstance() {
         return new TeachFragment();
@@ -39,13 +39,14 @@ public class TeachFragment extends BaseFragment {
 
     @Override
     protected void init() {
-        mLive = TeachLiveFragment.INSTANCE;
-        mNear = TeachNearmapFragment.getInstance();
-        mSource = TeachSourceFragment.getInstance();
+        TeachLiveFragment mLive = TeachLiveFragment.INSTANCE;
+        TeachMapFragment mNear = TeachMapFragment.INSTANCE;
+        TeachSourceFragment mSource = TeachSourceFragment.getInstance();
         mFragmentList.add(mLive);
         mFragmentList.add(mSource);
         mFragmentList.add(mNear);
-        mTeachFragmentPagerAdapter = new TeachFragmentPagerAdapter(getChildFragmentManager(), mString, mFragmentList);
+        TeachFragmentPagerAdapter mTeachFragmentPagerAdapter = new TeachFragmentPagerAdapter(getChildFragmentManager(), mString, mFragmentList);
+
         mTeachMainViewpager.setAdapter(mTeachFragmentPagerAdapter);
         mTeachMainTablayout.setupWithViewPager(mTeachMainViewpager);
     }
@@ -57,6 +58,33 @@ public class TeachFragment extends BaseFragment {
 
     @Override
     protected void logic() {
+
+    }
+
+    private class TeachFragmentPagerAdapter extends FragmentPagerAdapter {
+
+        private String[]mStringList;
+        private List<Fragment> mFragmentList = new ArrayList<>();
+
+        TeachFragmentPagerAdapter(FragmentManager fm, String[] mStringList, List<Fragment> mFragmentList) {
+            super(fm);
+            this.mStringList = mStringList;
+            this.mFragmentList = mFragmentList;
+        }
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mStringList[position];
+        }
 
     }
 

@@ -21,5 +21,9 @@
     <string name="create_summary">Live 简介</string>
     <string name="create_type">Live 类型</string>
 
+    <string name="join_comment_hint">评价</string>
     <string name="join_num_hint">人已参与</string>
+
+    <string name="live_comment">给主讲人的表现打个分</string>
+    <string name="live_comment_skip">稍后评价</string>
 </resources>

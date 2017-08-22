@@ -40,14 +40,14 @@ public class LCIMConversationListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.lcim_conversation_list_fragment, container, false);
 
-        refreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.fragment_conversation_srl_pullrefresh);
-        recyclerView = (RecyclerView) view.findViewById(R.id.fragment_conversation_srl_view);
+        refreshLayout =  view.findViewById(R.id.fragment_conversation_srl_pullrefresh);
+        recyclerView =  view.findViewById(R.id.fragment_conversation_srl_view);
 
         refreshLayout.setEnabled(false);
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.addItemDecoration(new LCIMDividerItemDecoration(getActivity()));
-        itemAdapter = new LCIMCommonListAdapter<AVIMConversation>(LCIMConversationItemHolder.class);
+        itemAdapter = new LCIMCommonListAdapter<>(LCIMConversationItemHolder.class);
         recyclerView.setAdapter(itemAdapter);
         EventBus.getDefault().register(this);
         return view;
