@@ -3,10 +3,14 @@ package androidlab.edu.cn.nucyixue.ui.mePack;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -25,16 +29,20 @@ import com.zhihu.matisse.MimeType;
 import com.zhihu.matisse.engine.impl.GlideEngine;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import androidlab.edu.cn.nucyixue.R;
 import androidlab.edu.cn.nucyixue.base.BaseFragment;
+import androidlab.edu.cn.nucyixue.data.bean.LU;
 import androidlab.edu.cn.nucyixue.data.bean.UserInfo;
 import androidlab.edu.cn.nucyixue.utils.FileUtils;
 import androidlab.edu.cn.nucyixue.utils.config.LCConfig;
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.reactivex.functions.Consumer;
 
@@ -82,6 +90,8 @@ public class MeFragment extends BaseFragment {
     TextView textView2;
     @BindView(R.id.rl_logout)
     RelativeLayout rlLogout;
+    @BindView(R.id.live_num)
+    TextView liveNum;
 
     public static MeFragment getInstance() {
         return new MeFragment();
@@ -131,7 +141,7 @@ public class MeFragment extends BaseFragment {
                                         @Override
                                         public void done(List<UserInfo> list, AVException e) {
                                             if (e == null) {
-                                                if(!list.isEmpty()){
+                                                if (!list.isEmpty()) {
                                                     UserInfo info = list.get(0);
                                                     info.setAvatar(file.getUrl());
                                                     info.saveInBackground(new SaveCallback() {
@@ -179,6 +189,17 @@ public class MeFragment extends BaseFragment {
                         .load(url)
                         .into(avatar);
             }
+
+            AVQuery<LU> query = new AVQuery<>(LCConfig.getLU_TABLE());
+            query.whereEqualTo(LCConfig.getLU_USER_ID(), AVObject.createWithoutData(LCConfig.getUSER_TABLE(), mAVUserFinal.getObjectId()));
+            query.findInBackground(new FindCallback<LU>() {
+                @Override
+                public void done(List<LU> list, AVException e) {
+                    if(e == null && !list.isEmpty()){
+                        liveNum.setText(list.size()+"");
+                    }
+                }
+            });
         }
     }
 
@@ -205,4 +226,5 @@ public class MeFragment extends BaseFragment {
                 .load(R.drawable.hold)
                 .into(avatar);
     }
+
 }

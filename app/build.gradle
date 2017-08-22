@@ -38,9 +38,9 @@ dependencies {
 
     compile files('src/main/jniLibs/fastjson-1.2.30.jar')
     compile files('src/main/jniLibs/okio-1.13.0.jar')
-    //如果你想应用能够兼容Android6.0，请添加此依赖(org.apache.http.legacy.jar)
-
-    // LeanCloud 基础包
+    compile('cn.leancloud.android:avoscloud-push:v4.4.3@aar') { transitive = true } // 推送与实时聊天需要的包
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    compile project(':leancloudchatkit')
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:design:26.0.0-alpha1'
@@ -61,23 +61,20 @@ dependencies {
     compile 'cn.bmob.android:bmob-sms:1.0.1'
     compile 'com.zhihu.android:matisse:0.4.3'
     compile 'cn.bmob.android:http-legacy:1.0'
-
-    compile 'cn.leancloud.android:avoscloud-sdk:v4.4.3' // LeanCloud 基础包
-    compile('cn.leancloud.android:avoscloud-push:v4.4.3@aar') { transitive = true } // 推送与实时聊天需要的包
-    compile 'cn.leancloud.android:avoscloud-statistics:v4.4.3'// LeanCloud 统计包
-    compile 'cn.leancloud.android:avoscloud-feedback:v4.4.3@aar' // LeanCloud 用户反馈包
-    compile 'cn.leancloud.android:avoscloud-search:v4.4.3@aar'// LeanCloud 应用内搜索包
-
+    compile 'cn.leancloud.android:avoscloud-sdk:v4.4.3'
+    compile 'cn.leancloud.android:avoscloud-statistics:v4.4.3'
+    compile 'cn.leancloud.android:avoscloud-feedback:v4.4.3@aar'
+    compile 'cn.leancloud.android:avoscloud-search:v4.4.3@aar'
+    compile 'com.amap.api:location:latest.integration'
+    compile 'com.amap.api:3dmap:latest.integration'
+    compile 'com.amap.api:search:latest.integration'
     compile 'com.android.support:cardview-v7:26.0.0-alpha1'
-    testCompile 'junit:junit:4.12'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
     compile 'com.leon:lfilepickerlibrary:1.2.0'
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.contrarywind:Android-PickerView:3.2.5'
     compile 'com.zhy:base-rvadapter:3.0.3'
-
-    compile project(':leancloudchatkit')
+    testCompile 'junit:junit:4.12'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
 }
 repositories {
     mavenCentral()

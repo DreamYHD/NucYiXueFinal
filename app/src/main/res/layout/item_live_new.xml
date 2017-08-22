@@ -9,7 +9,7 @@
     android:layout_width="match_parent"
     android:layout_height="200dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -22,6 +22,7 @@
             android:layout_height="130dp" />
 
         <RelativeLayout
+            android:layout_below="@+id/live_pic"
             android:layout_margin="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -48,16 +49,6 @@
                 android:text="历史文学"
                 android:textStyle="bold"
                 android:textSize="10sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/live_time"
-                android:layout_above="@+id/live_layout1"
-                android:textStyle="bold"
-                android:textSize="10sp"
-                android:text="1970-01-01 10:00:00"
-                android:layout_alignParentEnd="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -99,6 +90,6 @@
             </LinearLayout>
         </RelativeLayout>
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </android.support.v7.widget.CardView>

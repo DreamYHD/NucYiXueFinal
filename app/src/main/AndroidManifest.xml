@@ -1,29 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="androidlab.edu.cn.nucyixue">
+    package="androidlab.edu.cn.nucyixue">
 
     <!-- 基础模块（必须加入以下声明）START -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <!-- 基础模块 END -->
     <!-- BmobSDK权限 -->
     <!-- 允许联网 -->
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <!-- 获取GSM（2g）、WCDMA（联通3g）等网络状态的信息 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- 获取wifi网络状态的信息 -->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <!-- 允许读取手机状态 -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <!-- 其他权限 短信 -->
-    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
-    <uses-permission android:name="android.permission.READ_SMS"/>
-    <uses-permission android:name="android.permission.SEND_SMS"/>
-    <uses-permission android:name="android.permission.WRITE_SMS"/>
-    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.WRITE_SMS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
+    <!-- 允许程序访问CellID或WiFi热点来获取粗略的位置 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!-- 用于申请调用A-GPS模块 -->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <!-- 用于申请获取蓝牙信息进行室内定位 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
         android:name=".MyApp"
@@ -33,37 +50,57 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.MainActivity">
-        </activity>
+
+        <!-- 高德地图 Key -->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="a9731200a101e4d9a8a04521b2673aa9" />
+
+        <!-- 定位 Service -->
+        <service android:name="com.amap.api.location.APSService" />
+
+        <!-- 实时通信模块、推送（均需要加入以下声明） START -->
+        <!-- 实时通信模块、推送都要使用 PushService -->
+        <service android:name="com.avos.avoscloud.PushService" />
+
+        <receiver android:name="com.avos.avoscloud.AVBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <!-- 实时通信模块、推送 END -->
+
+        <!-- 反馈组件（需要加入以下声明）START -->
+        <activity android:name="com.avos.avoscloud.feedback.ThreadActivity"/>
+        <!-- 反馈组件 END -->
+
+
+
+        <activity android:name=".ui.MainActivity"/>
         <activity
             android:name=".ui.SplashActivity"
             android:theme="@style/AppTheme.Splash">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.mePack.LoginActivity">
-        </activity>
-        <activity android:name=".ui.mePack.RegisterActivity">
-        </activity>
-        <activity android:name=".ui.mePack.MeSmallActivity">
-        </activity>
-        <activity android:name=".ui.mePack.MeMyActivity">
-        </activity>
-        <activity android:name=".ui.findPack.subject.SubjectContentActivity">
-        </activity>
-        <activity android:name=".ui.findPack.FindSearchActivity">
-        </activity>
-        <activity android:name=".ui.findPack.FindMajorActivity">
-        </activity>
-        <activity android:name=".ui.teachPack.source.TeachSourceFileUpdataActivity">
-        </activity>
-        <activity
-            android:name=".ui.teachPack.live.CreateLiveActivity"
-            android:theme="@style/DetailsTheme"/>
-        <activity android:name=".ui.imPack.ConversationActivity"/>
+        <activity android:name=".ui.mePack.LoginActivity"/>
+        <activity android:name=".ui.mePack.RegisterActivity"/>
+        <activity android:name=".ui.mePack.MeSmallActivity"/>
+        <activity android:name=".ui.mePack.MeMyActivity"/>
+        <activity android:name=".ui.findPack.subject.SubjectContentActivity"/>
+        <activity android:name=".ui.findPack.FindSearchActivity"/>
+        <activity android:name=".ui.findPack.FindMajorActivity"/>
+        <activity android:name=".ui.teachPack.source.TeachSourceFileUpdataActivity"/>
+        <activity android:name=".ui.teachPack.live.CreateLiveActivity" android:theme="@style/DetailsTheme" />
+        <activity android:name=".ui.imPack.ConversationActivity" />
+        <activity android:name=".ui.teachPack.live.LiveCommentActivity" android:theme="@style/DetailsTheme" />
+
+        <service android:name=".service.LiveAudioService"/>
     </application>
 
 </manifest>

@@ -22,6 +22,10 @@ class Live : AVObject(){
         get() = getString(LCConfig.LIVE_NAME)
         set(value) = put(LCConfig.LIVE_NAME, value)
 
+    var num : Int
+        get() = getInt(LCConfig.LIVE_NUM)
+        set(value) = put(LCConfig.LIVE_NUM, value)
+
     var type : String
         get() = getString(LCConfig.LIVE_TYPE)
         set(value) = put(LCConfig.LIVE_TYPE, value)
@@ -35,9 +39,7 @@ class Live : AVObject(){
         set(value) = put(LCConfig.LIVE_SUMMARY, value)
 
     var userId : String
-        get() {
-            return getAVObject<AVUser>(LCConfig.LIVE_USER_ID).objectId
-        }
+        get() = getAVObject<AVUser>(LCConfig.LIVE_USER_ID).objectId
         set(value) = put(LCConfig.LIVE_USER_ID, AVObject.createWithoutData(LCConfig.USER_TABLE, value))
 
     var username : String
@@ -57,9 +59,7 @@ class Live : AVObject(){
         set(value) = put(LCConfig.LIVE_PRICE, value)
 
     var conversationId : String
-        get() {
-            return getAVObject<AVObject>(LCConfig.LIVE_CONVERSATION_ID).objectId
-        }
+        get() = getAVObject<AVObject>(LCConfig.LIVE_CONVERSATION_ID).objectId
         set(value) = put(LCConfig.LIVE_CONVERSATION_ID, value)
 
     override fun toString(): String {
@@ -69,6 +69,7 @@ class Live : AVObject(){
               name : $name ,
               type : $type ,
               star : $star ,
+              num  : $num,
               summary : $summary ,
               userId : $userId ,
               pic : $pic ,

@@ -88,6 +88,7 @@
             android:layout_width="55dp"
             android:layout_height="50dp">
             <TextView
+                android:id="@+id/live_num"
                 android:textColor="#696868"
                 android:gravity="center"
                 android:text="0"

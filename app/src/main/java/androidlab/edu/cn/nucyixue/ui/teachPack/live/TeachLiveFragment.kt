@@ -30,6 +30,7 @@ import com.avos.avoscloud.im.v2.callback.AVIMConversationQueryCallback
 import com.zhy.adapter.recyclerview.base.ViewHolder
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * Lives order by star and start time
@@ -66,6 +67,7 @@ object TeachLiveFragment : Fragment(){
         }
     }
 
+    //查询所有 Live
     private fun initData() {
         val query : AVQuery<Live> = AVQuery(LCConfig.LIVE_TABLE)
         query.addDescendingOrder(LCConfig.LIVE_STAR) // 按星级排序
@@ -75,50 +77,47 @@ object TeachLiveFragment : Fragment(){
                 if(p1 != null){
                     toast("Query Live Fail").show()
                     Log.i(TAG, "Query Live Fail: $p1")
-                    return
-                }
+                }else{
+                    p0?.let {
+                        live_list.layoutManager = LinearLayoutManager(context)
+                        live_list.adapter = object : AnimCommonAdapter<Live>(context, R.layout.item_live_new, it){
+                            override fun convert(holder: ViewHolder?, t: Live?, position: Int) {
+                                t?.let {
+                                    holder?.setText(R.id.live_name, it.name)
+                                    holder?.setText(R.id.live_type, it.type)
+                                    holder?.setRating(R.id.live_star, it.star.toFloat())
+                                    holder?.setText(R.id.live_join_num, it.num.toString())
+                                    holder?.setText(R.id.live_speaker, it.username)
+                                    holder?.setImageWithPicasso(R.id.live_pic, it.pic)
 
-                p0?.let {
-                    live_list.layoutManager = LinearLayoutManager(context)
-                    live_list.adapter = object : AnimCommonAdapter<Live>(context, R.layout.item_live_new, it){
-                        override fun convert(holder: ViewHolder?, t: Live?, position: Int) {
-                            t?.let {
-                                holder?.setText(R.id.live_name, it.name)
-                                holder?.setText(R.id.live_type, it.type)
-                                holder?.setRating(R.id.live_star, it.star.toFloat())
-                                val date = t.startAt
-                                val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA)
-                                holder?.setText(R.id.live_time, sdf.format(date))
-                                holder?.setText(R.id.live_speaker, it.username)
-                                holder?.setImageWithPicasso(R.id.live_pic, it.pic)
+                                    holder?.setOnClickListener(R.id.live_info) {
+                                        // 待进行后台认证
+                                        // 付费
 
-                                holder?.setOnClickListener(R.id.live_info) {
-                                    // 待进行后台认证
-                                    // 付费
-
-                                    AVUser.getCurrentUser()?.let {
-                                        uploadInfo(t)
-                                    }?: toast("Please Login First").show()
-                                }
-                            }?: toast("Unknown Error").show()
+                                        AVUser.getCurrentUser()?.let {
+                                            uploadInfo(t)
+                                        }?: toast("Please Login First").show()
+                                    }
+                                }?: toast("Unknown Error").show()
+                            }
                         }
-                    }
-                }?: Log.i(TAG, "Query Live Fail")
+                    }?: Log.i(TAG, "Query Live Fail")
+                }
             }
         })
 
     }
 
     private fun uploadInfo(live : Live){
+        // 查询是否已购买
         val query = AVQuery<LU>("LU")
         query.whereEqualTo(LCConfig.LU_USER_ID, AVObject.createWithoutData(LCConfig.USER_TABLE, AVUser.getCurrentUser().objectId))
         query.whereEqualTo(LCConfig.LU_LIVE_ID, AVObject.createWithoutData(LCConfig.LIVE_TABLE, live.objectId))
-        // 查询是否已选
         query.findInBackground(object : FindCallback<LU>(){
             override fun done(p0: MutableList<LU>?, p1: AVException?) {
                 if(p1 == null){
                     p0?.let {
-                        if(p0.isEmpty()){
+                        if(p0.isEmpty()){ // 新购买
                             val lu = LU()
                             lu.liveId = live.objectId
                             lu.userId = AVUser.getCurrentUser().objectId
@@ -130,8 +129,13 @@ object TeachLiveFragment : Fragment(){
                                     }?:enterLive(live)
                                 }
                             })
-                        }else{
-                            enterLive(live)
+                        }else{ // 已购买
+                            val lu = LU()
+                            if(lu.comment == null && lu.star == 0){ // 未评价
+                                enterComment(live, p0[0])
+                            }else{
+                                enterLive(live)
+                            }
                         }
                     }
                 }else{
@@ -140,7 +144,15 @@ object TeachLiveFragment : Fragment(){
                 }
             }
         })
+    }
 
+    private fun enterComment(live: Live, lu : LU){
+        val intent = Intent(context, LiveCommentActivity::class.java)
+        val bundle = Bundle()
+        bundle.putParcelable(LCConfig.LU_TABLE, lu)
+        bundle.putParcelable(LCConfig.LIVE_TABLE, live)
+        intent.putExtra(LCConfig.LIVE_TABLE, bundle)
+        startActivity(intent)
     }
 
     private fun  enterLive(live : Live) {

@@ -44,6 +44,8 @@ class LCConfig {
         val LIVE_PIC: String = "pic" // 文字 Live 封面
         @JvmStatic
         val LIVE_START_AT: String = "startAt" // 文字 Live 开始时间
+        @JvmStatic
+        val LIVE_NUM : String = "num" // 文字 Live 参加人数
 
         @JvmStatic
         val LU_STAR : String = "star" // 星级
