@@ -11,6 +11,7 @@ import android.util.Log
 import android.widget.ProgressBar
 import androidlab.edu.cn.nucyixue.R
 import androidlab.edu.cn.nucyixue.data.bean.Live
+import androidlab.edu.cn.nucyixue.net.Service
 import androidlab.edu.cn.nucyixue.ui.imPack.ConversationActivity
 import androidlab.edu.cn.nucyixue.utils.FileUtils
 import androidlab.edu.cn.nucyixue.utils.config.LCConfig
@@ -29,6 +30,7 @@ import com.bumptech.glide.Glide
 import com.zhihu.matisse.Matisse
 import com.zhihu.matisse.MimeType
 import com.zhihu.matisse.engine.impl.GlideEngine
+import io.reactivex.schedulers.Schedulers
 
 import kotlinx.android.synthetic.main.activity_create_live.*
 import java.text.SimpleDateFormat
@@ -156,16 +158,26 @@ class CreateLiveActivity : AppCompatActivity(){
             else -> {
                 mProgress.visibility = ProgressBar.VISIBLE
 
-                val path = FileUtils.getFilePahtFromUri(this, select_uri!!)
-                path?.let {
-                    Log.i(TAG, "live_name: $live_name \n live_price: $live_price \n live_time: $live_time \n live_summary: $live_summary \n live_type: $live_type \n live_pic: $path")
-                    createLiveWithPic(live_name, select_time.time, live_summary, live_price.toInt(), select_type, it)
-                }?: Log.i(TAG, "解析图片出错")
+                Service.api_keyword.getKeyword(live_summary, 4)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(Schedulers.io())
+                        .subscribe {
+                            val keyword = it.showapi_res_body.list
+                            if (keyword.isNotEmpty()) {
+                                Log.i(TAG, "${keyword[0]} ${keyword[1]} ${keyword[2]} ${keyword[3]}")
+                                val path = FileUtils.getFilePahtFromUri(this, select_uri!!)
+                                path?.let {
+                                    Log.i(TAG, "live_name: $live_name \n live_price: $live_price \n live_time: $live_time \n live_summary: $live_summary \n live_type: $live_type \n live_pic: $path")
+                                    createLiveWithPic(live_name, select_time.time, live_summary, live_price.toInt(), select_type, it, keyword)
+                                } ?: Log.i(TAG, "解析图片出错")
+                            }
+                        }
+
             }
         }
     }
 
-    private fun createLiveWithPic(live_name : String, live_time : Date, live_summary : String, live_price : Int, live_type : String, path : String){
+    private fun createLiveWithPic(live_name : String, live_time : Date, live_summary : String, live_price : Int, live_type : String, path : String, keyword : List<String>){
         val fileName = FileUtils.getFileName(path)
         val file : AVFile = AVFile.withAbsoluteLocalPath(fileName, path)
 
@@ -197,6 +209,7 @@ class CreateLiveActivity : AppCompatActivity(){
                                 live.price = live_price
                                 live.type = live_type
                                 live.pic = file.url
+                                live.keyword = keyword
 
                                 live.put(LCConfig.LIVE_USER_ID, AVObject.createWithoutData(LCConfig.USER_TABLE, userId))
                                 live.put(LCConfig.LIVE_USER_NAME, username)

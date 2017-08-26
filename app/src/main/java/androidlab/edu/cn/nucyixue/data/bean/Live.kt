@@ -39,7 +39,7 @@ class Live : AVObject(){
         set(value) = put(LCConfig.LIVE_SUMMARY, value)
 
     var userId : String
-        get() = getAVObject<AVUser>(LCConfig.LIVE_USER_ID).objectId
+        get() = getAVObject<AVObject>(LCConfig.LIVE_USER_ID).objectId
         set(value) = put(LCConfig.LIVE_USER_ID, AVObject.createWithoutData(LCConfig.USER_TABLE, value))
 
     var username : String
@@ -60,7 +60,11 @@ class Live : AVObject(){
 
     var conversationId : String
         get() = getAVObject<AVObject>(LCConfig.LIVE_CONVERSATION_ID).objectId
-        set(value) = put(LCConfig.LIVE_CONVERSATION_ID, value)
+        set(value) = put(LCConfig.LIVE_CONVERSATION_ID, AVObject.createWithoutData(LCConfig.CONVERSATION_TABLE, value))
+
+    var keyword : List<String>?
+        get() = getList(LCConfig.LIVE_KEYWORD) as List<String>?
+        set(value) = put(LCConfig.LIVE_KEYWORD, value)
 
     override fun toString(): String {
         return """
@@ -76,6 +80,7 @@ class Live : AVObject(){
               price : $price ,
               startAt : $startAt ,
               conversationId : $conversationId
+              keyword : ${keyword?.size}
             }
         """
     }

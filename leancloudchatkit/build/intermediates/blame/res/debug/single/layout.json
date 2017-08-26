@@ -32,12 +32,12 @@
         "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\layout\\notification_template_media.xml"
     },
     {
-        "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
-        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\layout\\notification_template_part_chronometer.xml"
-    },
-    {
         "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\lcim_chat_record_layout.xml",
         "source": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\layout\\lcim_chat_record_layout.xml"
+    },
+    {
+        "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
+        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\layout\\notification_template_part_chronometer.xml"
     },
     {
         "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",
@@ -222,10 +222,6 @@
     {
         "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
         "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
-    },
-    {
-        "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\lcim_conversation_list_fragment.xml",
-        "source": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\layout\\lcim_conversation_list_fragment.xml"
     },
     {
         "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
