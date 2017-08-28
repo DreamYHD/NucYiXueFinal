@@ -53,6 +53,7 @@ import cn.leancloud.chatkit.utils.LCIMAudioHelper;
 import cn.leancloud.chatkit.utils.LCIMLogUtils;
 import cn.leancloud.chatkit.utils.LCIMNotificationUtils;
 import cn.leancloud.chatkit.utils.LCIMPathUtils;
+import cn.leancloud.chatkit.utils.SensitiveFilter;
 import cn.leancloud.chatkit.view.LCIMInputBottomBar;
 import de.greenrobot.event.EventBus;
 
@@ -89,6 +90,8 @@ public class LCIMConversationFragment extends Fragment {
     // 记录拍照等的文件路径
     protected String localCameraPath;
 
+    private SensitiveFilter filter;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -105,6 +108,12 @@ public class LCIMConversationFragment extends Fragment {
         recyclerView.setAdapter(itemAdapter);
 
         EventBus.getDefault().register(this);
+
+        filter = new SensitiveFilter();
+        filter.addWord("色情");
+        filter.addWord("反动");
+        filter.addWord("江泽民");
+
         return view;
     }
 
@@ -424,7 +433,10 @@ public class LCIMConversationFragment extends Fragment {
      */
     protected void sendText(String content) {
         AVIMTextMessage message = new AVIMTextMessage();
-        message.setText(content);
+
+        String msg = filter.filter(content);
+
+        message.setText(msg);
         sendMessage(message);
     }
 
