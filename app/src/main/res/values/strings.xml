@@ -26,4 +26,6 @@
 
     <string name="live_comment">给主讲人的表现打个分</string>
     <string name="live_comment_skip">稍后评价</string>
+
+    <string name="scan_text">将二维码放入框内, 即可自动扫描</string>
 </resources>

@@ -41,6 +41,9 @@
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
+    
+    <uses-permission android:name="android.permission.FLASHLIGHT"/>
+    <uses-permission android:name="android.permission.HEADWARE_TEST"/>
 
     <application
         android:name=".MyApp"
@@ -99,8 +102,10 @@
         <activity android:name=".ui.teachPack.live.CreateLiveActivity" android:theme="@style/DetailsTheme" />
         <activity android:name=".ui.imPack.ConversationActivity" />
         <activity android:name=".ui.teachPack.live.LiveCommentActivity" android:theme="@style/DetailsTheme" />
+        <activity android:name=".ui.findPack.zxing.MipcaActivityCapture"/>
 
         <service android:name=".service.LiveAudioService"/>
+
     </application>
 
 </manifest>

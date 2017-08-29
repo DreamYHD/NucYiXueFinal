@@ -35,10 +35,10 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-
     compile files('src/main/jniLibs/fastjson-1.2.30.jar')
     compile files('src/main/jniLibs/okio-1.13.0.jar')
-    compile('cn.leancloud.android:avoscloud-push:v4.4.3@aar') { transitive = true } // 推送与实时聊天需要的包
+    compile('cn.leancloud.android:avoscloud-push:v4.4.3@aar') { transitive = true }
+    // 推送与实时聊天需要的包
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     compile project(':leancloudchatkit')
     compile 'com.android.support:appcompat-v7:26.+'
@@ -78,6 +78,7 @@ dependencies {
     compile 'com.zhy:base-rvadapter:3.0.3'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
+    compile files('src/main/jniLibs/core.jar')
 }
 repositories {
     mavenCentral()

@@ -9,6 +9,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -22,9 +23,9 @@ import com.bumptech.glide.Glide;
 import com.google.android.flexbox.FlexboxLayout;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -33,15 +34,26 @@ import java.util.Map;
 
 import androidlab.edu.cn.nucyixue.R;
 import androidlab.edu.cn.nucyixue.base.BaseFragment;
+import androidlab.edu.cn.nucyixue.data.bean.Book;
 import androidlab.edu.cn.nucyixue.data.bean.Live;
 import androidlab.edu.cn.nucyixue.data.bean.Subject;
+import androidlab.edu.cn.nucyixue.net.Service;
 import androidlab.edu.cn.nucyixue.ui.findPack.subject.SubjectContentActivity;
+import androidlab.edu.cn.nucyixue.ui.findPack.zxing.MipcaActivityCapture;
+import androidlab.edu.cn.nucyixue.ui.teachPack.live.CommonLiveFragment;
+import androidlab.edu.cn.nucyixue.utils.ActivityUtils;
 import androidlab.edu.cn.nucyixue.utils.FlexTextUtil;
 import androidlab.edu.cn.nucyixue.utils.config.LCConfig;
 import androidlab.edu.cn.nucyixue.utils.config.LiveType;
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 import cn.bingoogolapple.bgabanner.BGABanner;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
+
+import static android.app.Activity.RESULT_OK;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,8 +71,12 @@ public class FindFragment extends BaseFragment {
     LinearLayout mFindSearchByText;
     @BindView(R.id.type_recycler)
     RecyclerView typeRecycler;
+    @BindView(R.id.find_search_by_erwerma)
+    ImageView findSearchByErwerma;
 
     private static final int DISPLAY_NUM = 7;
+    private static final int SCANNIN_GREQUEST_CODE = 1;
+
 
     public static FindFragment getInstance() {
         return new FindFragment();
@@ -83,7 +99,7 @@ public class FindFragment extends BaseFragment {
         });
 
         List<LiveType> types = new ArrayList<>();
-        for(int i = 0 ;i < 10;i ++){
+        for (int i = 0; i < 10; i++) {
             types.add(LiveType.toList().get(i));
         }
 
@@ -123,39 +139,39 @@ public class FindFragment extends BaseFragment {
         query.findInBackground(new FindCallback<Live>() {
             @Override
             public void done(List<Live> list, AVException e) {
-                if(e != null){
+                if (e != null) {
                     Log.i(TAG, "获取标签为空:" + e);
-                }else{
-                    if(!list.isEmpty()){
+                } else {
+                    if (!list.isEmpty()) {
                         HashMap<String, Integer> map = new HashMap<>();
-                        for(Live live : list){
-                            if(live.getKeyword() == null)
+                        for (Live live : list) {
+                            if (live.getKeyword() == null)
                                 continue;
                             Log.i(TAG, live.getKeyword().get(0));
-                            for(String keyword : live.getKeyword()){
-                                if(map.containsKey(keyword)){
+                            for (String keyword : live.getKeyword()) {
+                                if (map.containsKey(keyword)) {
                                     int times = map.get(keyword);
                                     map.put(keyword, times + 1);
-                                }else{
+                                } else {
                                     map.put(keyword, 1);
                                 }
                             }
                         }
 
-                        List<Map.Entry<String,Integer>> l = new ArrayList<>(map.entrySet());
-                        Collections.sort(l,new Comparator<Map.Entry<String,Integer>>() {
+                        List<Map.Entry<String, Integer>> l = new ArrayList<>(map.entrySet());
+                        Collections.sort(l, new Comparator<Map.Entry<String, Integer>>() {
                             @Override
                             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> t1) {
                                 return o1.getValue().compareTo(t1.getValue()) > 0 ? -1 : 1;
                             }
                         });
 
-                        for(Map.Entry<String,Integer> mapping : l){
-                            System.out.println(mapping.getKey()+":"+mapping.getValue());
+                        for (Map.Entry<String, Integer> mapping : l) {
+                            System.out.println(mapping.getKey() + ":" + mapping.getValue());
                         }
 
                         displayFlexSubject(l);
-                    }else{
+                    } else {
                         Log.i(TAG, "获取标签为空");
                     }
                 }
@@ -163,11 +179,9 @@ public class FindFragment extends BaseFragment {
         });
 
 
-
-
     }
 
-    private void displayBanner(){
+    private void displayBanner() {
         mBannerGuideContent.setData(Arrays.asList(R.drawable.live, R.drawable.xuanshang, R.drawable.xianxia), Arrays.asList("", "", ""));
         mBannerGuideContent.setDelegate(new BGABanner.Delegate() {
             @Override
@@ -177,7 +191,7 @@ public class FindFragment extends BaseFragment {
         });
     }
 
-    private void displayFlexSubject(List<Map.Entry<String,Integer>> mapping){
+    private void displayFlexSubject(List<Map.Entry<String, Integer>> mapping) {
         //String[] tags = {"Java程序设计", "计算机网络", "英语", "高等数学", "线性代数", "离散数学", "大学计算机基础"};
         for (int i = 0; i < DISPLAY_NUM; i++) {
             Subject model = new Subject();
@@ -219,6 +233,58 @@ public class FindFragment extends BaseFragment {
         textView.setLayoutParams(layoutParams);
         return textView;
     }
+
+    @OnClick(R.id.find_search_by_erwerma)
+    public void onViewClicked() {
+        getActivity().startActivityForResult(new Intent(getActivity(), MipcaActivityCapture.class), SCANNIN_GREQUEST_CODE);
+    }
+
+    /*@Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.i(TAG, "onActivityResult");
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == SCANNIN_GREQUEST_CODE){
+            if(resultCode == RESULT_OK){
+                Bundle bundle = data.getExtras();
+                String result = bundle.getString("result");
+                if(bundle.getString("result") != null){
+                    Log.i(TAG, "result:" + result);
+                    Service.INSTANCE.getApi_douban().getBookInfo(result)
+                            .observeOn(Schedulers.io())
+                            .subscribeOn(Schedulers.io())
+                            .subscribe(
+                                    new Consumer<Book>() {
+                                        @Override
+                                        public void accept(Book book) throws Exception {
+                                            searchKeyword(book);
+                                        }
+                                    },
+                                    new Consumer<Throwable>() {
+                                        @Override
+                                        public void accept(Throwable throwable) throws Exception {
+                                            Log.i(TAG, "get Book Fail :" + throwable.toString());
+                                        }
+                                    }
+                            );
+                }
+
+            }
+        }
+    }*/
+
+
+    private void searchKeyword(Book book){
+        Log.i(TAG, "book : " + book.toString());
+        List<Book.Tags> tags = book.getTags();
+        List<String> names = new ArrayList<>();
+        for(Book.Tags tag : tags){
+            names.add(tag.getName());
+            Log.i(TAG,"tag:"+ tag.getName());
+        }
+
+
+    }
+
 
 }
 
