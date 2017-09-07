@@ -26,3 +26,9 @@
 -keepclassmembers class android.support.design.internal.BottomNavigationMenuView {
     boolean mShiftingMode;
 }
+
+  -libraryjars libs/BmobPay_v3.x.x_xxxxxx.jar
+  -keepclasseswithmembers class c.b.** { *; }
+  -keep interface c.b.PListener{ *; }
+  -keep interface c.b.QListener{ *; }
+  -keep class com.baidu.ocr.sdk.**{*;}

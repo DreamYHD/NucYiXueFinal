@@ -1,6 +1,8 @@
 package androidlab.edu.cn.nucyixue.data.bean
 
 /**
+ * Keyword
+ *
  * Created by MurphySL on 2017/8/26.
  */
 data class Keyword(var showapi_res_code: Int,

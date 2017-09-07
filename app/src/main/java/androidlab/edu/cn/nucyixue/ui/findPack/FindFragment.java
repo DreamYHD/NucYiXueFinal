@@ -9,16 +9,21 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.FindCallback;
+import com.baidu.ocr.sdk.OCR;
+import com.baidu.ocr.sdk.OnResultListener;
+import com.baidu.ocr.sdk.exception.OCRError;
+import com.baidu.ocr.sdk.model.AccessToken;
+import com.baidu.ocr.ui.camera.CameraActivity;
 import com.bumptech.glide.Glide;
 import com.google.android.flexbox.FlexboxLayout;
 import com.zhy.adapter.recyclerview.CommonAdapter;
@@ -37,23 +42,15 @@ import androidlab.edu.cn.nucyixue.base.BaseFragment;
 import androidlab.edu.cn.nucyixue.data.bean.Book;
 import androidlab.edu.cn.nucyixue.data.bean.Live;
 import androidlab.edu.cn.nucyixue.data.bean.Subject;
-import androidlab.edu.cn.nucyixue.net.Service;
+import androidlab.edu.cn.nucyixue.ocr.FileUtil;
 import androidlab.edu.cn.nucyixue.ui.findPack.subject.SubjectContentActivity;
 import androidlab.edu.cn.nucyixue.ui.findPack.zxing.MipcaActivityCapture;
-import androidlab.edu.cn.nucyixue.ui.teachPack.live.CommonLiveFragment;
-import androidlab.edu.cn.nucyixue.utils.ActivityUtils;
 import androidlab.edu.cn.nucyixue.utils.FlexTextUtil;
 import androidlab.edu.cn.nucyixue.utils.config.LCConfig;
 import androidlab.edu.cn.nucyixue.utils.config.LiveType;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 import cn.bingoogolapple.bgabanner.BGABanner;
-import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
-
-import static android.app.Activity.RESULT_OK;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -73,9 +70,16 @@ public class FindFragment extends BaseFragment {
     RecyclerView typeRecycler;
     @BindView(R.id.find_search_by_erwerma)
     ImageView findSearchByErwerma;
+    @BindView(R.id.image_left1)
+    ImageView imageLeft1;
+    @BindView(R.id.image_left2)
+    ImageView imageLeft2;
 
     private static final int DISPLAY_NUM = 7;
     private static final int SCANNIN_GREQUEST_CODE = 1;
+    private static final int REQUEST_CODE_GENERAL = 105;
+
+    private boolean hasGotToken = false;
 
 
     public static FindFragment getInstance() {
@@ -118,6 +122,8 @@ public class FindFragment extends BaseFragment {
         };
         typeRecycler.setAdapter(adapter);
         typeRecycler.setLayoutManager(new GridLayoutManager(getContext(), 5));
+
+        initAccessTokenWithAkSk();
     }
 
     @OnClick(R.id.find_search_by_text)
@@ -239,53 +245,57 @@ public class FindFragment extends BaseFragment {
         getActivity().startActivityForResult(new Intent(getActivity(), MipcaActivityCapture.class), SCANNIN_GREQUEST_CODE);
     }
 
-    /*@Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.i(TAG, "onActivityResult");
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == SCANNIN_GREQUEST_CODE){
-            if(resultCode == RESULT_OK){
-                Bundle bundle = data.getExtras();
-                String result = bundle.getString("result");
-                if(bundle.getString("result") != null){
-                    Log.i(TAG, "result:" + result);
-                    Service.INSTANCE.getApi_douban().getBookInfo(result)
-                            .observeOn(Schedulers.io())
-                            .subscribeOn(Schedulers.io())
-                            .subscribe(
-                                    new Consumer<Book>() {
-                                        @Override
-                                        public void accept(Book book) throws Exception {
-                                            searchKeyword(book);
-                                        }
-                                    },
-                                    new Consumer<Throwable>() {
-                                        @Override
-                                        public void accept(Throwable throwable) throws Exception {
-                                            Log.i(TAG, "get Book Fail :" + throwable.toString());
-                                        }
-                                    }
-                            );
-                }
 
-            }
-        }
-    }*/
-
-
-    private void searchKeyword(Book book){
+    private void searchKeyword(Book book) {
         Log.i(TAG, "book : " + book.toString());
         List<Book.Tags> tags = book.getTags();
         List<String> names = new ArrayList<>();
-        for(Book.Tags tag : tags){
+        for (Book.Tags tag : tags) {
             names.add(tag.getName());
-            Log.i(TAG,"tag:"+ tag.getName());
+            Log.i(TAG, "tag:" + tag.getName());
         }
-
-
     }
 
+    @OnClick(R.id.find_select_by_tiaojian)
+    public void onViewClickedOCR() {
+        if(!checkTokenStatus()){
+            return;
+        }
 
+        Intent intent = new Intent(getActivity(), CameraActivity.class);
+        intent.putExtra(CameraActivity.KEY_OUTPUT_FILE_PATH, FileUtil.getSaveFile(getContext()).getAbsolutePath());
+        intent.putExtra(CameraActivity.KEY_CONTENT_TYPE, CameraActivity.CONTENT_TYPE_GENERAL);
+        getActivity().startActivityForResult(intent, REQUEST_CODE_GENERAL);
+    }
+
+    private boolean checkTokenStatus() {
+        if (!hasGotToken) {
+            Toast.makeText(getContext(), "token还未成功获取", Toast.LENGTH_LONG).show();
+        }
+        return hasGotToken;
+    }
+
+    private void initAccessTokenWithAkSk() {
+        OCR.getInstance().initAccessTokenWithAkSk(new OnResultListener<AccessToken>() {
+            @Override
+            public void onResult(AccessToken result) {
+                String token = result.getAccessToken();
+                hasGotToken = true;
+            }
+
+            @Override
+            public void onError(OCRError error) {
+                error.printStackTrace();
+                Log.i(TAG, "AK，SK方式获取token失败"+error.getMessage());
+            }
+        }, getContext(), "AL2QSX22moztT8ir6GsW0cc6", "agAiIP7f4ydgSkpGa92fycEGSe742TG0");
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.i(TAG, requestCode + " " + resultCode);
+    }
 }
 
 

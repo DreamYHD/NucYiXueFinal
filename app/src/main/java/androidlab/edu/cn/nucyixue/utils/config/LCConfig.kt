@@ -48,6 +48,12 @@ class LCConfig {
         val LIVE_NUM : String = "num" // 文字 Live 参加人数
         @JvmStatic
         val LIVE_KEYWORD : String = "keyword" // 文字 Live 关键词
+        @JvmStatic
+        val LIVE_IS_TEXT : String = "isText" // 是否为文字直播
+        @JvmStatic
+        val LIVE_TEXT : String = "TEXT" // 文字直播
+        @JvmStatic
+        val LIVE_VIDEO : String = "VIDEO" // 视频直播
 
         @JvmStatic
         val LU_STAR : String = "star" // 星级

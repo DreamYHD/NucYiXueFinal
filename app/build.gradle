@@ -16,7 +16,7 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -79,6 +79,9 @@ dependencies {
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
     compile files('src/main/jniLibs/core.jar')
+    compile files('src/main/jniLibs/BmobPay_v3.2.0_170602.jar')
+    compile files('src/main/jniLibs/ocr-sdk.jar')
+    compile project(path: ':ocr_ui')
 }
 repositories {
     mavenCentral()

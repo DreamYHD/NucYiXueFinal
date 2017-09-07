@@ -103,6 +103,7 @@
         <activity android:name=".ui.imPack.ConversationActivity" />
         <activity android:name=".ui.teachPack.live.LiveCommentActivity" android:theme="@style/DetailsTheme" />
         <activity android:name=".ui.findPack.zxing.MipcaActivityCapture"/>
+        <activity android:name="cn.bmob.pay.v3.act.PayAct" />
 
         <service android:name=".service.LiveAudioService"/>
 

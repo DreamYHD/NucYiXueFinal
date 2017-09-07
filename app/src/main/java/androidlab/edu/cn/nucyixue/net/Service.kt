@@ -11,6 +11,8 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 /**
+ * Service
+ *
  * Created by MurphySL on 2017/8/1.
  */
 object Service{

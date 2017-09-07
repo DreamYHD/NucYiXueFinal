@@ -66,6 +66,10 @@ class Live : AVObject(){
         get() = getList(LCConfig.LIVE_KEYWORD) as List<String>?
         set(value) = put(LCConfig.LIVE_KEYWORD, value)
 
+    var isText : String
+        get() = getString(LCConfig.LIVE_IS_TEXT)
+        set(value) = put(LCConfig.LIVE_IS_TEXT, value)
+
     override fun toString(): String {
         return """
             {
@@ -80,7 +84,8 @@ class Live : AVObject(){
               price : $price ,
               startAt : $startAt ,
               conversationId : $conversationId
-              keyword : ${keyword?.size}
+              keyword : ${keyword?.size} ,
+              isText : ${isText}
             }
         """
     }

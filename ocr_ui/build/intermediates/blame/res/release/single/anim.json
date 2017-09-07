@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "H:\\new\\NucYiXue\\ocr_ui\\build\\intermediates\\res\\merged\\release\\anim\\abc_slide_in_bottom.xml",
+        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\3e89acfefdaaeb1af6f6a2d02fdddb360988d8ff\\output\\res\\anim\\abc_slide_in_bottom.xml"
+    },
+    {
+        "merged": "H:\\new\\NucYiXue\\ocr_ui\\build\\intermediates\\res\\merged\\release\\anim\\abc_popup_enter.xml",
+        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\3e89acfefdaaeb1af6f6a2d02fdddb360988d8ff\\output\\res\\anim\\abc_popup_enter.xml"
+    },
+    {
+        "merged": "H:\\new\\NucYiXue\\ocr_ui\\build\\intermediates\\res\\merged\\release\\anim\\abc_slide_out_top.xml",
+        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\3e89acfefdaaeb1af6f6a2d02fdddb360988d8ff\\output\\res\\anim\\abc_slide_out_top.xml"
+    },
+    {
+        "merged": "H:\\new\\NucYiXue\\ocr_ui\\build\\intermediates\\res\\merged\\release\\anim\\abc_slide_out_bottom.xml",
+        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\3e89acfefdaaeb1af6f6a2d02fdddb360988d8ff\\output\\res\\anim\\abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "H:\\new\\NucYiXue\\ocr_ui\\build\\intermediates\\res\\merged\\release\\anim\\abc_fade_in.xml",
+        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\3e89acfefdaaeb1af6f6a2d02fdddb360988d8ff\\output\\res\\anim\\abc_fade_in.xml"
+    },
+    {
+        "merged": "H:\\new\\NucYiXue\\ocr_ui\\build\\intermediates\\res\\merged\\release\\anim\\abc_grow_fade_in_from_bottom.xml",
+        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\3e89acfefdaaeb1af6f6a2d02fdddb360988d8ff\\output\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "H:\\new\\NucYiXue\\ocr_ui\\build\\intermediates\\res\\merged\\release\\anim\\abc_fade_out.xml",
+        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\3e89acfefdaaeb1af6f6a2d02fdddb360988d8ff\\output\\res\\anim\\abc_fade_out.xml"
+    },
+    {
+        "merged": "H:\\new\\NucYiXue\\ocr_ui\\build\\intermediates\\res\\merged\\release\\anim\\abc_slide_in_top.xml",
+        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\3e89acfefdaaeb1af6f6a2d02fdddb360988d8ff\\output\\res\\anim\\abc_slide_in_top.xml"
+    },
+    {
+        "merged": "H:\\new\\NucYiXue\\ocr_ui\\build\\intermediates\\res\\merged\\release\\anim\\abc_shrink_fade_out_from_bottom.xml",
+        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\3e89acfefdaaeb1af6f6a2d02fdddb360988d8ff\\output\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "H:\\new\\NucYiXue\\ocr_ui\\build\\intermediates\\res\\merged\\release\\anim\\abc_popup_exit.xml",
+        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\3e89acfefdaaeb1af6f6a2d02fdddb360988d8ff\\output\\res\\anim\\abc_popup_exit.xml"
+    }
+]

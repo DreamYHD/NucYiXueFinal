@@ -7,13 +7,22 @@ import android.support.design.widget.BottomNavigationView;
 import android.util.Log;
 import android.view.MenuItem;
 
+import com.google.gson.Gson;
+
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import androidlab.edu.cn.nucyixue.R;
 import androidlab.edu.cn.nucyixue.base.BaseActivity;
 import androidlab.edu.cn.nucyixue.data.bean.Book;
+import androidlab.edu.cn.nucyixue.data.bean.Keyword;
+import androidlab.edu.cn.nucyixue.data.bean.OCRResult;
+import androidlab.edu.cn.nucyixue.net.KeywordService;
 import androidlab.edu.cn.nucyixue.net.Service;
+import androidlab.edu.cn.nucyixue.ocr.FileUtil;
+import androidlab.edu.cn.nucyixue.ocr.RecognizeService;
 import androidlab.edu.cn.nucyixue.ui.findPack.FindFragment;
 import androidlab.edu.cn.nucyixue.ui.mePack.MeFragment;
 import androidlab.edu.cn.nucyixue.ui.teachPack.TeachFragment;
@@ -36,6 +45,7 @@ public class MainActivity extends BaseActivity {
     BottomNavigationView mBottomMenu;
 
     private static final int SCANNIN_GREQUEST_CODE = 1;
+    private static final int REQUEST_CODE_GENERAL = 105;
 
     @Override
     protected void logicActivity(Bundle mSavedInstanceState) {
@@ -79,37 +89,79 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.i(TAG, "onActivityResult");
         super.onActivityResult(requestCode, resultCode, data);
         Log.i(TAG, "onActivityResult" + resultCode +" "+ requestCode);
-        //if(requestCode == SCANNIN_GREQUEST_CODE){
-            if(resultCode == RESULT_OK){
-                Bundle bundle = data.getExtras();
-                String result = bundle.getString("result");
-                Log.i(TAG, "123");
-                if(bundle.getString("result") != null){
-                    Log.i(TAG, "result:" + result);
-                    Service.INSTANCE.getApi_douban().getBookInfo(result)
-                            .observeOn(Schedulers.io())
-                            .subscribeOn(Schedulers.io())
-                            .subscribe(
-                                    new Consumer<Book>() {
-                                        @Override
-                                        public void accept(Book book) throws Exception {
-                                            searchKeyword(book);
-                                        }
-                                    },
-                                    new Consumer<Throwable>() {
-                                        @Override
-                                        public void accept(Throwable throwable) throws Exception {
-                                            Log.i(TAG, "get Book Fail :" + throwable.toString());
-                                        }
+        if(resultCode == RESULT_OK){
+            switch (requestCode){
+                case REQUEST_CODE_GENERAL:
+                    RecognizeService.recGeneral(FileUtil.getSaveFile(getApplicationContext()).getAbsolutePath(),
+                            new RecognizeService.ServiceListener() {
+                                @Override
+                                public void onResult(String result) {
+                                    Log.i(TAG, result);
+                                    OCRResult ocr = new Gson().fromJson(result, OCRResult.class);
+                                    List<OCRResult.WordsResult> wordsResult = ocr.getWords_result();
+                                    StringBuilder sb = new StringBuilder();
+                                    for (OCRResult.WordsResult word : wordsResult){
+                                       sb.append(word.getWords());
                                     }
-                            );
-                }
 
+                                    Service.INSTANCE.getApi_keyword()
+                                            .getKeyword(sb.toString(), 3)
+                                            .observeOn(Schedulers.io())
+                                            .subscribeOn(Schedulers.io())
+                                            .subscribe(
+                                                    new Consumer<Keyword>() {
+                                                        @Override
+                                                        public void accept(Keyword keyword) throws Exception {
+                                                            Log.i(TAG, "keys : " + keyword.getShowapi_res_body().getList().get(0));
+                                                            ArrayList<String> keys = new ArrayList<>();
+                                                            keys.addAll(keyword.getShowapi_res_body().getList());
+                                                            Bundle b = new Bundle();
+                                                            b.putSerializable("keys", keys);
+                                                            CommonLiveFragment fragment = new CommonLiveFragment();
+                                                            fragment.setArguments(b);
+                                                            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), fragment, R.id.content_main);
+                                                        }
+                                                    },
+                                                    new Consumer<Throwable>() {
+                                                        @Override
+                                                        public void accept(Throwable throwable) throws Exception {
+                                                            Log.i(TAG, "Get Keyword error:" + throwable.toString());
+                                                        }
+                                                    }
+                                            );
+                                }
+                            });
+                    break;
+                case SCANNIN_GREQUEST_CODE:
+                    Bundle bundle = data.getExtras();
+                    String result = bundle.getString("result");
+                    if(bundle.getString("result") != null){
+                        Log.i(TAG, "result:" + result);
+                        Service.INSTANCE.getApi_douban().getBookInfo(result)
+                                .observeOn(Schedulers.io())
+                                .subscribeOn(Schedulers.io())
+                                .subscribe(
+                                        new Consumer<Book>() {
+                                            @Override
+                                            public void accept(Book book) throws Exception {
+                                                searchKeyword(book);
+                                            }
+                                        },
+                                        new Consumer<Throwable>() {
+                                            @Override
+                                            public void accept(Throwable throwable) throws Exception {
+                                                Log.i(TAG, "get Book Fail :" + throwable.toString());
+                                            }
+                                        }
+                                );
+                    }
+                    break;
+                default:
+                    break;
             }
-        //}
+        }
     }
 
     private void searchKeyword(Book book){

@@ -9,6 +9,7 @@ import androidlab.edu.cn.nucyixue.data.bean.LU;
 import androidlab.edu.cn.nucyixue.data.bean.Live;
 import androidlab.edu.cn.nucyixue.data.bean.UserInfo;
 import androidlab.edu.cn.nucyixue.utils.SensitiveFilter;
+import c.b.BP;
 
 /**
  * MyApp
@@ -36,5 +37,7 @@ public class MyApp extends Application {
         filter.addWord("色情");
         filter.addWord("反动");
         filter.addWord("江泽民");
+
+        BP.init("e9aba613dc365a00e3508de5fbf105a7");
     }
 }

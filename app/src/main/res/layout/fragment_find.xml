@@ -8,8 +8,9 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <android.support.v7.widget.Toolbar
+        <LinearLayout
             android:id="@+id/toolbar_find"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="42dp">
 
@@ -23,7 +24,8 @@
                 android:paddingRight="155dp"
                 android:orientation="horizontal"
                 android:background="@drawable/shape_back"
-                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_width="0dp"
                 android:layout_height="30dp">
                 <ImageView
                     android:layout_gravity="center"
@@ -45,7 +47,7 @@
                 android:layout_height="35dp"/>
 
 
-        </android.support.v7.widget.Toolbar>
+        </LinearLayout>
     </android.support.design.widget.AppBarLayout>
     <ScrollView
         android:layout_width="match_parent"

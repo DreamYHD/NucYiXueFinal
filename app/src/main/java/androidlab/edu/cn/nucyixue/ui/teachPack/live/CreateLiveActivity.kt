@@ -57,6 +57,7 @@ class CreateLiveActivity : AppCompatActivity(){
     private var select_time: Calendar = Calendar.getInstance() // Live 开始时间
     private var select_uri: Uri? = null // Live 封面
     private var select_type : String = ""
+    private var select_isText : String = ""
 
     private val REQUEST_CODE_CHOOSE = 0x110
 
@@ -132,6 +133,20 @@ class CreateLiveActivity : AppCompatActivity(){
             pvOptions.show()
         }
 
+        card_live_isText.setOnClickListener {
+            val types = listOf<String>(LCConfig.LIVE_TEXT, LCConfig.LIVE_VIDEO)
+            val pvOptions = OptionsPickerView.Builder(this, OptionsPickerView.OnOptionsSelectListener {
+                options1, _, _, _ ->
+                live_isText.text = types[options1].toString()
+                select_isText = types[options1]
+            })
+                    .setSubmitColor(resources.getColor(R.color.colorPrimary))
+                    .setCancelColor(resources.getColor(R.color.colorPrimary))
+                    .build()
+            pvOptions.setPicker(types)
+            pvOptions.show()
+        }
+
         live_img.setOnClickListener {
             Matisse.from(this)
                     .choose(MimeType.allOf())
@@ -148,12 +163,14 @@ class CreateLiveActivity : AppCompatActivity(){
         val live_time : String = live_time.text.toString()
         val live_summary : String = live_summary.text.toString()
         val live_type : String = live_type.text.toString()
+        val live_isText : String = live_isText.text.toString()
         when {
             live_name.isEmpty() -> Snackbar.make(img_live_name, "请输入 Live 主题！", Snackbar.LENGTH_LONG).show()
             live_price.isEmpty() -> Snackbar.make(img_live_name, "请输入 Live 价格！", Snackbar.LENGTH_LONG).show()
             live_time.isEmpty() -> Snackbar.make(img_live_name, "请选择开始时间！", Snackbar.LENGTH_LONG).show()
             live_summary.isEmpty() -> Snackbar.make(img_live_name, "请输入 Live 简介！", Snackbar.LENGTH_LONG).show()
-            live_type.isEmpty() -> Snackbar.make(img_live_name, "请选择 Live 种类！", Snackbar.LENGTH_LONG).show()
+            live_type.isEmpty() -> Snackbar.make(img_live_name, "请选择 Live 内容！", Snackbar.LENGTH_LONG).show()
+            live_isText.isEmpty() -> Snackbar.make(img_live_name, "请输入 Live 类型！", Snackbar.LENGTH_LONG).show()
             select_uri == null -> Snackbar.make(img_live_name, "请选择 Live 封面！", Snackbar.LENGTH_LONG).show()
             else -> {
                 mProgress.visibility = ProgressBar.VISIBLE
@@ -168,7 +185,7 @@ class CreateLiveActivity : AppCompatActivity(){
                                 val path = FileUtils.getFilePahtFromUri(this, select_uri!!)
                                 path?.let {
                                     Log.i(TAG, "live_name: $live_name \n live_price: $live_price \n live_time: $live_time \n live_summary: $live_summary \n live_type: $live_type \n live_pic: $path")
-                                    createLiveWithPic(live_name, select_time.time, live_summary, live_price.toInt(), select_type, it, keyword)
+                                    createLiveWithPic(live_name, select_time.time, live_summary, live_price.toInt(), live_type, live_isText, it, keyword)
                                 } ?: Log.i(TAG, "解析图片出错")
                             }
                         }
@@ -177,7 +194,7 @@ class CreateLiveActivity : AppCompatActivity(){
         }
     }
 
-    private fun createLiveWithPic(live_name : String, live_time : Date, live_summary : String, live_price : Int, live_type : String, path : String, keyword : List<String>){
+    private fun createLiveWithPic(live_name : String, live_time : Date, live_summary : String, live_price : Int, live_type : String, live_isText : String, path : String, keyword : List<String>){
         val fileName = FileUtils.getFileName(path)
         val file : AVFile = AVFile.withAbsoluteLocalPath(fileName, path)
 
