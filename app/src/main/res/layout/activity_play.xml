@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.teachPack.live.PlayActivity">
+
+    <com.tencent.rtmp.ui.TXCloudVideoView
+        android:id="@+id/live_play"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:visibility="visible"/>
+    <Button
+        android:layout_below="@id/live_play"
+        android:text="销毁播放"
+        android:id="@+id/stop_play"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_toRightOf="@id/stop_play"
+        android:layout_below="@+id/live_play"
+        android:text="暂停播放"
+        android:id="@+id/pause_stop"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/again_play"
+        android:text="继续播放"
+        android:layout_toRightOf="@id/pause_stop"
+        android:layout_below="@+id/live_play"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:text="硬件加速"
+        android:layout_below="@+id/live_play"
+        android:layout_toRightOf="@id/again_play"
+        android:id="@+id/jiasu"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>

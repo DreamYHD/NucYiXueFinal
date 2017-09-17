@@ -45,6 +45,11 @@
     <uses-permission android:name="android.permission.FLASHLIGHT"/>
     <uses-permission android:name="android.permission.HEADWARE_TEST"/>
 
+    <!-- 视频LIVE -->
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
     <application
         android:name=".MyApp"
         android:allowBackup="true"
@@ -104,6 +109,8 @@
         <activity android:name=".ui.teachPack.live.LiveCommentActivity" android:theme="@style/DetailsTheme" />
         <activity android:name=".ui.findPack.zxing.MipcaActivityCapture"/>
         <activity android:name="cn.bmob.pay.v3.act.PayAct" />
+        <activity android:name=".ui.teachPack.live.PushActivity"/>
+        <activity android:name=".ui.teachPack.live.PlayActivity"/>
 
         <service android:name=".service.LiveAudioService"/>
 

@@ -1,10 +1,14 @@
 package androidlab.edu.cn.nucyixue.ui.teachPack.live
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.Snackbar
+import android.support.v4.app.ActivityCompat
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.graphics.Palette
 import android.util.Log
@@ -26,6 +30,7 @@ import com.avos.avoscloud.im.v2.callback.AVIMConversationCreatedCallback
 import com.bigkoo.pickerview.OptionsPickerView
 import com.bigkoo.pickerview.TimePickerView
 import com.bumptech.glide.Glide
+import com.tencent.rtmp.TXLiveBase
 
 import com.zhihu.matisse.Matisse
 import com.zhihu.matisse.MimeType
@@ -46,6 +51,7 @@ import java.util.*
  * 5.创建live完成后流程
  * 7.官方用户修改
  * 8.官方用户订阅信息更新
+ * 9.创建Live待重构
  *
  * Created by MurphySL on 2017/7/24.
  */
@@ -64,6 +70,12 @@ class CreateLiveActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_live)
+
+        val sdkVer = TXLiveBase.getSDKVersionStr()
+        Log.i(TAG, "SDK $sdkVer")
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA), 100)
+        }
 
         initView()
     }
@@ -181,7 +193,10 @@ class CreateLiveActivity : AppCompatActivity(){
                         .subscribe {
                             val keyword = it.showapi_res_body.list
                             if (keyword.isNotEmpty()) {
-                                Log.i(TAG, "${keyword[0]} ${keyword[1]} ${keyword[2]} ${keyword[3]}")
+                                keyword.forEach {
+                                    Log.i(TAG, it)
+                                }
+
                                 val path = FileUtils.getFilePahtFromUri(this, select_uri!!)
                                 path?.let {
                                     Log.i(TAG, "live_name: $live_name \n live_price: $live_price \n live_time: $live_time \n live_summary: $live_summary \n live_type: $live_type \n live_pic: $path")
@@ -201,65 +216,11 @@ class CreateLiveActivity : AppCompatActivity(){
         file.saveInBackground(object : SaveCallback(){
             override fun done(p0: AVException?) {
                 if(p0 == null){
-
-                    val userId = AVUser.getCurrentUser().objectId // 用户ID
-                    val username = AVUser.getCurrentUser().username
-                    val audiences : ArrayList<LCChatKitUser> = ArrayList() // 主讲人及测试用户
-                    val test_audience = LCChatKitUser("599ac99a570c35006089bd47", "一学", "http://ac-O5aEuqAR.clouddn.com/owJk3eFkfNcDceaDUYWjz0bfDzJb8ag2r8Y8Ua70.jpg") // 官方测试用户
-                    audiences.add(test_audience)
-                    //其他主讲人：
-
-                    val audiences_clientId : ArrayList<String> = ArrayList() // 所有听众 clientId
-                    audiences.mapTo(audiences_clientId) { it.userId }
-
-                    // 群聊
-                    LCChatKit.getInstance().client.createConversation(audiences_clientId, live_name, null, false, true, object : AVIMConversationCreatedCallback(){
-                        override fun done(p0: AVIMConversation?, p1: AVIMException?) {
-                            p0?.let {
-                                val live  = Live()
-                                live.userId = userId
-                                live.username = username
-                                live.conversationId = it.conversationId
-                                live.name = live_name
-                                live.summary = live_summary
-                                live.startAt = live_time
-                                live.price = live_price
-                                live.type = live_type
-                                live.pic = file.url
-                                live.keyword = keyword
-
-                                live.put(LCConfig.LIVE_USER_ID, AVObject.createWithoutData(LCConfig.USER_TABLE, userId))
-                                live.put(LCConfig.LIVE_USER_NAME, username)
-                                live.put(LCConfig.LIVE_CONVERSATION_ID, AVObject.createWithoutData(LCConfig.CONVERSATION_TABLE, it.conversationId))
-                                live.put(LCConfig.LIVE_NAME, live_name)
-                                live.put(LCConfig.LIVE_SUMMARY, live_summary)
-                                live.put(LCConfig.LIVE_START_AT, live_time)
-                                live.put(LCConfig.LIVE_PRICE, live_price)
-                                live.put(LCConfig.LIVE_TYPE, live_type)
-                                live.put(LCConfig.LIVE_PIC, file.url)
-
-                                live.saveInBackground(object : SaveCallback(){
-                                    override fun done(p0: AVException?) {
-                                        if(p0 != null){
-                                            mProgress.visibility = ProgressBar.GONE
-                                            Snackbar.make(img_live_name, "创建 Live 信息失败！$p0", Snackbar.LENGTH_SHORT).show()
-                                            Log.i(TAG, "创建 Live 信息失败！$p0")
-                                        }else{
-                                            mProgress.visibility = ProgressBar.GONE
-                                            Snackbar.make(img_live_name, "创建Live成功", Snackbar.LENGTH_SHORT).show()
-                                            val intent = Intent(this@CreateLiveActivity, ConversationActivity::class.java)
-                                            intent.putExtra(LCConfig.LIVE_TABLE, live)
-                                            intent.putExtra(LCIMConstants.CONVERSATION_ID, it.conversationId)
-                                            startActivity(intent)
-                                        }
-                                    }
-                                })
-
-                            }?: Snackbar.make(img_live_name, "创建 Live 失败！$p0", Snackbar.LENGTH_SHORT).show()
-
-                            Log.i(TAG, p1.toString())
-                        }
-                    })
+                   if(live_type == LCConfig.LIVE_TEXT){
+                       createTextLive(live_name, live_time, live_summary, live_price, live_type, path, keyword, file)
+                   }else{
+                       createVideoLive(live_name, live_time, live_summary, live_price, live_type, path, keyword, file)
+                   }
                 }else{
                     mProgress.visibility = ProgressBar.GONE
                     Snackbar.make(live_img, "图片上传失败", Snackbar.LENGTH_LONG).show()
@@ -269,4 +230,98 @@ class CreateLiveActivity : AppCompatActivity(){
 
     }
 
+    private fun createVideoLive(live_name: String, live_time: Date, live_summary: String, live_price: Int, live_type: String, path: String, keyword: List<String>, file: AVFile) {
+        val userId = AVUser.getCurrentUser().objectId // 用户ID
+        val username = AVUser.getCurrentUser().username
+        val live  = Live()
+        live.userId = userId
+        live.username = username
+        live.name = live_name
+        live.summary = live_summary
+        live.startAt = live_time
+        live.price = live_price
+        live.type = live_type
+        live.pic = file.url
+        live.keyword = keyword
+        live.isText = LCConfig.LIVE_VIDEO
+
+        live.saveInBackground(object : SaveCallback(){
+            override fun done(p0: AVException?) {
+                if(p0 != null){
+                    mProgress.visibility = ProgressBar.GONE
+                    Snackbar.make(img_live_name, "创建 Live 信息失败！$p0", Snackbar.LENGTH_SHORT).show()
+                    Log.i(TAG, "创建 Live 信息失败！$p0")
+                }else{
+                    mProgress.visibility = ProgressBar.GONE
+                    Snackbar.make(img_live_name, "创建Live成功", Snackbar.LENGTH_SHORT).show()
+                    val intent = Intent(this@CreateLiveActivity, PushActivity::class.java)
+                    intent.putExtra(LCConfig.LIVE_TABLE, live)
+                    startActivity(intent)
+                    finish()
+                }
+            }
+        })
+    }
+
+    private fun createTextLive(live_name : String, live_time : Date, live_summary : String, live_price : Int, live_type : String, path : String, keyword : List<String>, file : AVFile){
+        val userId = AVUser.getCurrentUser().objectId // 用户ID
+        val username = AVUser.getCurrentUser().username
+        val audiences : ArrayList<LCChatKitUser> = ArrayList() // 主讲人及测试用户
+        val test_audience = LCChatKitUser("599ac99a570c35006089bd47", "一学", "http://ac-O5aEuqAR.clouddn.com/owJk3eFkfNcDceaDUYWjz0bfDzJb8ag2r8Y8Ua70.jpg") // 官方测试用户
+        audiences.add(test_audience)
+        //其他主讲人：
+
+        val audiences_clientId : ArrayList<String> = ArrayList() // 所有听众 clientId
+        audiences.mapTo(audiences_clientId) { it.userId }
+
+        // 群聊
+        LCChatKit.getInstance().client.createConversation(audiences_clientId, live_name, null, false, true, object : AVIMConversationCreatedCallback(){
+            override fun done(p0: AVIMConversation?, p1: AVIMException?) {
+                p0?.let {
+                    val live  = Live()
+                    live.userId = userId
+                    live.username = username
+                    live.conversationId = it.conversationId
+                    live.name = live_name
+                    live.summary = live_summary
+                    live.startAt = live_time
+                    live.price = live_price
+                    live.type = live_type
+                    live.pic = file.url
+                    live.keyword = keyword
+
+                    /*live.put(LCConfig.LIVE_USER_ID, AVObject.createWithoutData(LCConfig.USER_TABLE, userId))
+                    live.put(LCConfig.LIVE_USER_NAME, username)
+                    live.put(LCConfig.LIVE_CONVERSATION_ID, AVObject.createWithoutData(LCConfig.CONVERSATION_TABLE, it.conversationId))
+                    live.put(LCConfig.LIVE_NAME, live_name)
+                    live.put(LCConfig.LIVE_SUMMARY, live_summary)
+                    live.put(LCConfig.LIVE_START_AT, live_time)
+                    live.put(LCConfig.LIVE_PRICE, live_price)
+                    live.put(LCConfig.LIVE_TYPE, live_type)
+                    live.put(LCConfig.LIVE_PIC, file.url)*/
+
+                    live.saveInBackground(object : SaveCallback(){
+                        override fun done(p0: AVException?) {
+                            if(p0 != null){
+                                mProgress.visibility = ProgressBar.GONE
+                                Snackbar.make(img_live_name, "创建 Live 信息失败！$p0", Snackbar.LENGTH_SHORT).show()
+                                Log.i(TAG, "创建 Live 信息失败！$p0")
+                            }else{
+                                mProgress.visibility = ProgressBar.GONE
+                                Snackbar.make(img_live_name, "创建Live成功", Snackbar.LENGTH_SHORT).show()
+                                val intent = Intent(this@CreateLiveActivity, ConversationActivity::class.java)
+                                intent.putExtra(LCConfig.LIVE_TABLE, live)
+                                intent.putExtra(LCIMConstants.CONVERSATION_ID, it.conversationId)
+                                startActivity(intent)
+                                finish()
+                            }
+                        }
+                    })
+
+                }?: Snackbar.make(img_live_name, "创建 Live 失败！$p0", Snackbar.LENGTH_SHORT).show()
+
+                Log.i(TAG, p1.toString())
+            }
+        })
+    }
 }

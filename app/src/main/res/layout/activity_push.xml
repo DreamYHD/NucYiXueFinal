@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.teachPack.live.PushActivity">
+
+    <com.tencent.rtmp.ui.TXCloudVideoView
+        android:id="@+id/push_live"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:visibility="visible"
+     />
+    <Button
+        android:text="开始直播"
+        android:id="@+id/start_live"
+        android:layout_below="@+id/push_live"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_toRightOf="@+id/start_live"
+        android:layout_below="@+id/push_live"
+        android:text="结束直播"
+        android:id="@+id/stop_live"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_toRightOf="@+id/stop_live"
+        android:layout_below="@+id/push_live"
+        android:text="改变摄像头"
+        android:id="@+id/change"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:text="录制视频"
+        android:layout_below="@+id/push_live"
+        android:layout_toRightOf="@+id/change"
+        android:id="@+id/luzhi_live"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

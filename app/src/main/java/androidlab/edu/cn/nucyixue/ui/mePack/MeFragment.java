@@ -29,7 +29,6 @@ import com.zhihu.matisse.MimeType;
 import com.zhihu.matisse.engine.impl.GlideEngine;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -37,6 +36,7 @@ import androidlab.edu.cn.nucyixue.R;
 import androidlab.edu.cn.nucyixue.base.BaseFragment;
 import androidlab.edu.cn.nucyixue.data.bean.LU;
 import androidlab.edu.cn.nucyixue.data.bean.UserInfo;
+import androidlab.edu.cn.nucyixue.utils.ActivityUtils;
 import androidlab.edu.cn.nucyixue.utils.FileUtils;
 import androidlab.edu.cn.nucyixue.utils.config.LCConfig;
 import butterknife.BindView;
@@ -92,6 +92,7 @@ public class MeFragment extends BaseFragment {
     RelativeLayout rlLogout;
     @BindView(R.id.live_num)
     TextView liveNum;
+    Unbinder unbinder;
 
     public static MeFragment getInstance() {
         return new MeFragment();
@@ -195,8 +196,8 @@ public class MeFragment extends BaseFragment {
             query.findInBackground(new FindCallback<LU>() {
                 @Override
                 public void done(List<LU> list, AVException e) {
-                    if(e == null && !list.isEmpty()){
-                        liveNum.setText(list.size()+"");
+                    if (e == null && !list.isEmpty()) {
+                        liveNum.setText(list.size() + "");
                     }
                 }
             });
@@ -227,4 +228,9 @@ public class MeFragment extends BaseFragment {
                 .into(avatar);
     }
 
+    @OnClick(R.id.live_layout)
+    public void onLiveClicked() {
+        MyLiveFragment fragment = MyLiveFragment.getInstance();
+        ActivityUtils.replaceFragmentToActivity(getActivity().getSupportFragmentManager(), fragment, R.id.content_main);
+    }
 }

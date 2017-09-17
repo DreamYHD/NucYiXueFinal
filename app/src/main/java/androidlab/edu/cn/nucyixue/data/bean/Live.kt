@@ -58,8 +58,8 @@ class Live : AVObject(){
         get() = getInt(LCConfig.LIVE_PRICE)
         set(value) = put(LCConfig.LIVE_PRICE, value)
 
-    var conversationId : String
-        get() = getAVObject<AVObject>(LCConfig.LIVE_CONVERSATION_ID).objectId
+    var conversationId : String?
+        get() = getAVObject<AVObject>(LCConfig.LIVE_CONVERSATION_ID)?.objectId
         set(value) = put(LCConfig.LIVE_CONVERSATION_ID, AVObject.createWithoutData(LCConfig.CONVERSATION_TABLE, value))
 
     var keyword : List<String>?
@@ -83,7 +83,7 @@ class Live : AVObject(){
               pic : $pic ,
               price : $price ,
               startAt : $startAt ,
-              conversationId : $conversationId
+              conversationId : $conversationId,
               keyword : ${keyword?.size} ,
               isText : ${isText}
             }

@@ -13,6 +13,9 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a"
+        }
     }
     buildTypes {
         release {
@@ -37,6 +40,9 @@ dependencies {
     })
     compile files('src/main/jniLibs/fastjson-1.2.30.jar')
     compile files('src/main/jniLibs/okio-1.13.0.jar')
+    //腾讯云直播
+    compile(name: 'LiteAVSDK_Professional_3.3.1655', ext: 'aar')
+    //compile('LiteAVSDK_Professional_3.3.1655@arr'){ transitive = true }
     compile('cn.leancloud.android:avoscloud-push:v4.4.3@aar') { transitive = true }
     // 推送与实时聊天需要的包
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
