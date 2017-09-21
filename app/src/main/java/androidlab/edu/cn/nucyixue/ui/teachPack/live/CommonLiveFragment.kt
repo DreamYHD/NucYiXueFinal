@@ -157,7 +157,7 @@ class CommonLiveFragment : Fragment(){
         bundle.putParcelable(LCConfig.LU_TABLE, lu)
         bundle.putParcelable(LCConfig.LIVE_TABLE, live)
         intent.putExtra(LCConfig.LIVE_TABLE, bundle)
-        TeachLiveFragment.startActivity(intent)
+        startActivity(intent)
     }
 
     private fun  enterLive(live : Live) {
@@ -184,7 +184,7 @@ class CommonLiveFragment : Fragment(){
                                     val intent = Intent(context, ConversationActivity::class.java)
                                     intent.putExtra(LCConfig.LIVE_TABLE, live)
                                     intent.putExtra(LCIMConstants.CONVERSATION_ID, live.conversationId)
-                                    TeachLiveFragment.startActivity(intent)
+                                    startActivity(intent)
                                 }else{
                                     toast("Enter Conversation Fail").show()
                                     Log.i(TAG, "Enter Conversation Fail: $p0")

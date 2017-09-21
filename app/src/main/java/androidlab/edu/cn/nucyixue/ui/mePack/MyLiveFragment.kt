@@ -43,9 +43,12 @@ import com.zhy.adapter.recyclerview.base.ViewHolder
 /**
  * 已购买的Live
  *
+ * Live 表筛选错误
+ *
+ *
  * Created by MurphySL on 2017/8/22.
  */
-class MyLiveFragment private constructor(): Fragment(){
+class MyLiveFragment(): Fragment(){
 
     private val TAG : String = this.javaClass.simpleName
 
@@ -70,14 +73,6 @@ class MyLiveFragment private constructor(): Fragment(){
 
     private fun initView(rootView : View?) {
         rootView?.let {
-
-            val add_live = rootView.findViewById<FloatingActionButton>(R.id.add_live)
-            add_live.setOnClickListener {
-                LCChatKit.getInstance().client?.let {
-                    TeachLiveFragment.startActivity(Intent(context, CreateLiveActivity::class.java))
-                }?: Snackbar.make(add_live, "请先登录", Snackbar.LENGTH_LONG).show()
-            }
-
             live_list = rootView.findViewById(R.id.live_list)
         }
     }
@@ -187,7 +182,7 @@ class MyLiveFragment private constructor(): Fragment(){
                                     val intent = Intent(context, ConversationActivity::class.java)
                                     intent.putExtra(LCConfig.LIVE_TABLE, live)
                                     intent.putExtra(LCIMConstants.CONVERSATION_ID, live.conversationId)
-                                    TeachLiveFragment.startActivity(intent)
+                                    startActivity(intent)
                                 }else{
                                     toast("Enter Conversation Fail").show()
                                     Log.i(TAG, "Enter Conversation Fail: $p0")

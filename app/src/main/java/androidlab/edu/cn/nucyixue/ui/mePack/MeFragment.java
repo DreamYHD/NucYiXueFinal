@@ -230,6 +230,7 @@ public class MeFragment extends BaseFragment {
 
     @OnClick(R.id.live_layout)
     public void onLiveClicked() {
+        Log.i(TAG, "onLiveClicked");
         MyLiveFragment fragment = MyLiveFragment.getInstance();
         ActivityUtils.replaceFragmentToActivity(getActivity().getSupportFragmentManager(), fragment, R.id.content_main);
     }

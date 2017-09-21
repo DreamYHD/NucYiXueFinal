@@ -7,7 +7,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.avos.avoscloud.AVUser;
@@ -15,6 +14,8 @@ import com.avos.avoscloud.AVUser;
 import butterknife.ButterKnife;
 
 /**
+ * BaseActivity
+ *
  * Created by dreamY on 2017/7/20.
  */
 
@@ -22,6 +23,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected FragmentManager mFragmentManager;
     protected Activity mActivity;
     protected AVUser mAVUserFinal;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,15 +34,18 @@ public abstract class BaseActivity extends AppCompatActivity {
         mAVUserFinal = AVUser.getCurrentUser();
         logicActivity(savedInstanceState);
     }
+
     protected abstract void logicActivity(Bundle mSavedInstanceState);
 
     protected abstract int getLayoutId();
+
     public void toast(String toast,int time){
         if (time == 0){
             Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
         }
         Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
     }
+
     public void snackBar(View v,String snackBar, int time){
         if (time == 0){
             Snackbar.make(v,snackBar,Snackbar.LENGTH_SHORT)

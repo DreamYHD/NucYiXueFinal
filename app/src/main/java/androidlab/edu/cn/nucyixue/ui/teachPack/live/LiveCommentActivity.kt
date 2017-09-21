@@ -46,7 +46,12 @@ class LiveCommentActivity : AppCompatActivity() {
         }
 
         skip.setOnClickListener {
-            enterLive(live)
+            if(live.isText == LCConfig.LIVE_TEXT){
+                enterLive(live)
+            }else{
+                enterVideo(live)
+            }
+
             finish()
         }
 
@@ -102,6 +107,12 @@ class LiveCommentActivity : AppCompatActivity() {
 
             })
         }
+    }
+
+    private fun enterVideo(live: Live) {
+        val intent = Intent(this, PlayActivity::class.java)
+        intent.putExtra(LCConfig.LIVE_TABLE, live)
+        startActivity(intent)
     }
 
     private fun  enterLive(live : Live) {

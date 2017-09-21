@@ -15,6 +15,11 @@ import androidlab.edu.cn.nucyixue.base.BaseActivity;
 import cn.leancloud.chatkit.LCChatKit;
 import io.reactivex.functions.Consumer;
 
+/**
+ * 1.允许未注册用户登录
+ * 2.权限申请问题
+ * 3.打开 MainActivity 速度慢
+ */
 public class SplashActivity extends BaseActivity {
     private static final String TAG = "SplashActivity";
 
@@ -23,9 +28,8 @@ public class SplashActivity extends BaseActivity {
             LCChatKit.getInstance().open(mAVUserFinal.getObjectId(), new AVIMClientCallback() {
                 @Override
                 public void done(AVIMClient avimClient, AVIMException e) {
-                    if(e != null){
+                    if(e != null)
                         Toast.makeText(SplashActivity.this, "初始化失败", Toast.LENGTH_LONG).show();
-                    }
 
                     RxPermissions mRxPermissions = new RxPermissions(SplashActivity.this);
 

@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.BounceInterpolator
 import androidlab.edu.cn.nucyixue.R
+import androidlab.edu.cn.nucyixue.ui.mePack.MyLiveFragment
 import androidlab.edu.cn.nucyixue.utils.LocationManager
 import com.amap.api.location.AMapLocation
 import com.amap.api.maps.AMap
@@ -30,9 +31,16 @@ import com.amap.api.maps.model.animation.ScaleAnimation
  *
  * Created by MurphySL on 2017/7/7.
  */
-object TeachMapFragment : Fragment() {
+class TeachMapFragment : Fragment() {
 
     private val TAG = "MapFragment"
+
+    companion object {
+        @JvmStatic
+        val instance : TeachMapFragment by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
+            TeachMapFragment()
+        }
+    }
 
     private lateinit var map : MapView
     private lateinit var aMap : AMap

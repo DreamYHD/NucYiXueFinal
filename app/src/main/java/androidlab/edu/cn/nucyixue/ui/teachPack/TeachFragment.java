@@ -39,8 +39,8 @@ public class TeachFragment extends BaseFragment {
 
     @Override
     protected void init() {
-        TeachLiveFragment mLive = TeachLiveFragment.INSTANCE;
-        TeachMapFragment mNear = TeachMapFragment.INSTANCE;
+        TeachLiveFragment mLive = TeachLiveFragment.getInstance();
+        TeachMapFragment mNear = TeachMapFragment.getInstance();
         TeachSourceFragment mSource = TeachSourceFragment.getInstance();
         mFragmentList.add(mLive);
         mFragmentList.add(mSource);

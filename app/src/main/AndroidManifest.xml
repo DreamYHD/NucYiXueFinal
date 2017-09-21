@@ -96,6 +96,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="cn.bmob.pay.v3.act.PayActivity" />git
         <activity android:name=".ui.mePack.LoginActivity"/>
         <activity android:name=".ui.mePack.RegisterActivity"/>
         <activity android:name=".ui.mePack.MeSmallActivity"/>
@@ -108,7 +109,6 @@
         <activity android:name=".ui.imPack.ConversationActivity" />
         <activity android:name=".ui.teachPack.live.LiveCommentActivity" android:theme="@style/DetailsTheme" />
         <activity android:name=".ui.findPack.zxing.MipcaActivityCapture"/>
-        <activity android:name="cn.bmob.pay.v3.act.PayAct" />
         <activity android:name=".ui.teachPack.live.PushActivity"/>
         <activity android:name=".ui.teachPack.live.PlayActivity"/>
 
