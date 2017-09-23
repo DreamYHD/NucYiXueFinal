@@ -2,7 +2,6 @@ package androidlab.edu.cn.nucyixue.ui.teachPack.live
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -59,7 +58,7 @@ class CommonLiveFragment : Fragment(){
             toolbar_title.text = "推荐"
 
             live_list.layoutManager = LinearLayoutManager(context)
-            adapter = object : AnimCommonAdapter<Live>(context, R.layout.item_live_new, suggest_list){
+            adapter = object : AnimCommonAdapter<Live>(context, R.layout.item_live, suggest_list){
                 override fun convert(holder: ViewHolder?, t: Live?, position: Int) {
                     t?.let {
                         holder?.setText(R.id.live_name, it.name)
@@ -157,7 +156,7 @@ class CommonLiveFragment : Fragment(){
         bundle.putParcelable(LCConfig.LU_TABLE, lu)
         bundle.putParcelable(LCConfig.LIVE_TABLE, live)
         intent.putExtra(LCConfig.LIVE_TABLE, bundle)
-        TeachLiveFragment.startActivity(intent)
+        startActivity(intent)
     }
 
     private fun  enterLive(live : Live) {
@@ -184,7 +183,7 @@ class CommonLiveFragment : Fragment(){
                                     val intent = Intent(context, ConversationActivity::class.java)
                                     intent.putExtra(LCConfig.LIVE_TABLE, live)
                                     intent.putExtra(LCIMConstants.CONVERSATION_ID, live.conversationId)
-                                    TeachLiveFragment.startActivity(intent)
+                                    startActivity(intent)
                                 }else{
                                     toast("Enter Conversation Fail").show()
                                     Log.i(TAG, "Enter Conversation Fail: $p0")

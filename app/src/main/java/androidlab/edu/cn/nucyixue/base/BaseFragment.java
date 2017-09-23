@@ -14,12 +14,14 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
+ * BaseFragment
+ *
  * Created by dreamY on 2017/7/20.
  */
 
 public abstract class BaseFragment extends Fragment {
-
     private static final String TAG = "BaseFragment";
+
     protected  Unbinder unbinder;
     protected AVUser mAVUserFinal;
 

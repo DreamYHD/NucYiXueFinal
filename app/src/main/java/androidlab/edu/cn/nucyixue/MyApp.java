@@ -32,7 +32,7 @@ public class MyApp extends Application {
 
         AVOSCloud.initialize(this,"O5aEuqARNjtbvT2tGTW23bB5-gzGzoHsz","XMaxhc0a9L5cDOIAXrBeqoS8");
 
-        AVOSCloud.setDebugLogEnabled(true);
+        AVOSCloud.setDebugLogEnabled(isDebug);
 
         filter.addWord("色情");
         filter.addWord("反动");

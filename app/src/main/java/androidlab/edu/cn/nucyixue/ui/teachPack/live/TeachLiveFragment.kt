@@ -38,12 +38,21 @@ import com.zhy.adapter.recyclerview.base.ViewHolder
 import kotlin.collections.ArrayList
 
 /**
- * Lives order by star and start time
+ * Lives order by star and start time\
+ *
+ * 支付问题
  *
  * Created by MurphySL on 2017/7/24.
  */
-object TeachLiveFragment : Fragment(){
+class TeachLiveFragment : Fragment(){
     private val TAG : String = this.javaClass.simpleName
+
+    companion object {
+        @JvmStatic
+        val instance : TeachLiveFragment by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
+            TeachLiveFragment()
+        }
+    }
 
     private lateinit var live_list : RecyclerView
 
@@ -90,7 +99,7 @@ object TeachLiveFragment : Fragment(){
                 }else{
                     p0?.let {
                         live_list.layoutManager = LinearLayoutManager(context)
-                        live_list.adapter = object : AnimCommonAdapter<Live>(context, R.layout.item_live_new, it){
+                        live_list.adapter = object : AnimCommonAdapter<Live>(context, R.layout.item_live, it){
                             override fun convert(holder: ViewHolder?, t: Live?, position: Int) {
                                 t?.let {
                                     holder?.setText(R.id.live_name, it.name)
@@ -123,13 +132,18 @@ object TeachLiveFragment : Fragment(){
             return
         }
 
-        val intent = Intent(Intent.ACTION_MAIN)
-        intent.addCategory(Intent.CATEGORY_LAUNCHER)
-        val cn = ComponentName("com.bmob.app.sport", "com.bmob.app.sport.wxapi.BmobActivity")
-        intent.component = cn
-        startActivity(intent)
+        try {
+            val intent = Intent(Intent.ACTION_MAIN)
+            intent.addCategory(Intent.CATEGORY_LAUNCHER)
+            val cn = ComponentName("com.bmob.app.sport", "com.bmob.app.sport.wxapi.BmobActivity")
+            intent.component = cn
+            activity.startActivity(intent)
+        }catch (e : Throwable){
+            e.printStackTrace()
+        }
 
-        BP.pay(t.objectId, t.name, t.price as Double, true, object : PListener{
+
+        BP.pay(t.objectId, t.name, t.price.toDouble(), true, object : PListener{
             override fun unknow() {
                 Toast.makeText(activity, "支付结果未知,请稍后手动查询", Toast.LENGTH_SHORT).show()
                 hideDialog()
@@ -140,6 +154,7 @@ object TeachLiveFragment : Fragment(){
                     Log.i(TAG, "orderId : " + it)
                 }
                 showDialog("获取订单成功，等待跳转支付页面")
+                uploadInfo(t)// 待删除
             }
 
             override fun fail(p0: Int, p1: String?) {

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:id="@+id/live_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/live_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="从入门到精通"
+            android:textSize="@dimen/text_largest" />
+
+        <RatingBar
+            android:id="@+id/live_star"
+            style="@android:style/Widget.Material.Light.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_below="@+id/live_name"
+            android:layout_marginTop="10dp"
+            android:isIndicator="true"
+            android:numStars="5" />
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/live_key"
+            android:layout_below="@+id/live_star"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:flexWrap="wrap"/>
+
+        <Button
+            android:id="@+id/live_join"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/live_key"
+            android:background="@color/colorPrimaryDark"
+            android:text="立即参加(￥69)"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/lcim_textsize_large" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:padding="20dp"
+        android:layout_height="wrap_content">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/speaker_avatar"
+            android:src="@drawable/icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:id="@+id/live_speaker"
+            android:layout_toEndOf="@id/speaker_avatar"
+            android:layout_marginStart="10dp"
+            android:layout_width="wrap_content"
+            android:text="主讲人"
+            android:gravity="center"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:id="@+id/live_summary"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/live_speaker"
+            android:text="@string/create_summary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></LinearLayout>
+
+
+
+</LinearLayout>
