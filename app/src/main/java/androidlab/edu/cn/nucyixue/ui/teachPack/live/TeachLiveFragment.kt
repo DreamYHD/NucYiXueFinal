@@ -99,7 +99,7 @@ class TeachLiveFragment : Fragment(){
                 }else{
                     p0?.let {
                         live_list.layoutManager = LinearLayoutManager(context)
-                        live_list.adapter = object : AnimCommonAdapter<Live>(context, R.layout.item_live_new, it){
+                        live_list.adapter = object : AnimCommonAdapter<Live>(context, R.layout.item_live, it){
                             override fun convert(holder: ViewHolder?, t: Live?, position: Int) {
                                 t?.let {
                                     holder?.setText(R.id.live_name, it.name)

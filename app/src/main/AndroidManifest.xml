@@ -85,7 +85,6 @@
         <!-- 反馈组件 END -->
 
 
-
         <activity android:name=".ui.MainActivity"/>
         <activity
             android:name=".ui.SplashActivity"
@@ -111,6 +110,7 @@
         <activity android:name=".ui.findPack.zxing.MipcaActivityCapture"/>
         <activity android:name=".ui.teachPack.live.PushActivity"/>
         <activity android:name=".ui.teachPack.live.PlayActivity"/>
+        <activity android:name=".ui.common.LiveDetailActivity"/>
 
         <service android:name=".service.LiveAudioService"/>
 

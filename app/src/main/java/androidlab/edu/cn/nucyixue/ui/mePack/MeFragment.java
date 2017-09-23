@@ -8,9 +8,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -36,11 +33,12 @@ import androidlab.edu.cn.nucyixue.R;
 import androidlab.edu.cn.nucyixue.base.BaseFragment;
 import androidlab.edu.cn.nucyixue.data.bean.LU;
 import androidlab.edu.cn.nucyixue.data.bean.UserInfo;
+import androidlab.edu.cn.nucyixue.ui.common.LiveFragment;
 import androidlab.edu.cn.nucyixue.utils.ActivityUtils;
 import androidlab.edu.cn.nucyixue.utils.FileUtils;
 import androidlab.edu.cn.nucyixue.utils.config.LCConfig;
+import androidlab.edu.cn.nucyixue.utils.config.LiveFragmentType;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -231,7 +229,11 @@ public class MeFragment extends BaseFragment {
     @OnClick(R.id.live_layout)
     public void onLiveClicked() {
         Log.i(TAG, "onLiveClicked");
-        MyLiveFragment fragment = MyLiveFragment.getInstance();
+        //MyLiveFragment fragment = MyLiveFragment.getInstance();
+        LiveFragment fragment = LiveFragment.getInstance();
+        Bundle bundle = new Bundle();
+        bundle.putString(LiveFragmentType.getLIVE_FRAGMENT_TYPE(), LiveFragmentType.getJOINED());
+        fragment.setArguments(bundle);
         ActivityUtils.replaceFragmentToActivity(getActivity().getSupportFragmentManager(), fragment, R.id.content_main);
     }
 }

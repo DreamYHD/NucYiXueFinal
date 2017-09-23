@@ -7,4 +7,6 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="result_pop_padding">2dp</dimen>
+
+    <dimen name="text_largest">30dp</dimen>
 </resources>

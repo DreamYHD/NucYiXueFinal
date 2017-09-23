@@ -2,7 +2,6 @@ package androidlab.edu.cn.nucyixue.ui.teachPack.live
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -59,7 +58,7 @@ class CommonLiveFragment : Fragment(){
             toolbar_title.text = "推荐"
 
             live_list.layoutManager = LinearLayoutManager(context)
-            adapter = object : AnimCommonAdapter<Live>(context, R.layout.item_live_new, suggest_list){
+            adapter = object : AnimCommonAdapter<Live>(context, R.layout.item_live, suggest_list){
                 override fun convert(holder: ViewHolder?, t: Live?, position: Int) {
                     t?.let {
                         holder?.setText(R.id.live_name, it.name)

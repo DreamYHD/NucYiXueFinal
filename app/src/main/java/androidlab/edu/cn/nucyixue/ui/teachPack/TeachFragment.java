@@ -1,6 +1,7 @@
 package androidlab.edu.cn.nucyixue.ui.teachPack;
 
 
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -13,9 +14,11 @@ import java.util.List;
 
 import androidlab.edu.cn.nucyixue.R;
 import androidlab.edu.cn.nucyixue.base.BaseFragment;
+import androidlab.edu.cn.nucyixue.ui.common.LiveFragment;
 import androidlab.edu.cn.nucyixue.ui.teachPack.live.TeachLiveFragment;
 import androidlab.edu.cn.nucyixue.ui.teachPack.map.TeachMapFragment;
 import androidlab.edu.cn.nucyixue.ui.teachPack.source.TeachSourceFragment;
+import androidlab.edu.cn.nucyixue.utils.config.LiveFragmentType;
 import butterknife.BindView;
 
 /**
@@ -39,7 +42,11 @@ public class TeachFragment extends BaseFragment {
 
     @Override
     protected void init() {
-        TeachLiveFragment mLive = TeachLiveFragment.getInstance();
+        LiveFragment mLive = LiveFragment.getInstance();
+        Bundle bundle = new Bundle();
+        bundle.putString(LiveFragmentType.getLIVE_FRAGMENT_TYPE(), LiveFragmentType.getRECOMMEND());
+        mLive.setArguments(bundle);
+
         TeachMapFragment mNear = TeachMapFragment.getInstance();
         TeachSourceFragment mSource = TeachSourceFragment.getInstance();
         mFragmentList.add(mLive);

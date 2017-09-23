@@ -5,14 +5,14 @@ import android.content.Context
 import android.support.v7.widget.CardView
 import com.zhy.adapter.recyclerview.CommonAdapter
 import com.zhy.adapter.recyclerview.base.ViewHolder
-import kotlinx.android.synthetic.main.item_live_new.view.*
+import kotlinx.android.synthetic.main.item_live.view.*
 
 /**
- * Adapter with animation for item_live_new
+ * Adapter with animation for item_live
  *
  * Created by MurphySL on 2017/7/27.
  */
-abstract class AnimCommonAdapter<T>(val context : Context, layoutId : Int, val data : MutableList<T>) : CommonAdapter<T>(context, layoutId, data){
+abstract class AnimCommonAdapter<T>(val context : Context, layoutId : Int, val data : List<T>) : CommonAdapter<T>(context, layoutId, data){
 
     private var oldPosition = 0
 

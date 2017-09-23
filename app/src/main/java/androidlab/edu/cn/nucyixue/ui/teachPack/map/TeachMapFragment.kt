@@ -10,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.BounceInterpolator
 import androidlab.edu.cn.nucyixue.R
-import androidlab.edu.cn.nucyixue.ui.mePack.MyLiveFragment
 import androidlab.edu.cn.nucyixue.utils.LocationManager
 import com.amap.api.location.AMapLocation
 import com.amap.api.maps.AMap
