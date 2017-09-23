@@ -1,6 +1,5 @@
 package androidlab.edu.cn.nucyixue.ui.findPack;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import androidlab.edu.cn.nucyixue.R;

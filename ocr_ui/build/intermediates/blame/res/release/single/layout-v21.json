@@ -14,5 +14,21 @@
     {
         "merged": "H:\\new\\NucYiXue\\ocr_ui\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_template_icon_group.xml",
         "source": "C:\\Users\\MurphySL\\.android\\build-cache\\3e89acfefdaaeb1af6f6a2d02fdddb360988d8ff\\output\\res\\layout-v21\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "F:\\huawu\\NucYiXue\\ocr_ui\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_action.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\6c285bc2d4112c37be9cd95964317b3d6f63c215\\output\\res\\layout-v21\\notification_action.xml"
+    },
+    {
+        "merged": "F:\\huawu\\NucYiXue\\ocr_ui\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\6c285bc2d4112c37be9cd95964317b3d6f63c215\\output\\res\\layout-v21\\notification_template_custom_big.xml"
+    },
+    {
+        "merged": "F:\\huawu\\NucYiXue\\ocr_ui\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\6c285bc2d4112c37be9cd95964317b3d6f63c215\\output\\res\\layout-v21\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "F:\\huawu\\NucYiXue\\ocr_ui\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\6c285bc2d4112c37be9cd95964317b3d6f63c215\\output\\res\\layout-v21\\notification_template_icon_group.xml"
     }
 ]

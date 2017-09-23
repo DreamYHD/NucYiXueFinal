@@ -8,9 +8,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -40,7 +38,6 @@ import androidlab.edu.cn.nucyixue.utils.ActivityUtils;
 import androidlab.edu.cn.nucyixue.utils.FileUtils;
 import androidlab.edu.cn.nucyixue.utils.config.LCConfig;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -99,7 +96,7 @@ public class MeFragment extends BaseFragment {
     }
 
     @Override
-    protected void init() {
+    protected void init(View mView, Bundle mSavedInstanceState) {
 
     }
 

@@ -1,21 +1,24 @@
 package androidlab.edu.cn.nucyixue.ui.teachPack;
 
 
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import androidlab.edu.cn.nucyixue.R;
 import androidlab.edu.cn.nucyixue.base.BaseFragment;
+import androidlab.edu.cn.nucyixue.ui.map.TeachMapFragment;
 import androidlab.edu.cn.nucyixue.ui.teachPack.live.TeachLiveFragment;
-import androidlab.edu.cn.nucyixue.ui.teachPack.map.TeachMapFragment;
 import androidlab.edu.cn.nucyixue.ui.teachPack.source.TeachSourceFragment;
+import androidlab.edu.cn.nucyixue.ui.teachPack.xuanshangPack.XuanshangFragment;
 import butterknife.BindView;
 
 /**
@@ -30,7 +33,7 @@ public class TeachFragment extends BaseFragment {
     ViewPager mTeachMainViewpager;
     @BindView(R.id.toolbar_teach)
     Toolbar mToolbarTeach;
-    private String[] mString = {"Live", "资源", "附近"};
+    private String[] mString = {"Live", "资源", "悬赏"};
     private ArrayList<Fragment> mFragmentList = new ArrayList<>();
 
     public static TeachFragment getInstance() {
@@ -38,9 +41,9 @@ public class TeachFragment extends BaseFragment {
     }
 
     @Override
-    protected void init() {
+    protected void init(View mView, Bundle mSavedInstanceState) {
         TeachLiveFragment mLive = TeachLiveFragment.INSTANCE;
-        TeachMapFragment mNear = TeachMapFragment.INSTANCE;
+        XuanshangFragment mNear = XuanshangFragment.getInstance();
         TeachSourceFragment mSource = TeachSourceFragment.getInstance();
         mFragmentList.add(mLive);
         mFragmentList.add(mSource);

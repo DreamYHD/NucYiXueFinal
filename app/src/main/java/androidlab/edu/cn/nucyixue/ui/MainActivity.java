@@ -24,10 +24,11 @@ import androidlab.edu.cn.nucyixue.net.Service;
 import androidlab.edu.cn.nucyixue.ocr.FileUtil;
 import androidlab.edu.cn.nucyixue.ocr.RecognizeService;
 import androidlab.edu.cn.nucyixue.ui.findPack.FindFragment;
+import androidlab.edu.cn.nucyixue.ui.map.TeachMapFragment;
 import androidlab.edu.cn.nucyixue.ui.mePack.MeFragment;
 import androidlab.edu.cn.nucyixue.ui.teachPack.TeachFragment;
 import androidlab.edu.cn.nucyixue.ui.teachPack.live.CommonLiveFragment;
-import androidlab.edu.cn.nucyixue.ui.xuanshangPack.XuanshangFragment;
+import androidlab.edu.cn.nucyixue.ui.teachPack.xuanshangPack.XuanshangFragment;
 import androidlab.edu.cn.nucyixue.utils.ActivityUtils;
 import androidlab.edu.cn.nucyixue.utils.BottomNavigationViewHelper;
 import butterknife.BindView;
@@ -64,7 +65,7 @@ public class MainActivity extends BaseActivity {
                         ActivityUtils.replaceFragmentToActivity(mFragmentManager, TeachFragment.getInstance(),R.id.content_main);
                         break;
                     case R.id.addque_item:
-                        ActivityUtils.replaceFragmentToActivity(mFragmentManager, XuanshangFragment.getInstance(),R.id.content_main);
+                        ActivityUtils.replaceFragmentToActivity(mFragmentManager, TeachMapFragment.INSTANCE,R.id.content_main);
                         break;
                     case R.id.me_item:
                         ActivityUtils.replaceFragmentToActivity(mFragmentManager, MeFragment.getInstance(),R.id.content_main);

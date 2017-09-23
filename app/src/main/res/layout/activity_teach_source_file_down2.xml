@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:background="#eaeaea"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="androidlab.edu.cn.nucyixue.ui.teachPack.source.TeachSourceFileDownActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/source_file_down_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:background="#ffff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:id="@+id/source_down_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:text="数据结构试卷与试题"
+            android:textColor="#100c2d"
+            android:textSize="18sp"/>
+        <TextView
+            android:paddingTop="5dp"
+            android:textSize="10sp"
+            android:id="@+id/source_down_school"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_below="@+id/source_down_title"
+            android:paddingLeft="15dp"
+            android:text="中北大学"/>
+
+        <TextView
+            android:layout_centerVertical="true"
+            android:paddingTop="3dp"
+            android:textSize="10sp"
+            android:paddingLeft="15dp"
+            android:layout_below="@+id/source_down_school"
+            android:id="@+id/source_down_user"
+            android:layout_width="150dp"
+            android:layout_height="20dp"
+            android:text="发布人"/>
+
+        <TextView
+            android:gravity="center"
+            android:paddingTop="3dp"
+            android:textSize="10sp"
+            android:text="发布时间"
+            android:layout_toRightOf="@+id/source_down_user"
+            android:layout_below="@+id/source_down_school"
+            android:id="@+id/source_down_time"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"/>
+    </RelativeLayout>
+    <TextView
+        android:textColor="#50b1b6"
+        android:paddingLeft="15dp"
+        android:layout_margin="15dp"
+        android:textSize="20sp"
+        android:text="资料详情"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:background="#ffff"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:paddingLeft="15dp"
+        android:id="@+id/source_text_show"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_marginTop="5dp"
+        android:text="该资料里面有"
+        android:textColor="#50b1b6"
+        android:paddingLeft="15dp"
+        android:layout_margin="15dp"
+        android:textSize="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:paddingLeft="15dp"
+        android:id="@+id/source_down_showFileName"
+        android:layout_marginTop="0dp"
+        android:background="#ffff"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <ImageView
+        android:id="@+id/source_down_btn"
+        android:src="@drawable/down_icon"
+        android:layout_gravity="center"
+        android:layout_width="100dp"
+        android:layout_height="100dp"/>
+    <ProgressBar
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:id="@+id/source_down_progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:maxHeight="48dp"
+        android:minHeight="48dp"
+        android:progress="0"
+        android:visibility="gone" />
+
+
+</LinearLayout>

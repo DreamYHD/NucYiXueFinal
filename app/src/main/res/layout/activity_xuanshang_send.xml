@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="androidlab.edu.cn.nucyixue.ui.teachPack.xuanshangPack.XuanshangSendActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/xuanshang_back_img"
+                android:layout_gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/back"/>
+
+            <TextView
+                android:textColor="#ffff"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="@string/show_renwu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"/>
+
+            <TextView
+                android:id="@+id/xuanshang_send_btn"
+                android:text="@string/send_renwu"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textColor="#ffff"
+                android:textSize="15sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+        </LinearLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <EditText
+
+        android:paddingTop="4dp"
+        android:textColor="#89d1ca"
+        android:paddingLeft="10dp"
+        android:hint="描述相关信息"
+        android:id="@+id/xuanshang_edit_show"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/shape_back"
+        android:gravity="top|left"
+        android:inputType="textMultiLine"
+        android:lines="3"
+        android:maxWidth="5.0dip"
+        android:minWidth="10.0dip"
+        android:scrollHorizontally="false"
+        android:textSize="20sp"/>
+    <EditText
+        android:id="@+id/xuanshang_send_tags"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textSize="10sp"
+        android:textColor="#89d1ca"
+        android:paddingLeft="10dp"
+        android:background="@drawable/shape_back"
+        android:hint="添加标签eg: #高等数学#线性代数"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/xuanshang_image_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.RecyclerView>
+    <ImageView
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="#d2d2d2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <ImageView
+        android:layout_gravity="center"
+        android:id="@+id/xuanhang_send_add_image"
+        android:layout_margin="10dp"
+        android:src="@drawable/add_big"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
+    <ImageView
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="#d2d2d2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+
+            android:id="@+id/xuanshang_send_location_image"
+            android:src="@drawable/ic_edit_location_black_24dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+        <TextView
+
+            android:text="中北大学"
+            android:layout_marginLeft="10dp"
+            android:textColor="#808080"
+            android:gravity="center"
+            android:id="@+id/xuanshang_send_location_text"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/money_color"/>
+        <EditText
+            android:hint="请输入金额"
+            android:textSize="14sp"
+            android:id="@+id/xuanshang_send_money_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="1.02元"
+            android:textColor="#808080"/>
+    </LinearLayout>
+
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/xuanshan_send_progressbar"
+        android:layout_gravity="center"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
+
+
+
+
+
+
+</LinearLayout>

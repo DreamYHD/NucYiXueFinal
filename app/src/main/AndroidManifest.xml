@@ -59,10 +59,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+
         <!-- 高德地图 Key -->
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="a9731200a101e4d9a8a04521b2673aa9" />
+            android:value="2dcc39659cce6fdaf96caedf6e06ac0c"/>
 
         <!-- 定位 Service -->
         <service android:name="com.amap.api.location.APSService" />
@@ -83,16 +84,12 @@
         <!-- 反馈组件（需要加入以下声明）START -->
         <activity android:name="com.avos.avoscloud.feedback.ThreadActivity"/>
         <!-- 反馈组件 END -->
-
-
-
         <activity android:name=".ui.MainActivity"/>
         <activity
             android:name=".ui.SplashActivity"
             android:theme="@style/AppTheme.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -111,7 +108,9 @@
         <activity android:name="cn.bmob.pay.v3.act.PayAct" />
         <activity android:name=".ui.teachPack.live.PushActivity"/>
         <activity android:name=".ui.teachPack.live.PlayActivity"/>
-
+        <activity android:name=".ui.teachPack.xuanshangPack.XuanshangGetActivity"/>
+        <activity android:name=".ui.teachPack.xuanshangPack.XuanshangSendActivity"/>
+        <activity android:name=".ui.CameraActivity"/>
         <service android:name=".service.LiveAudioService"/>
 
     </application>

@@ -1,21 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/search_view"
+        android:layout_marginRight="50dp"
+        android:layout_gravity="top"
+        android:layout_marginLeft="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <EditText
+            android:layout_weight="5"
+            android:layout_marginRight="40dp"
+            android:id="@+id/fragment_map_edit"
+            android:background="@null"
+            android:paddingLeft="10dp"
+            android:hint="搜索"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+        <ImageView
+            android:id="@+id/fragment_map_search_btn"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:src="@drawable/search_green"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <Button
+        android:layout_gravity="right|bottom"
+        android:id="@+id/map_add_circle"
+        android:layout_width="50dp"
+        android:layout_height="51dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/ic_add_circle_map_black_24dp"
+        />
     <com.amap.api.maps.MapView
         android:id="@+id/map"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="368dp"
-        android:layout_height="0dp"
-        tools:layout_editor_absoluteX="8dp">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
     </com.amap.api.maps.MapView>
-
-
-</android.support.constraint.ConstraintLayout>
+</android.support.design.widget.CoordinatorLayout>

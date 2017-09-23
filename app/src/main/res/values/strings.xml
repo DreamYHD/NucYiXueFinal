@@ -29,4 +29,19 @@
     <string name="live_comment_skip">稍后评价</string>
 
     <string name="scan_text">将二维码放入框内, 即可自动扫描</string>
+    <string name="team_name">小组名称</string>
+    <string name="team_number_num">目标人数</string>
+    <string name="team_pan">小组目标计划</string>
+    <string name="wang_join">申请加入</string>
+    <string name="study_write">学习记录</string>
+    <string name="finish_code">完成任务</string>
+    <string name="need_people_num_code">需要人数</string>
+    <string name="cuerrent_people_num_code">当前人数</string>
+    <string name="team_is_on_code">小组正在进行中</string>    <string name="show_renwu">任务发布</string>
+    <string name="send_renwu">发布</string>
+    <string name="get_image">获取图片</string>
+    <string name="photo">拍照</string>
+    <string name="select_image">图片选择器</string>
+
+
 </resources>
