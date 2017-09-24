@@ -55,7 +55,7 @@
             android:background="@color/colorPrimaryDark"
             android:text="立即参加(￥69)"
             android:textColor="@color/colorWhite"
-            android:textSize="@dimen/lcim_textsize_large" />
+            android:textSize="15sp" />
     </RelativeLayout>
 
     <TextView

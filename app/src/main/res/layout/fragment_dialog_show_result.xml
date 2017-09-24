@@ -22,7 +22,7 @@
         android:paddingLeft="10dp"
         android:textStyle="bold"
         android:paddingRight="10dp"
-        android:textColor="@color/lcim_bottom_bar_text_black"
+        android:textColor="#ffff"
         android:layout_marginTop="10dp"
         android:id="@+id/dialog_result_description1"
         android:gravity="center"

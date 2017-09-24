@@ -3,8 +3,8 @@
     package="com.baidu.ocr.ui.test" >
 
     <uses-sdk
-        android:minSdkVersion="14"
-        android:targetSdkVersion="25" />
+        android:minSdkVersion="21"
+        android:targetSdkVersion="26" />
 
     <instrumentation
         android:name="android.support.test.runner.AndroidJUnitRunner"
@@ -20,6 +20,10 @@
     <uses-feature android:name="android.hardware.camera2.full" />
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <meta-data
+        android:name="android.support.VERSION"
+        android:value="26.0.0-alpha1" />
 
     <application
         android:allowBackup="true"

@@ -8,12 +8,12 @@
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\9c1500967dc3b1e63716d3addcb80890f562ca66\\output\\res\\layout\\abc_popup_menu_header_item_layout.xml"
     },
     {
-        "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",
-        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\layout\\abc_expanded_menu_layout.xml"
-    },
-    {
         "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
         "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\layout\\abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",
+        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\layout\\abc_expanded_menu_layout.xml"
     },
     {
         "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\lcim_conversation_fragment.xml",
@@ -28,12 +28,12 @@
         "source": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\layout\\lcim_bottom_bar_action_layout.xml"
     },
     {
-        "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
-        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\layout\\notification_template_media.xml"
-    },
-    {
         "merged": "F:\\huawu\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\lcim_chat_item_right_text_layout.xml",
         "source": "F:\\huawu\\NucYiXue\\leancloudchatkit\\src\\main\\res\\layout\\lcim_chat_item_right_text_layout.xml"
+    },
+    {
+        "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
+        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\layout\\notification_template_media.xml"
     },
     {
         "merged": "F:\\huawu\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_item_layout.xml",
@@ -104,12 +104,12 @@
         "source": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\layout\\lcim_conversation_activity.xml"
     },
     {
-        "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
-        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\layout\\abc_list_menu_item_radio.xml"
-    },
-    {
         "merged": "F:\\huawu\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\9c1500967dc3b1e63716d3addcb80890f562ca66\\output\\res\\layout\\notification_template_media.xml"
+    },
+    {
+        "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
+        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\layout\\abc_list_menu_item_radio.xml"
     },
     {
         "merged": "F:\\huawu\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\lcim_chat_item_left_layout.xml",
@@ -128,24 +128,24 @@
         "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\layout\\notification_template_lines_media.xml"
     },
     {
-        "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\activity_lfile_picker.xml",
-        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\b0e7e9321580fe005dd8ae188471daffa621748d\\output\\res\\layout\\activity_lfile_picker.xml"
-    },
-    {
         "merged": "F:\\huawu\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\lcim_chat_item_location.xml",
         "source": "F:\\huawu\\NucYiXue\\leancloudchatkit\\src\\main\\res\\layout\\lcim_chat_item_location.xml"
+    },
+    {
+        "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\activity_lfile_picker.xml",
+        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\b0e7e9321580fe005dd8ae188471daffa621748d\\output\\res\\layout\\activity_lfile_picker.xml"
     },
     {
         "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
         "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\layout\\abc_activity_chooser_view_list_item.xml"
     },
     {
-        "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
-        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\layout\\notification_template_part_time.xml"
-    },
-    {
         "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_header_item_layout.xml",
         "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\layout\\abc_popup_menu_header_item_layout.xml"
+    },
+    {
+        "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
+        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\layout\\notification_template_part_time.xml"
     },
     {
         "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
